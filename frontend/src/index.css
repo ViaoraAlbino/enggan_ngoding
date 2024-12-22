@@ -1,6 +1,75 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Untuk Nama Markas Besar */
+@font-face {
+  font-family: 'Nabla';
+  src: url('./asset/font/Nabla-Regular.woff2') format('truetype');
+}
+
+/* Untuk font navigasi dan  button sign up dan login */
+@font-face {
+  font-family: 'Poppins';
+  src: url('./asset/font/Poppins-Regular.ttf') format('truetype');
+}
+
+/* Untuk className H1 */
+.font-nabla {
+  font-family: 'Nabla', cursive;
+  color: rgba(51, 78, 172, 1) !important;
+  -webkit-text-fill-color: rgba(51, 78, 172, 1); /* Untuk memastikan di browser Webkit */
+  -webkit-text-stroke: 0; /* Jika ada garis di font */
+}
+
+/* Untuk font-family className menu Navigasi home,shop,product,about */
+.font-poppins {
+  font-family: 'Poppins';
+}
+
+/* Untuk font-family className menu button sign up */
+.font-poppins-sign {
+  font-family: 'Poppins';
+  color: rgba(51, 78, 172, 1);
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 8px;
+  border-radius: 3px;
+}
+
+/* Untuk styling warna button sign up */
+.button-sign {
+  background-color: rgba(208, 227, 255, 1);
+}
+
+/* Untuk font-family className menu button login */
+.font-poppins-login {
+  font-family: 'Poppins';
+  color: white;
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 8px;
+  border-radius: 3px;
+}
+
+/* Untuk styling warna button login */
+.button-login {
+  background-color: rgba(51, 78, 172, 1);
+}
+
+/* Untuk Background sebelum footer*/
+.background-abu {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Untuk className H1 sebelumfooter */
+.font-nabla-sebelumfooter {
+  font-family: 'Nabla', cursive;
+  color: white !important;
+  -webkit-text-fill-color: white; /* Untuk memastikan di browser Webkit */
+  -webkit-text-stroke: 0; /* Jika ada garis di font */
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
