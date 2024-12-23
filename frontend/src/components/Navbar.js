@@ -67,8 +67,8 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-4">
             <FiHeart className="text-gray-500 hover:text-red-500 cursor-pointer" size={24} />
             <FiShoppingCart className="text-gray-500 hover:text-gray-800 cursor-pointer" size={24} />
-            <button className="font-poppins-sign button-sign">Sign Up</button>
-            <button className="font-poppins-login button-login">Login</button>
+            <button className="font-poppins-sign button-sign hover:bg-cyan-200">Sign Up</button>
+            <button className="font-poppins-login button-login hover:bg-blue-500">Login</button>
           </div>
 
           {/* Tombol Hamburger */}
@@ -143,8 +143,8 @@ const Navbar = () => {
 
         {/* Button Sign Up & Login */}
         <div className="flex flex-col space-y-4 px-4 mt-4">
-          <button className="font-poppins-sign button-sign">Sign Up</button>
-          <button className="font-poppins-login button-login">Login</button>
+          <button className="font-poppins-sign button-sign hover:bg-cyan-200">Sign Up</button>
+          <button className="font-poppins-login button-login hover:bg-blue-500">Login</button>
         </div>
       </div>
 

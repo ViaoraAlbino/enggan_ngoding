@@ -52,6 +52,14 @@
   border-radius: 3px;
 }
 
+/* Untuk font-family className menu H1 di sebelumfooter */
+.font-nabla-white {
+  font-family: 'Nabla', cursive;
+  color: white !important;
+  -webkit-text-fill-color: white; /* Untuk memastikan di browser Webkit */
+  -webkit-text-stroke: 0; /* Jika ada garis di font */
+}
+
 /* Untuk styling warna button login */
 .button-login {
   background-color: rgba(51, 78, 172, 1);

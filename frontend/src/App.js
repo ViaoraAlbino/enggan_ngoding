@@ -2,8 +2,9 @@
 import './App.css';
 
 import Navbar from './components/Navbar';
-import Sebelumfooter from './components/Sebelumfooter';
 import Content from './components/Kontent';
+import Sebelumfooter from './components/Sebelumfooter';
+import Footer from './components/Footer';
 
 function App() {
   return(
@@ -11,6 +12,7 @@ function App() {
       <Navbar/>
       <Content/>
       <Sebelumfooter/>
+      <Footer/>
     </div>
   );
 }
