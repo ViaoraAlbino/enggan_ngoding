@@ -2,17 +2,17 @@
 import './App.css';
 
 import Navbar from './components/Navbar';
-import Content from './components/Kontent';
+import Content from './components/Kategori';
 import Sebelumfooter from './components/Sebelumfooter';
 import Footer from './components/Footer';
 
 function App() {
   return(
     <div className='App'>
-      <Navbar/>
+      {/* <Navbar/> */}
       <Content/>
-      <Sebelumfooter/>
-      <Footer/>
+      {/* <Sebelumfooter/>
+      <Footer/> */}
     </div>
   );
 }
