@@ -1,6 +1,6 @@
 import React from 'react';
-import Lokasi from '../asset/gambar/sherlok.png';
-import Telepon from '../asset/gambar/telepon.png';
+import Lokasi from '../assets/gambar/sherlok.png';
+import Telepon from '../assets/gambar/telepon.png';
 
 const Sebelumfooter = () => {
   return (

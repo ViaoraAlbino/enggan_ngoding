@@ -5,13 +5,13 @@
 /* Untuk Nama Markas Besar */
 @font-face {
   font-family: 'Nabla';
-  src: url('./asset/font/Nabla-Regular.woff2') format('truetype');
+  src: url('./assets/font/Nabla-Regular.woff2') format('truetype');
 }
 
 /* Untuk font navigasi dan  button sign up dan login */
 @font-face {
   font-family: 'Poppins';
-  src: url('./asset/font/Poppins-Regular.ttf') format('truetype');
+  src: url('./assets/font/Poppins-Regular.ttf') format('truetype');
 }
 
 /* Untuk className H1 */

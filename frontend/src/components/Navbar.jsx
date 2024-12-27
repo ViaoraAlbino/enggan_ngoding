@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { FiHeart, FiShoppingCart, FiSearch, FiMenu, FiX } from 'react-icons/fi';
+import { FiHeart, FiShoppingCart, FiUser , FiSearch, FiMenu, FiX } from 'react-icons/fi';
+import { FaUser } from "react-icons/fa";
+import { PiShoppingCartSimpleFill } from "react-icons/pi";
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -67,6 +69,9 @@ const Navbar = () => {
           <div className="hidden md:flex items-center space-x-4">
             <FiHeart className="text-gray-500 hover:text-red-500 cursor-pointer" size={24} />
             <FiShoppingCart className="text-gray-500 hover:text-gray-800 cursor-pointer" size={24} />
+            {/* <FiUser className="text-gray-500 hover:text-gray-800 cursor-pointer" size={24} /> */}
+            {/* <PiShoppingCartSimpleFill className="text-gray-500 hover:text-gray-800 cursor-pointer" size={24} />
+            <FaUser className="text-gray-500 hover:text-gray-800 cursor-pointer" size={21} /> */}
             <button className="font-poppins-sign button-sign hover:bg-cyan-200">Sign Up</button>
             <button className="font-poppins-login button-login hover:bg-blue-500">Login</button>
           </div>
@@ -78,6 +83,7 @@ const Navbar = () => {
           >
             <FiMenu size={24} />
           </button>
+
         </div>
       </nav>
 
@@ -98,14 +104,14 @@ const Navbar = () => {
         </div>
 
         {/* Kolom Pencarian */}
-        <div className="md:flex items-center bg-gray-100 rounded-full p-4 py-1 mt-3">  
-         <input
-        type="text"
-        placeholder="Mau cari apa..."
-        className="bg-transparent focus:outline-none text-gray-700 font-poppins flex-grow"
-         />
-        {/* <FiSearch className="text-gray-500" style={{ width: '10px', height: '10px' }} /> */}
-        </div>
+        <div className="flex items-center bg-gray-100 rounded-full px-4 py-1 mt-3">
+    <input
+      type="text"
+      placeholder="Mau cari apa..."
+      className="bg-transparent focus:outline-none text-gray-700 font-poppins flex-grow"
+    />
+    <FiSearch className="text-gray-500" size={20} />
+  </div>
 
 
 
