@@ -145,8 +145,6 @@ const Navbar = () => {
         <FiShoppingCart className="text-gray-500 hover:text-gray-800 cursor-pointer" size={24} />
         </div>
 
-
-
         {/* Button Sign Up & Login */}
         <div className="flex flex-col space-y-4 px-4 mt-4">
           <button className="font-poppins-sign button-sign hover:bg-cyan-200">Sign Up</button>

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleChevronDown, faCircleChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 const Kategori = () => {
   const [activeCategory, setActiveCategory] = useState(null);
@@ -8,19 +10,27 @@ const Kategori = () => {
   };
 
   return (
-    <div className="w-45 h-full bg-white border-none fixed top-0 left-5 p-4 overflow-y-auto text-left">
-      <h2 className="text-3xl font-bold mb-4 font-poppins-category-header">Category</h2>
-      <ul className="space-y-2">
+    <div className="w-52 h-full bg-white border-none fixed top-0 left-5 p-4 overflow-y-auto text-left mt-20">
+      <h2 className="mb-4 font-poppins-category-header">Category</h2>
+      <ul className="space-y-6">
         <li>
           <button
-            className="w-45 flex justify-between items-center text-left text-blue-600 font-semibold"
+            className={`w-full flex justify-between items-center text-left font-poppins-category-body-judul ${
+              activeCategory === 'kaos' ? 'text-blue-600 font-bold' : 'text-gray-600'
+            }`}
             onClick={() => toggleCategory('kaos')}
           >
-            Kaos
-            <span className="text-blue-600 ml-12">{activeCategory === 'kaos' ? '▲' : '▼'}</span>
+            <span className="flex-1">Kaos</span>
+            <span className="ml-20">
+              {activeCategory === 'kaos' ? (
+                <FontAwesomeIcon icon={faCircleChevronUp} style={{ color: '#334eac' }} />
+              ) : (
+                <FontAwesomeIcon icon={faCircleChevronDown} style={{ color: '#bbbcbe' }} />
+              )}
+            </span>
           </button>
           {activeCategory === 'kaos' && (
-            <ul className=" mt-2 space-y-2 text-gray-600 font-poppins-category-body">
+            <ul className="mt-2 space-y-2 text-gray-600 font-poppins-category-body">
               <li>Kaos</li>
               <li>Kaos Custom Desain</li>
             </ul>
@@ -28,20 +38,142 @@ const Kategori = () => {
         </li>
         <li>
           <button
-            className="w-45 flex justify-between items-center text-left"
+            className={`w-full flex justify-between items-center text-left font-poppins-category-body-judul ${
+              activeCategory === 'mugs' ? 'text-blue-600 font-bold' : 'text-gray-600'
+            }`}
             onClick={() => toggleCategory('mugs')}
           >
-            Mugs
-            <span className="text-gray-600 ml-12">{activeCategory === 'mugs' ? '▲' : '▼'}</span>
+            <span className="flex-1">Mugs</span>
+            <span className="ml-20">
+              {activeCategory === 'mugs' ? (
+                <FontAwesomeIcon icon={faCircleChevronUp} style={{ color: '#334eac' }} />
+              ) : (
+                <FontAwesomeIcon icon={faCircleChevronDown} style={{ color: '#bbbcbe' }} />
+              )}
+            </span>
           </button>
           {activeCategory === 'mugs' && (
-            <ul className=" mt-2 space-y-2 text-gray-600 font-poppins-category-body">
-              <li>Mugs</li>
-              <li>Mugs 2</li>
+            <ul className="mt-2 space-y-2 text-gray-600 font-poppins-category-body">
+              <li>Mugs Custom</li>
+              {/* <li>Mugs 2</li> */}
             </ul>
           )}
         </li>
-        {/* Tambahkan kategori lain di sini */}
+        <li>
+          <button
+            className={`w-full flex justify-between items-center text-left font-poppins-category-body-judul ${
+              activeCategory === 'bags' ? 'text-blue-600 font-bold' : 'text-gray-600'
+            }`}
+            onClick={() => toggleCategory('bags')}
+          >
+            <span className="flex-1">Bags</span>
+            <span className="ml-20">
+              {activeCategory === 'bags' ? (
+                <FontAwesomeIcon icon={faCircleChevronUp} style={{ color: '#334eac' }} />
+              ) : (
+                <FontAwesomeIcon icon={faCircleChevronDown} style={{ color: '#bbbcbe' }} />
+              )}
+            </span>
+          </button>
+          {activeCategory === 'bags' && (
+            <ul className="mt-2 space-y-2 text-gray-600 font-poppins-category-body">
+              <li>Bag 1</li>
+              <li>Bag 2</li>
+            </ul>
+          )}
+        </li>
+        <li>
+          <button
+            className={`w-full flex justify-between items-center text-left font-poppins-category-body-judul ${
+              activeCategory === 'tumbler' ? 'text-blue-600 font-bold' : 'text-gray-600'
+            }`}
+            onClick={() => toggleCategory('tumbler')}
+          >
+            <span className="flex-1">Tumbler</span>
+            <span className="ml-18">
+              {activeCategory === 'tumbler' ? (
+                <FontAwesomeIcon icon={faCircleChevronUp} style={{ color: '#334eac' }} />
+              ) : (
+                <FontAwesomeIcon icon={faCircleChevronDown} style={{ color: '#bbbcbe' }} />
+              )}
+            </span>
+          </button>
+          {activeCategory === 'tumbler' && (
+            <ul className="mt-2 space-y-2 text-gray-600 font-poppins-category-body">
+              <li>Tumbler 1</li>
+              <li>Tumbler 2</li>
+            </ul>
+          )}
+        </li>
+        <li>
+          <button
+            className={`w-full flex justify-between items-center text-left font-poppins-category-body-judul ${
+              activeCategory === 'acc' ? 'text-blue-600 font-bold' : 'text-gray-600'
+            }`}
+            onClick={() => toggleCategory('acc')}
+          >
+            <span className="flex-1">Accessories</span>
+            <span className="ml-18">
+              {activeCategory === 'acc' ? (
+                <FontAwesomeIcon icon={faCircleChevronUp} style={{ color: '#334eac' }} />
+              ) : (
+                <FontAwesomeIcon icon={faCircleChevronDown} style={{ color: '#bbbcbe' }} />
+              )}
+            </span>
+          </button>
+          {activeCategory === 'acc' && (
+            <ul className="mt-2 space-y-2 text-gray-600 font-poppins-category-body">
+              <li>Accessories 1</li>
+              <li>Accessories 2</li>
+            </ul>
+          )}
+        </li>
+        <li>
+          <button
+            className={`w-full flex justify-between items-center text-left font-poppins-category-body-judul ${
+              activeCategory === 'stiker' ? 'text-blue-600 font-bold' : 'text-gray-600'
+            }`}
+            onClick={() => toggleCategory('stiker')}
+          >
+            <span className="flex-1">Stickers</span>
+            <span className="ml-18">
+              {activeCategory === 'stiker' ? (
+                <FontAwesomeIcon icon={faCircleChevronUp} style={{ color: '#334eac' }} />
+              ) : (
+                <FontAwesomeIcon icon={faCircleChevronDown} style={{ color: '#bbbcbe' }} />
+              )}
+            </span>
+          </button>
+          {activeCategory === 'stiker' && (
+            <ul className="mt-2 space-y-2 text-gray-600 font-poppins-category-body">
+              <li>Stickers 1</li>
+              <li>Stickers 2</li>
+            </ul>
+          )}
+        </li>
+        <li>
+          <button
+            className={`w-full flex justify-between items-center text-left font-poppins-category-body-judul ${
+              activeCategory === 'polaroid' ? 'text-blue-600 font-bold' : 'text-gray-600'
+            }`}
+            onClick={() => toggleCategory('polaroid')}
+          >
+            <span className="flex-1">Polaroid</span>
+            <span className="ml-18">
+              {activeCategory === 'polaroid' ? (
+                <FontAwesomeIcon icon={faCircleChevronUp} style={{ color: '#334eac' }} />
+              ) : (
+                <FontAwesomeIcon icon={faCircleChevronDown} style={{ color: '#bbbcbe' }} />
+              )}
+            </span>
+          </button>
+          {activeCategory === 'polaroid' && (
+            <ul className="mt-2 space-y-2 text-gray-600 font-poppins-category-body">
+              <li>Polaroid 1</li>
+              <li>Polaroid 2</li>
+            </ul>
+          )}
+        </li>
       </ul>
     </div>
   );

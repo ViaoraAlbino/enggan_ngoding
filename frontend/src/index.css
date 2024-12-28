@@ -82,6 +82,7 @@
 .font-poppins-category-header {
   font-weight: 300;
   font-family: 'Poppins';
+  font-size: 30px;
 }
 
 /* Untuk Sidebar Category Body */
@@ -90,6 +91,33 @@
   font-family: 'Poppins';
   font-size: 14px;
 }
+
+/* Untuk Sidebar Category Judul Body */
+.font-poppins-category-body-judul {
+  font-family: 'Poppins';
+  font-size: 20px;
+  font-weight: 400;
+}
+
+/* Menjaga komponen sebelumfooter selalu di bawah */
+.sebelumfooter-container {
+  margin-top: auto;
+  width: 100%;
+  background-color: #2e2e2e; /* Contoh background */
+  color: white; /* Warna teks */
+}
+
+.App {
+  display: flex;
+  flex-direction: column; /* Menyusun komponen secara vertikal */
+  min-height: 200vh; /* Pastikan komponen mencakup seluruh tinggi layar */
+}
+
+.Sebelumfooter {
+  margin-top: auto; /* Ini akan memastikan komponen tetap berada di bawah */
+}
+
+
 
 body {
   margin: 0;
