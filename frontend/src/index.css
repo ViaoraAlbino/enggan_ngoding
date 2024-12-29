@@ -117,6 +117,25 @@
   margin-top: auto; /* Ini akan memastikan komponen tetap berada di bawah */
 }
 
+/* Ini untuk aksi ketika button disentuh maka fungsi ini akan berjalan */
+.active-menu {
+  background-color: #cfe8ff;
+  color: #D0E3FF;
+}
+
+/* Untuk judul menu navigasi profile */
+.font-poppins-menu-navigasi-header {
+  font-family: 'Poppins';
+  font-weight: 600;
+  font-size: 24px;
+}
+
+/* Untuk sub judul menu navigasi profile */
+.font-poppins-menu-navigasi-body {
+  font-family: 'Poppins';
+  font-weight: 00;
+  font-size: 20px;
+}
 
 
 body {

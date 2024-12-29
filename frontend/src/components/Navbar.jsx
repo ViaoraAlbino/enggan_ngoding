@@ -60,7 +60,7 @@ const Navbar = () => {
             <input
               type="text"
               placeholder="Mau cari apa..."
-              className="bg-transparent focus:outline-none flex-grow text-gray-700 font-poppins"
+              className="bg-transparent focus:outline-none flex-grow text-gray-700 font-poppins ml-2"
             />
             <FiSearch className="text-gray-500 w-6 h-6" />
           </div>
@@ -108,7 +108,7 @@ const Navbar = () => {
     <input
       type="text"
       placeholder="Mau cari apa..."
-      className="bg-transparent focus:outline-none text-gray-700 font-poppins flex-grow"
+      className="bg-transparent focus:outline-none text-gray-700 font-poppins flex-grow ml-2"
     />
     <FiSearch className="text-gray-500" size={20} />
   </div>
