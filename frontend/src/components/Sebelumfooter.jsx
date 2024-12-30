@@ -17,8 +17,8 @@ const Sebelumfooter = () => {
     <>
       {isReady && (
         <div className="background-abu p-10 mx-auto flex justify-between items-start text-left w-full sebelumfooter-container">
-          <div className="ml-10 sebelumfooter-content">
-            <h1 className="font-nabla-white text-5xl font-normal mb-10">UNIVY</h1>
+          <div className="ml-10 sebelumfooter-content py-10 mb-10">
+            <h1 className="font-nabla-white-sebelumfooter font-normal mb-10">UNIVY</h1>
             <ul className="md:flex space-x-14 flex-grow">
               {/* Informasi Lokasi dan Kontak */}
               <li className="sebelumfooter-item">
@@ -40,7 +40,7 @@ const Sebelumfooter = () => {
               </li>
 
               {/* Menu */}
-              <li className="sebelumfooter-item">
+              <li className="sebelumfooter-item mb-6">
                 <p className="font-poppins font-bold text-white text-2xl mb-2">Menu</p>
                 <p className="font-poppins font-medium text-base text-white mt-1">Home</p>
                 <p className="font-poppins font-medium text-base text-white">Product</p>
@@ -48,7 +48,7 @@ const Sebelumfooter = () => {
               </li>
 
               {/* Category */}
-              <li className="sebelumfooter-item">
+              <li className="sebelumfooter-item mb-6">
                 <p className="font-poppins font-bold text-white text-2xl mb-2">Category</p>
                 <p className="font-poppins font-medium text-base text-white mt-1">Kaos</p>
                 <p className="font-poppins font-medium text-base text-white">Mug</p>

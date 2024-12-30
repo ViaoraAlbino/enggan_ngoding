@@ -53,8 +53,9 @@
 }
 
 /* Untuk font-family className menu H1 di sebelumfooter */
-.font-nabla-white {
+.font-nabla-white-sebelumfooter {
   font-family: 'Nabla', cursive;
+  font-size: 64px;
   color: white !important;
   -webkit-text-fill-color: white; /* Untuk memastikan di browser Webkit */
   -webkit-text-stroke: 0; /* Jika ada garis di font */
@@ -135,6 +136,13 @@
   font-family: 'Poppins';
   font-weight: 00;
   font-size: 20px;
+}
+
+/* Untuk Bagian judul profil */
+.font-poppins-profil-isi {
+  font-weight: 500;
+  font-family: 'Poppins';
+  font-size: 32px;
 }
 
 
