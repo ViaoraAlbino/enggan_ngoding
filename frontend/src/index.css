@@ -14,6 +14,11 @@
   src: url('./assets/font/Poppins-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Monsterrat';
+  src: url('./assets/font/Montserrat-VariableFont_wght.ttf');
+}
+
 /* Untuk className H1 */
 .font-nabla {
   font-family: 'Nabla', cursive;
@@ -134,17 +139,31 @@
 /* Untuk sub judul menu navigasi profile */
 .font-poppins-menu-navigasi-body {
   font-family: 'Poppins';
-  font-weight: 00;
+  font-weight: 400;
   font-size: 20px;
 }
 
 /* Untuk Bagian judul profil */
 .font-poppins-profil-isi {
-  font-weight: 500;
+  font-weight: 600;
   font-family: 'Poppins';
   font-size: 32px;
 }
 
+/* Untuk Bagian judul profil */
+.font-poppins-profil-isi-form {
+  font-weight: 300;
+  font-family: 'Poppins';
+  font-size: 20px;
+}
+
+/* Untuk Tulisan Button Ganti Password Profil */
+.font-monster-button-password {
+  text-align: center;
+  font-size: 24px;
+  color: white;
+  font-family: 'Monsterrat';
+}
 
 body {
   margin: 0;
