@@ -11,8 +11,8 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Profile />
-      {/* <Content /> */}
+      {/* <Profile /> */}
+      <Content />
       {/* <Product /> */}
       <Sebelumfooter />
       <Footer />

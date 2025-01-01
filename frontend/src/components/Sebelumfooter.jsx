@@ -16,7 +16,7 @@ const Sebelumfooter = () => {
   return (
     <>
       {isReady && (
-        <div className="background-abu p-10 mx-auto flex justify-between items-start text-left w-full sebelumfooter-container">
+        <div className="background-abu p-10 mx-auto flex justify-between items-start text-left w-full sebelumfooter-container scroll-smooth">
           <div className="ml-10 sebelumfooter-content py-10 mb-10">
             <h1 className="font-nabla-white-sebelumfooter font-normal mb-10">UNIVY</h1>
             <ul className="md:flex space-x-14 flex-grow">
