@@ -10,10 +10,10 @@ const Register = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white mt-6">
-      <div className="bg-blue-100 rounded-lg shadow-lg p-9 w-96">
-        <h2 className="text-2xl font-bold text-center mb-6">Sign Up</h2>
-        <form>
+    <div className="flex items-center justify-center min-h-screen bg-white mt-20 mb-10">
+      <div className="bg-blue-100 rounded-lg shadow-lg p-20 w-3/5">
+        <h2 className="text-4xl font-bold text-center mb-6">Sign Up</h2>
+        <form className='w-full text-left'>
           {/* Input untuk Nama Lengkap */}
           <div className="mb-4">
             <label htmlFor="fullName" className="block text-gray-700 font-medium mb-2">
@@ -78,7 +78,7 @@ const Register = () => {
           {/* Tombol Sign Up */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+            className="w-96 items-center justify-center bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
           >
             Sign Up
           </button>

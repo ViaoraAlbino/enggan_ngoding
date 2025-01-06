@@ -11,9 +11,9 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white mt-6">
-      <div className="bg-blue-100 rounded-lg shadow-lg  h-auto p-10 w-3/5">
+      <div className="bg-blue-100 rounded-lg shadow-lg  p-20 w-3/5">
         <h2 className="text-4xl font-bold text-center mb-5">Login</h2>
-        <form className='w-2/4'>
+        <form className='w-full'>
           {/* Input untuk Username atau Email */}
           <div className="mb-4">
             <label htmlFor="email" className="block text-gray-700 font-medium mb-2 text-left">
