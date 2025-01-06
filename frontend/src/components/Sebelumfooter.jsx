@@ -23,7 +23,7 @@ const Sebelumfooter = () => {
               {/* Informasi Lokasi dan Kontak */}
               <li className="sebelumfooter-item">
                 <div className="flex space-x-4 mb-6">
-                  <img src={Lokasi} alt="Sherlok" className="w-10 h-10" />
+                  <img src={Lokasi} alt="Sherlok" className="w-6 h-6" />
                   <div className="w-96 text-white">
                     <p className="text-base font-poppins font-medium">SMK N 3 KENDAL</p>
                     <p className="text-base font-poppins font-medium">
@@ -32,7 +32,7 @@ const Sebelumfooter = () => {
                   </div>
                 </div>
                 <div className="flex space-x-4">
-                  <img src={Telepon} alt="Telepon" className="w-10 h-10" />
+                  <img src={Telepon} alt="Telepon" className="w-6 h-6" />
                   <p className="text-base font-poppins font-medium mt-1 text-white">
                     Telepon: (0294) 572623
                   </p>
