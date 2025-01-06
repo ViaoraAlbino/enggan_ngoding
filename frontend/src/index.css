@@ -160,6 +160,31 @@
   font-family: 'Monsterrat';
 }
 
+/* Untuk Tulisan yang ada di Judul Login dan Register */
+.font-headlogin-poppins {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 600;
+  color: black;
+  font-family: 'Poppins';
+}
+
+/* Untuk Tulisan yang ada di sub Login dan Register */
+.font-sublogin-poppins {
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+  font-family: 'Poppins';
+}
+
+/* Untuk Tulisan yang ada di button Login dan Register */
+.font-btnlogin-monster {
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+  font-family: 'Monsterrat';
+}
+
 /* Untuk Tulisan Judul Product */
 .font-poppins-judul-product {
   font-weight: 300;

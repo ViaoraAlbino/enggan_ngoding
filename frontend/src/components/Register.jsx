@@ -12,11 +12,11 @@ const Register = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-white mt-20 mb-10">
       <div className="bg-blue-100 rounded-lg shadow-lg p-20 w-3/5">
-        <h2 className="text-4xl font-bold text-center mb-6">Sign Up</h2>
-        <form className='w-full text-left'>
+        <h2 className="text-4xl font-headlogin-poppins text-center mb-6">Sign Up</h2>
+        <form className='w-full text-left mt-10 space-y-8'>
           {/* Input untuk Nama Lengkap */}
-          <div className="mb-4">
-            <label htmlFor="fullName" className="block text-gray-700 font-medium mb-2">
+          <div className="">
+            <label htmlFor="fullName" className="block font-sublogin-poppins mb-2">
               Full Name <span className="text-red-500">*</span>
             </label>
             <input
@@ -28,8 +28,8 @@ const Register = () => {
           </div>
 
           {/* Input untuk Username */}
-          <div className="mb-4">
-            <label htmlFor="username" className="block text-gray-700 font-medium mb-2">
+          <div className="">
+            <label htmlFor="username" className="block font-sublogin-poppins mb-2">
               Username <span className="text-red-500">*</span>
             </label>
             <input
@@ -41,8 +41,8 @@ const Register = () => {
           </div>
 
           {/* Input untuk Email */}
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
+          <div className="">
+            <label htmlFor="email" className="block font-sublogin-poppins mb-2">
               Email <span className="text-red-500">*</span>
             </label>
             <input
@@ -54,8 +54,8 @@ const Register = () => {
           </div>
 
           {/* Input untuk Password */}
-          <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700 font-medium mb-2">
+          <div className="">
+            <label htmlFor="password" className="block font-sublogin-poppins mb-2">
               Password <span className="text-red-500">*</span>
             </label>
             <div className="relative">
@@ -78,9 +78,9 @@ const Register = () => {
           {/* Tombol Sign Up */}
           <button
             type="submit"
-            className="w-96 items-center justify-center bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+            className="w-full lg:w-[359px] mx-auto block bg-blue-600 font-btnlogin-monster py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
           >
-            Sign Up
+            Sign Up   
           </button>
         </form>
       </div>
