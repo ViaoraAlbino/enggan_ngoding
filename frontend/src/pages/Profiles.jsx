@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Foto from "../assets/gambar/me.jpg";
-import { width } from "@fortawesome/free-solid-svg-icons/fa0";
 
 const Profiles = () => {
   const [activeSection, setActiveSection] = useState("profile");
 
+  // Ini untuk tampilan isi profile
   const sections = {
     profile: (
       <div className="px-6 py-6">
@@ -178,9 +178,10 @@ const Profiles = () => {
     ),
   };
 
+  // Untuk tampilan profile 
   return (
-    <div className="px-14 py-28">
-      <div className="min-h-screen flex bg-blue-100 font-sans rounded-xl shadow-lg">
+    <div className="container mx-auto">
+      <div className=" min-h-52 flex mt-24 mb-24 bg-blue-100 font-sans rounded-xl shadow-lg">
         {/* Sidebar */}
         <aside className="bg-blue-100 w-80 rounded-xl flex flex-col items-center">
           <div className="p-4 flex flex-col items-center py-16">
@@ -260,7 +261,7 @@ const Profiles = () => {
           </div>
         </aside>
 
-        {/* Main Content */}
+        {/* Untuk ukuran isi content */}
         <main className="flex-1 pt-16 px-8 mr-8">
           <div className="bg-white px-5 py-5 rounded-xl shadow-lg w-full">
             {sections[activeSection]}

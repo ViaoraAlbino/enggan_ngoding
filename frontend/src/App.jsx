@@ -9,9 +9,10 @@ import Profile from './pages/Profiles';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App scroll-smooth">
+      {/* Untuk component dasar */}
       <Navbar />
-      {/* <Profile /> */}
+      <Profile />
       <Content />
       {/* <Product /> */}
       <Sebelumfooter />

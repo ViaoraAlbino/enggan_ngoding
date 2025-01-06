@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Untuk tampilan footer
 const Footer = () => {
   return (
     <footer 
