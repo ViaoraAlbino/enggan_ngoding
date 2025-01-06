@@ -10,13 +10,13 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white">
-      <div className="bg-blue-100 rounded-lg shadow-lg p-8 w-96">
-        <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
-        <form>
+    <div className="flex items-center justify-center min-h-screen bg-white mt-6">
+      <div className="bg-blue-100 rounded-lg shadow-lg  h-auto p-10 w-3/5">
+        <h2 className="text-4xl font-bold text-center mb-5">Login</h2>
+        <form className='w-2/4'>
           {/* Input untuk Username atau Email */}
           <div className="mb-4">
-            <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
+            <label htmlFor="email" className="block text-gray-700 font-medium mb-2 text-left">
               Username or Email <span className="text-red-500">*</span>
             </label>
             <input
@@ -29,7 +29,7 @@ const Login = () => {
 
           {/* Input untuk Password */}
           <div className="mb-4">
-            <label htmlFor="password" className="block text-gray-700 font-medium mb-2">
+            <label htmlFor="password" className="block text-gray-700 font-medium mb-2 text-left">
               Password <span className="text-red-500">*</span>
             </label>
             <div className="relative">
