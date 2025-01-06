@@ -6,6 +6,7 @@ import Product from './components/Product';
 import Sebelumfooter from './components/Sebelumfooter';
 import Footer from './components/Footer';
 import Profile from './pages/Profiles';
+import ProductDetails from './components/ProductDetails';
 
 function App() {
   return (
