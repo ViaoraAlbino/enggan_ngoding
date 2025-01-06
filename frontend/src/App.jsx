@@ -6,13 +6,15 @@ import Product from './components/Product';
 import Sebelumfooter from './components/Sebelumfooter';
 import Footer from './components/Footer';
 import Profile from './pages/Profiles';
+import ProductDetails from './components/ProductDetails';
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       {/* <Profile /> */}
-      <Content />
+      {/* <Content /> */}
+      <ProductDetails/>
       {/* <Product /> */}
       <Sebelumfooter />
       <Footer />
