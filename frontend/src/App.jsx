@@ -10,11 +10,11 @@ import ProductDetails from './components/ProductDetails';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App scroll-smooth">
+      {/* Untuk component dasar */}
       <Navbar />
       {/* <Profile /> */}
-      {/* <Content /> */}
-      <ProductDetails/>
+      <ProductDetails />
       {/* <Product /> */}
       <Sebelumfooter />
       <Footer />

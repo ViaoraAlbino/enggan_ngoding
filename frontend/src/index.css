@@ -2,18 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Untuk Nama Markas Besar */
+/* Font Nabla (Nama Markas Besar) */
 @font-face {
   font-family: 'Nabla';
   src: url('./assets/font/Nabla-Regular.woff2') format('truetype');
 }
 
-/* Untuk font navigasi dan  button sign up dan login */
+/* Font Poppins untuk font yang digunakan web univy */
 @font-face {
   font-family: 'Poppins';
   src: url('./assets/font/Poppins-Regular.ttf') format('truetype');
 }
 
+/* Font Monsterrat untuk component profile */
 @font-face {
   font-family: 'Monsterrat';
   src: url('./assets/font/Montserrat-VariableFont_wght.ttf');
@@ -23,8 +24,8 @@
 .font-nabla {
   font-family: 'Nabla', cursive;
   color: rgba(51, 78, 172, 1) !important;
-  -webkit-text-fill-color: rgba(51, 78, 172, 1); /* Untuk memastikan di browser Webkit */
-  -webkit-text-stroke: 0; /* Jika ada garis di font */
+  -webkit-text-fill-color: rgba(51, 78, 172, 1);
+  -webkit-text-stroke: 0;
 }
 
 /* Untuk font-family className menu Navigasi home,shop,product,about */
@@ -105,22 +106,16 @@
   font-weight: 400;
 }
 
-/* Menjaga komponen sebelumfooter selalu di bawah */
-.sebelumfooter-container {
-  margin-top: auto;
-  width: 100%;
-  background-color: #2e2e2e; /* Contoh background */
-  color: white; /* Warna teks */
-}
+
 
 .App {
   display: flex;
-  flex-direction: column; /* Menyusun komponen secara vertikal */
-  min-height: 200vh; /* Pastikan komponen mencakup seluruh tinggi layar */
+  flex-direction: column;
+  min-height: 200vh;
 }
 
 .Sebelumfooter {
-  margin-top: auto; /* Ini akan memastikan komponen tetap berada di bawah */
+  margin-top: auto;
 }
 
 /* Ini untuk aksi ketika button disentuh maka fungsi ini akan berjalan */
@@ -192,9 +187,30 @@ code {
     monospace;
 }
 
+/* Untuk ukuran device kecil */
 @media (max-width: 768px) {
   .w-52 {
     display: none;
   }
 }
+
+/* Untuk custom scroll */
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6b7280, #334eac);
+  border-radius: 10px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #4b5563, #2563eb);
+}
+
 
