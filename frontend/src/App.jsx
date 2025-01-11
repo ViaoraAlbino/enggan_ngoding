@@ -17,8 +17,9 @@ function App() {
             <Navbar />
             <Profile />
             <Content />
-            <Login />
-            <Register />
+            {/* <Product /> */}
+            {/* <Login />
+            <Register /> */}
             <ProductDetails />
             <Sebelumfooter />
             <Footer />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FiHeart, FiShoppingCart, FiUser, FiSearch, FiMenu, FiX } from 'react-icons/fi';
+import { FaRegUser } from "react-icons/fa6";
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -94,13 +95,24 @@ const Navbar = () => {
             <button className="font-poppins-login button-login hover:bg-blue-500">Login</button>
           </div>
 
-          {/* Tombol Hamburger */}
-          <button
-            className="lg:hidden text-gray-500 hover:text-gray-800 focus:outline-none"
-            onClick={toggleSidebar}
-          >
-            <FiMenu size={24} />
-          </button>
+          <div className="lg:hidden flex items-center space-x-4 ml-auto">
+            {/* Icon User */}
+            <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
+              <FaRegUser size={24} />
+            </button>
+            {/* Icon Keranjang */}
+            <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
+              <FiShoppingCart size={25} />
+            </button>
+            {/* Tombol Hamburger */}
+            <button
+              className="text-gray-500 hover:text-gray-800 focus:outline-none"
+              onClick={toggleSidebar}
+            >
+              <FiMenu size={26} />
+            </button>
+          </div>
+
         </div>
       </nav>
 

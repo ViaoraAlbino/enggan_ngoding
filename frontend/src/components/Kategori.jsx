@@ -53,60 +53,61 @@ const Kategori = () => {
     return (
         <div className="container mx-auto flex space-x-4 p-7 mt-10 mb-10 scroll-smooth" ref={containerRef}>
             {/* Sidebar */}
-            <div
-                className={`w-52 bg-white p-4 text-left ${isSticky ? 'sticky top-0' : 'relative'
-                    }`}
-                ref={sidebarRef}
-                style={{
-                    maxHeight: 'calc(100vh - 20px)', // Membatasi tinggi maksimal saat sticky
-                    overflowY: 'auto',
-                }}
-            >
-                <h2 className="mb-4 font-poppins-category-header">Category</h2>
-                <ul className="space-y-6">
-                    {categories.map((category) => (
-                        <li key={category.name}>
-                            <a
-                                href={`#${category.name.toLowerCase()}`}
-                                className={`w-full flex justify-between items-center text-left font-poppins-category-body-judul ${activeCategory === category.name
-                                    ? 'text-blue-600 font-bold'
-                                    : 'text-gray-600'
-                                    }`}
-                                onClick={(e) => {
-                                    e.preventDefault(); // Mencegah navigasi default
-                                    toggleCategory(category.name);
-                                }}
-                            >
-                                <span className="flex-1">{category.name}</span>
-                                <span className="ml-18">
-                                    {activeCategory === category.name ? (
-                                        <FontAwesomeIcon icon={faCircleChevronUp} style={{ color: '#334eac' }} />
-                                    ) : (
-                                        <FontAwesomeIcon icon={faCircleChevronDown} style={{ color: '#bbbcbe' }} />
-                                    )}
-                                </span>
-                            </a>
-                            {activeCategory === category.name && (
-                                <ul className="mt-2 space-y-2 text-gray-600 font-poppins-category-body">
-                                    {category.subcategories.map((sub, idx) => (
-                                        <li key={idx}>
-                                            <a
-                                                href={`#${sub.toLowerCase().replace(/\s+/g, '-')}`}
-                                                className="hover:text-blue-600"
-                                            >
-                                                {sub}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                            <hr className="my-2 border-gray-300" />
-                        </li>
+            <div className='hidden lg:flex'>
+                <div
+                    className={`w-52 bg-white p-4 text-left ${isSticky ? 'sticky top-0' : 'relative'
+                        }`}
+                    ref={sidebarRef}
+                    style={{
+                        maxHeight: 'calc(100vh - 20px)', // Membatasi tinggi maksimal saat sticky
+                        overflowY: 'auto',
+                    }}
+                >
+                    <h2 className="mb-4 font-poppins-category-header">Category</h2>
+                    <ul className="space-y-6">
+                        {categories.map((category) => (
+                            <li key={category.name}>
+                                <a
+                                    href={`#${category.name.toLowerCase()}`}
+                                    className={`w-full flex justify-between items-center text-left font-poppins-category-body-judul ${activeCategory === category.name
+                                        ? 'text-blue-600 font-bold'
+                                        : 'text-gray-600'
+                                        }`}
+                                    onClick={(e) => {
+                                        e.preventDefault(); // Mencegah navigasi default
+                                        toggleCategory(category.name);
+                                    }}
+                                >
+                                    <span className="flex-1">{category.name}</span>
+                                    <span className="ml-18">
+                                        {activeCategory === category.name ? (
+                                            <FontAwesomeIcon icon={faCircleChevronUp} style={{ color: '#334eac' }} />
+                                        ) : (
+                                            <FontAwesomeIcon icon={faCircleChevronDown} style={{ color: '#bbbcbe' }} />
+                                        )}
+                                    </span>
+                                </a>
+                                {activeCategory === category.name && (
+                                    <ul className="mt-2 space-y-2 text-gray-600 font-poppins-category-body">
+                                        {category.subcategories.map((sub, idx) => (
+                                            <li key={idx}>
+                                                <a
+                                                    href={`#${sub.toLowerCase().replace(/\s+/g, '-')}`}
+                                                    className="hover:text-blue-600"
+                                                >
+                                                    {sub}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                                <hr className="my-2 border-gray-300" />
+                            </li>
 
-                    ))}
-                </ul>
+                        ))}
+                    </ul>
+                </div>
             </div>
-
             {/* Untuk tampilan produk disamping sidebar */}
             <div
                 className="w-11/12 sticky top-10 bg-white p-4 overflow-y-scroll scrollbar-hide"

@@ -14,10 +14,28 @@
   src: url('./assets/font/Poppins-Regular.ttf') format('truetype');
 }
 
+/* Font Poppins Semibold untuk font yang digunakan web univy */
+@font-face {
+  font-family: 'Poppins-semibold';
+  src: url('./assets/font/Poppins-SemiBold.ttf') format('truetype');
+}
+
+/* Font Poppins Medium untuk font yang digunakan web univy */
+@font-face {
+  font-family: 'Poppins-medium';
+  src: url('./assets/font/Poppins-Medium.ttf') format('truetype');
+}
+
 /* Font Monsterrat untuk component profile */
 @font-face {
   font-family: 'Monsterrat';
   src: url('./assets/font/Montserrat-VariableFont_wght.ttf');
+}
+
+/* Font Monsterrat untuk font yang digunakan di web univy */
+@font-face {
+  font-family: 'Monsterrat-semibold';
+  src: url('./assets/font/Montserrat-SemiBold.ttf');
 }
 
 /* Untuk className H1 */
@@ -106,8 +124,6 @@
   font-weight: 400;
 }
 
-
-
 .App {
   display: flex;
   flex-direction: column;
@@ -195,6 +211,36 @@
 /* Untuk Tulisan Sub Judul Product */
 .font-poppins-sub-judul-product {
   font-family: 'Poppins';
+  font-size: 20px;
+}
+
+/* Untuk Tulisan Judul Product Detail */
+.font-poppins-produkdetail-h {
+  font-family: 'Poppins';
+  font-size: 40px;
+  font-weight: 400;
+}
+
+/* Untuk Tulisan Sub Judul Product Detail */
+.font-poppins-produkdetail-s {
+  font-family: 'Poppins-semibold';
+  font-size: 28px;
+}
+
+/* Untuk Tulisan Product Detail */
+.font-poppins-produkdetail-t {
+  font-family: 'Poppins-medium';
+  font-size: 16px;
+}
+
+/* Untuk Tulisan Product Detail */
+.font-poppins-produkdetail-t20 {
+  font-family: 'Poppins-medium';
+  font-size: 20px;
+}
+
+.font-monster-btn-pd {
+  font-family: 'Monsterrat-semibold';
   font-size: 20px;
 }
 
