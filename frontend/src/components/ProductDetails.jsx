@@ -183,7 +183,11 @@ const ProductDetails = () => {
               <h3 className="text-left mt-8">Spesifikasi</h3>
               <ul className="list-disc ml-6">
                 <li className='text-left'>Ukuran Kaos <br />
-                S (Width: 46 cm, Length: 64 cm)
+                S (Width: 46 cm, Length: 64 cm)<br />
+                M (Width: 50 cm, Length: 67 cm)<br />
+                L (Width: 54 cm, Length: 70 cm)<br />
+                XL (Width: 58 cm, Length: 73 cm)<br />
+                XXL (Width: 62 cm, Length: 76 cm)
                 </li>
                 <li className='text-left'>Gambar Super Jernih dan Tajam</li>
                 <li className='text-left'>Kualitas Foto Tahan Lama</li>
