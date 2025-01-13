@@ -20,9 +20,9 @@ const Sebelumfooter = () => {
           <div className=" container mx-auto flex justify-between items-start text-left w-full sebelumfooter-container scroll-smooth">
             <div className="ml-10 sebelumfooter-content py-10 mb-10">
               <h1 className="font-nabla-white-sebelumfooter font-normal mb-10">UNIVY</h1>
-              <ul className="md:flex space-x-14 flex-grow">
+              <ul className="lg:flex lg:space-x-16 sm:space-x-10 flex-grow">
                 {/* Informasi Lokasi dan Kontak */}
-                <li className="sebelumfooter-item">
+                <li className="sebelumfooter-item mb-4">
                   <div className="flex space-x-4 mb-6">
                     <img src={Lokasi} alt="Sherlok" className="w-6 h-6" />
                     <div className="w-96 text-white">
@@ -58,6 +58,25 @@ const Sebelumfooter = () => {
                   <p className="font-poppins font-medium text-base text-white">Accessories</p>
                   <p className="font-poppins font-medium text-base text-white">Stickers</p>
                   <p className="font-poppins font-medium text-base text-white">Polaroid Studio</p>
+                </li>
+                
+                {/* services */}
+                <li className="sebelumfooter-item mb-6">
+                  <p className="font-poppins font-bold text-white text-2xl mb-2">Service</p>
+                  <p className="font-poppins font-medium text-base text-white mt-1">Mug Costume</p>
+                  <p className="font-poppins font-medium text-base text-white">T-shirt Costume</p>
+                  <p className="font-poppins font-medium text-base text-white">Totebag Costume</p>
+                  <p className="font-poppins font-medium text-base text-white">Printing</p>
+                  <p className="font-poppins font-medium text-base text-white">Polaroid Printing</p>
+                </li>
+
+                 {/* follow us */}
+                 <li className="sebelumfooter-item mb-6">
+                  <p className="font-poppins font-bold text-white text-2xl mb-2">Follow Us</p>
+                  <p className="font-poppins font-medium text-base text-white mt-1">Instagram</p>
+                  <p className="font-poppins font-medium text-base text-white">Twitte</p>
+                  <p className="font-poppins font-medium text-base text-white">Facebook</p>
+                  <p className="font-poppins font-medium text-base text-white">Tik Tok</p>
                 </li>
               </ul>
             </div>

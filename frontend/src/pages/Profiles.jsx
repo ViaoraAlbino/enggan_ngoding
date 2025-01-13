@@ -183,7 +183,7 @@ const Profiles = () => {
     <div className="container mx-auto">
       <div className=" min-h-52 flex mt-24 mb-24 bg-blue-100 font-sans rounded-xl shadow-lg">
         {/* Sidebar */}
-        <aside className="bg-blue-100 w-80 rounded-xl flex flex-col items-center">
+        <aside className="bg-blue-100 lg:w-80 rounded-xl flex flex-col items-center">
           <div className="p-4 flex flex-col items-center py-16">
             <img src={Foto} alt="me" className="w-48 h-48 rounded-full mb-4" />
             <nav className="w-full mt-6">
