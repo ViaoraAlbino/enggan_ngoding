@@ -9,18 +9,21 @@ import Profile from './pages/Profiles';
 import ProductDetails from './components/ProductDetails';
 import Login from './components/Login';
 import Register from './components/Register';
+import Home from './pages/Home';
+import Isihome from './pages/isiHome';
 
 function App() {
     return (
-        <div className="App scroll-smooth">
+        <div className="App scroll-smooth mx-auto">
             {/* Untuk component dasar */}
             <Navbar />
-            <Profile />
-            <Content />
+            {/* <Profile /> */}
+            {/* <Content /> */}
             {/* <Product /> */}
-            {/* <Login />
-            <Register /> */}
-            <ProductDetails />
+            {/* <Login /> */}
+            {/* <Register /> */}
+            <Isihome/>
+            {/* <ProductDetails /> */}
             <Sebelumfooter />
             <Footer />
         </div>

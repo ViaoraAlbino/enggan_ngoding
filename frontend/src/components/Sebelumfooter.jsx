@@ -25,10 +25,10 @@ const Sebelumfooter = () => {
                 <li className="sebelumfooter-item mb-4">
                   <div className="flex space-x-4 mb-6">
                     <img src={Lokasi} alt="Sherlok" className="w-6 h-6" />
-                    <div className="w-96 text-white">
+                    <div className="lg:w-96 sm:w-36 text-white">
                       <p className="text-base font-poppins font-medium">SMK N 3 KENDAL</p>
                       <p className="text-base font-poppins font-medium">
-                        Jl. Limbangan, Km. 1, Salamsari, Boja, 51381, Salamsari, Kendal, Kabupaten Kendal, Jawa Tengah 51381, Indonesia.
+                        Jl. Limbangan, Km. 1, Salamsari, Boja, 51381, Kendal, Kabupaten Kendal, Jawa Tengah, Indonesia.
                       </p>
                     </div>
                   </div>

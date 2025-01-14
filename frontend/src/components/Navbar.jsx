@@ -6,10 +6,18 @@ const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
+  let scrollTimeout;
 
   // Fungsi toggle sidebar
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+
+    if (!isSidebarOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
   };
 
   // Fungsi untuk mengatur visibilitas navbar berdasarkan arah scroll
@@ -21,12 +29,21 @@ const Navbar = () => {
       setIsNavbarVisible(true);
     }
     setLastScrollY(currentScrollY);
+
+    // Deteksi scroll berhenti
+    setIsScrolling(true);
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      setIsScrolling(false);
+      setIsNavbarVisible(true); // Tampilkan navbar ketika scroll berhenti
+    }, 500); // Delay 150 ms
   };
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      document.body.classList.remove('no-scroll'); // Bersihkan efek saat komponen di-unmount
     };
   }, [lastScrollY]);
 
@@ -34,7 +51,7 @@ const Navbar = () => {
     <>
       {/* Navbar */}
       <nav
-        className={`fixed w-full bg-white p-4 shadow transition-transform duration-300 z-10 scroll-smooth ${isNavbarVisible ? 'translate-y-0' : '-translate-y-full'
+        className={`fixed w-full bg-white p-4 shadow transition-all duration-300 z-10 scroll-smooth ${isNavbarVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
           }`}
       >
         <div className="container mx-auto flex justify-between items-center">
@@ -112,7 +129,6 @@ const Navbar = () => {
               <FiMenu size={26} />
             </button>
           </div>
-
         </div>
       </nav>
 
