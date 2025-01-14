@@ -172,7 +172,7 @@ const ProductDetails = () => {
         <div className="bg-white p-6 max-w-7xl rounded-lg shadow-md mx-auto">
           {activeTab === 'Deskripsi' && (
             <div className='w-4/5 ml-2'>
-              <h3 className="text-left ">Kaos Custom UNIVY</h3>
+              <h3 className="text-left font-medium">Kaos Custom UNIVY</h3>
               <p className='text-left'>
                 Kaos custom UNIVY adalah solusi terbaik bagi Anda yang ingin tampil beda dan unik. Dengan layanan custom desain,
                 Anda bisa menciptakan kaos yang sesuai dengan kepribadian, kreativitas, atau kebutuhan spesifik Anda.
@@ -180,7 +180,7 @@ const ProductDetails = () => {
                 Kami menggunakan bahan berkualitas seperti Cotton Combed yang lembut, nyaman, dan tahan lama. Teknologi cetak
                 modern kami memastikan hasil desain tajam, detail, dan tidak mudah luntur, meskipun dicuci berulang kali.
               </p>
-              <h3 className="text-left mt-8">Spesifikasi</h3>
+              <h3 className="text-left mt-8 font-medium">Spesifikasi</h3>
               <ul className="list-disc ml-6">
                 <li className='text-left'>Ukuran Kaos <br />
                 S (Width: 46 cm, Length: 64 cm)<br />
@@ -188,10 +188,42 @@ const ProductDetails = () => {
                 L (Width: 54 cm, Length: 70 cm)<br />
                 XL (Width: 58 cm, Length: 73 cm)<br />
                 XXL (Width: 62 cm, Length: 76 cm)
+                </li><br />
+                <li className='text-left'>
+                  Ukuran Area Desain:
+                  <ul className='list-disc ml-6'>
+                    <li className='text-left'>Depan: Maksimal 30 x 40 cm</li>
+                    <li className='text-left'>Belakang: Maksimal 30 x 40 cm</li>
+                    <li className='text-left'>Lengan: Maksimal 10 x 10 cm</li>
+                  </ul>
+                </li><br />
+                <li className='text-left'>
+                  Bahan Kaos:
+                  <ul className='list-disc ml-6'>
+                    <li className='text-left'>
+                      Cotton Combed 24s/30s
+                      <ul className='list-disc ml-6'>
+                        <li className='text-left'>Lembut, nyaman, dan menyerap keringat, cocok untuk pemakaian sehari-hari.</li>
+                        <li className='text-left'>Pilihan warna lengkap: Putih, Hitam, Navy, Merah, Abu Muda, dan lainnya.</li>
+                      </ul>
+                    </li>
+                  </ul>
                 </li>
-                <li className='text-left'>Gambar Super Jernih dan Tajam</li>
-                <li className='text-left'>Kualitas Foto Tahan Lama</li>
               </ul>
+
+              <h3 className='text-left mt-8 font-medium'>Keunggulan:</h3>
+              <ul className='list-disc ml-6'>
+                <li className='text-left'>Dapat mencetak desain full-color berkualitas tinggi.</li>
+                <li className='text-left'>Tinta tahan lama dan ramah lingkungan.</li>
+                <li className='text-left'>Cocok untuk berbagai keperluan, seperti acara komunitas, seragam, atau hadiah spesial.</li>
+              </ul><br />
+
+              <h3 className='text-left mt-8 font-medium'>Catatan Penting:</h3>
+              <ul className='list-disc ml-6'>
+                <li className='text-left'>Harap unggah desain dalam format PNG/JPEG dengan resolusi minimal 300 dpi untuk hasil terbaik.</li>
+                <li className='text-left'>Proses pengerjaan 2-5 hari kerja tergantung jumlah pesanan.</li>
+              </ul><br />
+              <p className='text-left font-light'>Pesan Sekarang dan Wujudkan Kaos Impianmu di UNIVY!</p>
               <p className="mt-4">
                 Ukuran polaroid 6x9 cm<br />
                 rasio foto 3:4 (tanpa crop)<br />
