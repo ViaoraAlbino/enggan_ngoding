@@ -39,8 +39,8 @@ const ProductCard = ({ image, title, price, description }) => {
       </div>
       <div className="w-full flex justify-between items-center">
         <div>
-          <h3 className="font-poppins-judul-product mb-2 text-black text-left ml-2">{title}</h3>
-          <p className="text-black font-poppins-sub-judul-product text-left ml-2 font-semibold mb-2.5">{price}</p>
+          <h3 className="font-poppins-judul-products mb-2 text-black text-left ml-2">{title}</h3>
+          <p className="text-black font-poppins-sub-judul-products text-left ml-2 font-semibold mb-2.5">{price}</p>
         </div>
         <img
           src={Shopping}

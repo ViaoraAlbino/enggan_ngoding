@@ -95,6 +95,11 @@
   background-color: rgba(208, 227, 255, 1);
 }
 
+/* Untuk styling warna button logout */
+.button-logout {
+  background-color: red;
+}
+
 /* Untuk font-family className menu button login */
 .font-poppins-login {
   font-family: 'Poppins';
@@ -232,6 +237,33 @@
   font-family: 'Poppins';
 }
 
+/* Untuk Tulisan yang ada di sub Login dan Register */
+.font-sublogin-poppins-r {
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+  font-family: 'Poppins';
+  text-align: center;
+}
+
+/* Untuk Tulisan yang ada di sub Login dan Register */
+.font-sublogin-poppins-m {
+  font-size: 14px;
+  font-weight: 400;
+  color: red;
+  font-family: 'Poppins';
+  text-align: center;
+}
+
+/* Untuk Tulisan yang ada di sub Login dan Register */
+.font-sublogin-poppins-mg {
+  font-size: 14px;
+  font-weight: 400;
+  color: green;
+  font-family: 'Poppins';
+  text-align: center;
+}
+
 /* Untuk Tulisan yang ada di button Login dan Register */
 .font-btnlogin-monster {
   font-size: 20px;
@@ -249,6 +281,19 @@
 
 /* Untuk Tulisan Sub Judul Product */
 .font-poppins-sub-judul-product {
+  font-family: 'Poppins';
+  font-size: 20px;
+}
+
+/* Untuk Tulisan Judul Product */
+.font-poppins-judul-products {
+  font-weight: 300;
+  font-family: 'Poppins';
+  font-size: 20px;
+}
+
+/* Untuk Tulisan Sub Judul Product */
+.font-poppins-sub-judul-products {
   font-family: 'Poppins';
   font-size: 20px;
 }
@@ -317,6 +362,24 @@
     font-family: 'Poppins-bold';
     font-size: 16px;
     color: #334EAC;
+  }
+  .font-poppins-judul-product {
+    font-weight: 300;
+    font-family: 'Poppins';
+    font-size: 10px;
+  }
+  .font-poppins-sub-judul-product {
+    font-family: 'Poppins';
+    font-size: 10px;
+  }
+  .font-poppins-judul-products {
+    font-weight: 300;
+    font-family: 'Poppins';
+    font-size: 20px;
+  }
+  .font-poppins-sub-judul-products {
+    font-family: 'Poppins';
+    font-size: 20px;
   }
 }
 
@@ -401,6 +464,28 @@ code {
   overflow: hidden;
 }
 
-/*  */
+nav ul li a {
+  position: relative;
+  color: #4b5563; /* Warna teks */
+  font-family: 'Poppins', sans-serif; /* Font */
+  font-weight: 500; /* Berat font */
+  text-decoration: none;
+  display: inline-block;
+}
 
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px; /* Jarak underline dari teks */
+  left: 0;
+  width: 100%; /* Lebar underline penuh */
+  height: 2px;
+  background-color: #3b82f6; /* Warna underline */
+  transform: scaleX(0); /* Awal transformasi, tidak terlihat */
+  transform-origin: left; /* Mulai dari sisi kiri */
+  transition: transform 0.2s ease-in-out;
+}
 
+nav ul li a:hover::after {
+  transform: scaleX(1); /* Tampilkan underline penuh langsung ke kanan */
+}

@@ -1,33 +1,29 @@
-import './App.css';
-
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Content from './components/Kategori';
-import Product from './components/Product';
+import Layout from './components/Layout'; // import Layout
+import Product from './components/Kategori'; // Halaman Produk
+import Log from './components/Login'; // Halaman Login
+import Registrasi from './components/Register' // Halaman Registrasi
+import Home from './pages/isiHome'; // Halaman Home // Halaman About (jika ada)
 import Sebelumfooter from './components/Sebelumfooter';
 import Footer from './components/Footer';
-import Profile from './pages/Profiles';
-import ProductDetails from './components/ProductDetails';
-import Login from './components/Login';
-import Register from './components/Register';
-import Home from './pages/Home';
-import Isihome from './pages/isiHome';
 
-function App() {
+const App = () => {
     return (
-        <div className="App scroll-smooth mx-auto">
-            {/* Untuk component dasar */}
-            <Navbar />
-            {/* <Profile /> */}
-            {/* <Content /> */}
-            {/* <Product /> */}
-            {/* <Login /> */}
-            {/* <Register /> */}
-            <Isihome/>
-            {/* <ProductDetails /> */}
-            <Sebelumfooter />
-            <Footer />
-        </div>
+        <Router> {/* Router hanya ada di sini */}
+            <Navbar /> {/* Navbar hanya digunakan di sini */}
+            <Routes>
+                <Route path='/' element={<Home/>} />
+                <Route path='/product' element={<Product />} />
+                <Route path='/login' element={<Log />} />
+                <Route path='/register' element={<Registrasi />} />
+            </Routes>
+            <Sebelumfooter/>
+            <Footer/>
+        </Router>
     );
-}
+};
 
 export default App;

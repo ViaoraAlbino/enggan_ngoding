@@ -51,9 +51,9 @@ const Kategori = () => {
     }, []);
 
     return (
-        <div className="container mx-auto flex space-x-4 p-7 mt-10 mb-10 scroll-smooth" ref={containerRef}>
+        <div className="container mx-auto flex space-x-4 p-7 scroll-smooth" ref={containerRef}>
             {/* Sidebar */}
-            <div className='hidden lg:flex'>
+            <div className='hidden lg:flex mt-10'>
                 <div
                     className={`w-52 bg-white p-4 text-left ${isSticky ? 'sticky top-0' : 'relative'
                         }`}
@@ -110,7 +110,7 @@ const Kategori = () => {
             </div>
             {/* Untuk tampilan produk disamping sidebar */}
             <div
-                className="w-11/12 sticky top-10 bg-white p-4 overflow-y-scroll scrollbar-hide"
+                className="w-11/12 sticky mt-10 bg-white p-4 overflow-y-scroll scrollbar-hide"
                 style={{
                     maxHeight: 'calc(100vh - 20px)',
                 }}
