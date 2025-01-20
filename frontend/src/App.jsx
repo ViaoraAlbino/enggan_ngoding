@@ -11,6 +11,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Home from './pages/Home';
 import Isihome from './pages/isiHome';
+import Keranjang from './components/Keranjang';
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
             {/* <Product /> */}
             {/* <Login /> */}
             {/* <Register /> */}
+            <Keranjang />
             <Isihome/>
             {/* <ProductDetails /> */}
             <Sebelumfooter />
