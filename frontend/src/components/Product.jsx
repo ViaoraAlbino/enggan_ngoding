@@ -123,7 +123,7 @@ const Product = () => {
     },
   ];
 
-  // Ini jumlah kolom produk yang akan ditampilkan
+  // Ini jumlah kolom produk yang akan ditampilkan kembali
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {products.map((product) => (
