@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Lokasi from '../assets/gambar/sherlok.png';
 import Telepon from '../assets/gambar/telepon.png';
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 
 const Sebelumfooter = () => {
   const [isReady, setIsReady] = useState(false);
@@ -25,11 +26,11 @@ const Sebelumfooter = () => {
                 <li className="sebelumfooter-item mb-4">
                   <div className="flex space-x-4 mb-6">
                     <img src={Lokasi} alt="Sherlok" className="w-6 h-6" />
-                    <div className="lg:w-96 sm:w-36 text-white">
-                      <p className="text-base font-poppins font-medium">SMK N 3 KENDAL</p>
-                      <p className="text-base font-poppins font-medium">
+                    <div className="lg:w-96 sm:w-72 text-white flex flex-col">
+                      <Link to="https://g.co/kgs/nVFJQwi" className="text-base font-poppins font-medium">SMK N 3 KENDAL</Link>
+                      <Link to="https://g.co/kgs/nVFJQwi" className="text-base font-poppins font-medium">
                         Jl. Limbangan, Km. 1, Salamsari, Boja, 51381, Kendal, Kabupaten Kendal, Jawa Tengah, Indonesia.
-                      </p>
+                      </Link>
                     </div>
                   </div>
                   <div className="flex space-x-4">
@@ -41,11 +42,11 @@ const Sebelumfooter = () => {
                 </li>
 
                 {/* Menu */}
-                <li className="sebelumfooter-item mb-6">
+                <li className="sebelumfooter-item mb-6 flex flex-col">
                   <p className="font-poppins font-bold text-white text-2xl mb-2">Menu</p>
-                  <p className="font-poppins font-medium text-base text-white mt-1">Home</p>
-                  <p className="font-poppins font-medium text-base text-white">Product</p>
-                  <p className="font-poppins font-medium text-base text-white">About</p>
+                  <Link to="/" className="font-poppins font-medium text-base text-white mt-1">Home</Link>
+                  <Link to="/product" className="font-poppins font-medium text-base text-white">Product</Link>
+                  <Link to="/about" className="font-poppins font-medium text-base text-white">About</Link>
                 </li>
 
                 {/* Category */}
@@ -71,12 +72,11 @@ const Sebelumfooter = () => {
                 </li>
 
                  {/* follow us */}
-                 <li className="sebelumfooter-item mb-6">
+                 <li className="sebelumfooter-item mb-6 flex flex-col">
                   <p className="font-poppins font-bold text-white text-2xl mb-2">Follow Us</p>
-                  <p className="font-poppins font-medium text-base text-white mt-1">Instagram</p>
-                  <p className="font-poppins font-medium text-base text-white">Twitte</p>
-                  <p className="font-poppins font-medium text-base text-white">Facebook</p>
-                  <p className="font-poppins font-medium text-base text-white">Tik Tok</p>
+                  <Link to="https://www.instagram.com/univy.skg?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" className="font-poppins font-medium text-base text-white mt-1">Instagram</Link>
+                  <Link to="https://web.facebook.com/profile.php?id=61562563003345&locale=id_ID" className="font-poppins font-medium text-base text-white">Facebook</Link>
+                  <Link to="https://www.tiktok.com/@univy.skg" className="font-poppins font-medium text-base text-white">Tik Tok</Link>
                 </li>
               </ul>
             </div>

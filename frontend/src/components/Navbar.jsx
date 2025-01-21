@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { FiHeart, FiShoppingCart, FiUser, FiSearch, FiMenu, FiX } from 'react-icons/fi';
 import { FaRegUser } from "react-icons/fa6";
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
+import { useAuth } from './AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
+  const { isLoggedIn, logout } = useAuth();
   let scrollTimeout;
+  const location = useLocation(); // Menangkap lokasi saat ini
+  const navigate = useNavigate();
 
-  // Fungsi toggle sidebar
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
-
     if (!isSidebarOpen) {
       document.body.classList.add('no-scroll');
     } else {
@@ -39,6 +43,14 @@ const Navbar = () => {
     }, 500); // Delay 150 ms
   };
 
+
+  // Fungsi untuk logout
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Hapus token dari localStorage
+    logout(); // Ubah status login menjadi false
+    navigate('/login'); // Arahkan ke halaman login
+  };
+
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
@@ -51,46 +63,36 @@ const Navbar = () => {
     <>
       {/* Navbar */}
       <nav
-        className={`fixed w-full bg-white p-4 shadow transition-all duration-300 z-10 scroll-smooth ${isNavbarVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
-          }`}
+        className={`fixed w-full bg-white p-4 shadow transition-all duration-300 z-10 scroll-smooth ${isNavbarVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
       >
         <div className="container mx-auto flex justify-between items-center">
-          {/* Nama Markas */}
           <h1 className="text-2xl font-normal ml-6 font-nabla">UNIVY</h1>
 
           {/* Menu Navigasi */}
           <ul className="hidden lg:flex space-x-6 flex-grow justify-center">
             <li>
-              <a
-                href="#"
-                className="hover:text-zinc-950 mx-2 text-gray-500 font-poppins hover:underline decoration-2 decoration-blue-500 underline-offset-4"
+              <Link
+                to="/"
+                className={`mx-2 font-poppins  underline-offset-4 ${location.pathname === '/' ? 'text-blue-500' : 'text-gray-500'}`}
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
-                className="hover:text-gray-950 mx-2 text-gray-500 font-poppins hover:underline decoration-2 decoration-blue-500 underline-offset-4"
-              >
-                Shop
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="hover:text-gray-950 mx-2 text-gray-500 font-poppins hover:underline decoration-2 decoration-blue-500 underline-offset-4"
+              <Link
+                to="/product"
+                className={`mx-2 font-poppins  underline-offset-4 ${location.pathname === '/product' ? 'text-blue-500' : 'text-gray-500'}`}
               >
                 Product
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#"
-                className="hover:text-gray-950 mx-2 text-gray-500 font-poppins hover:underline decoration-2 decoration-blue-500 underline-offset-4"
+              <Link
+                to="/about"
+                className={`mx-2 font-poppins  underline-offset-4 ${location.pathname === '/about' ? 'text-blue-500' : 'text-gray-500'}`}
               >
                 About
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -104,24 +106,39 @@ const Navbar = () => {
             <FiSearch className="text-gray-500 w-6 h-6" />
           </div>
 
-          {/* Button Sign Up, Login, dan Ikon */}
+          {/* Tombol Sign Up dan Login */}
           <div className="hidden lg:flex items-center space-x-4">
             <FiHeart className="text-gray-500 hover:text-red-500 cursor-pointer" size={24} />
             <FiShoppingCart className="text-gray-500 hover:text-gray-800 cursor-pointer" size={24} />
-            <button className="font-poppins-sign button-sign hover:bg-cyan-200 ">Sign Up</button>
-            <button className="font-poppins-login button-login hover:bg-blue-500">Login</button>
+
+            {isLoggedIn ? (
+              // Tampilkan ikon user jika login
+              <button onClick={handleLogout} className="text-gray-500 hover:text-gray-800 focus:outline-none">
+                <FaRegUser size={24} />
+              </button>
+            ) : (
+              // Tampilkan tombol Sign Up dan Login jika belum user login
+              <>
+                <Link to="/register">
+                  <button className="font-poppins-sign button-sign hover:bg-cyan-200">Sign Up</button>
+                </Link>
+                <Link to="/login">
+                  <button className="font-poppins-login button-login hover:bg-blue-500">
+                    Login
+                  </button>
+                </Link>
+              </>
+            )}
           </div>
 
+          {/* Tombol Menu Mobile */}
           <div className="lg:hidden flex items-center space-x-4 ml-auto">
-            {/* Icon User */}
-            <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
-              <FaRegUser size={24} />
-            </button>
-            {/* Icon Keranjang */}
             <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
               <FiShoppingCart size={25} />
             </button>
-            {/* Tombol Hamburger */}
+            <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
+              <FaRegUser size={24} />
+            </button>
             <button
               className="text-gray-500 hover:text-gray-800 focus:outline-none"
               onClick={toggleSidebar}
@@ -133,10 +150,7 @@ const Navbar = () => {
       </nav>
 
       {/* Sidebar */}
-      <div
-        className={`fixed top-0 left-0 h-full w-64 bg-white shadow transform transition-transform z-20 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-          }`}
-      >
+      <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow transform transition-transform z-20 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex items-center justify-between p-4 border-b">
           <h2 className="text-2xl font-nabla">UNIVY</h2>
           <button
@@ -159,41 +173,45 @@ const Navbar = () => {
           {/* Menu Sidebar */}
           <ul className="p-4 space-y-4">
             <li>
-              <a href="#" className="text-gray-700 font-poppins hover:text-gray-900">
+              <Link to="/" className="text-gray-700 font-poppins hover:text-gray-900">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="text-gray-700 font-poppins hover:text-gray-900">
-                Shop
-              </a>
-            </li>
-            <li>
-              <a href="#" className="text-gray-700 font-poppins hover:text-gray-900">
+              <Link to="/product" className="text-gray-700 font-poppins hover:text-gray-900">
                 Product
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="text-gray-700 font-poppins hover:text-gray-900">
+              <Link to="/about" className="text-gray-700 font-poppins hover:text-gray-900">
                 About
-              </a>
+              </Link>
             </li>
           </ul>
 
-          {/* Icon Favorit dan Keranjang */}
-          <div className="flex items-center justify-center space-x-4 my-4">
-            <FiHeart className="text-gray-500 hover:text-red-500 cursor-pointer" size={24} />
-            <FiShoppingCart className="text-gray-500 hover:text-gray-800 cursor-pointer" size={24} />
-          </div>
-          {/* Button Sign Up & Login */}
+          {/* Button Sign Up & Login di Sidebar */}
           <div className="flex flex-col space-y-4 px-4 mt-4">
-            <button className="font-poppins-sign button-sign hover:bg-cyan-200">Sign Up</button>
-            <button className="font-poppins-login button-login hover:bg-blue-500">Login</button>
+            {isLoggedIn ? (
+              // Tampilkan ikon user jika login
+              <button onClick={handleLogout} className="font-poppins-login button-logout hover:bg-orange-600">
+                Logout
+              </button>
+            ) : (
+              // Tampilkan tombol Sign Up dan Login jika belum user login
+              <>
+                <Link to="/register" className="font-poppins-sign button-sign hover:bg-cyan-200">
+                  Sign Up
+                </Link>
+                <Link to="/login" className="font-poppins-login button-login hover:bg-blue-500">
+                    Login
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>
 
-      {/* Overlay untuk menutup sidebar */}
+      {/* Overlay */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-10"
