@@ -3,9 +3,8 @@ import React from "react";
 const Keranjang = () => {
     return (
         // Main content
-        <main className="container mx-auto flex-grow p-16">
-            <h2 className="text-xl font-bold mb-4">
-            </h2>
+        <main className="container mx-auto flex-grow p-16 pt-20">
+            <h2 className="text-xl font-bold text-left text-blue-800 mb-6">Keranjang Belanja</h2>
             <div className="bg-white rounded-lg shadow-md p-4">
                 <div className="border-b pb-4">
                     <label className="flex items-center space-x-2">
@@ -14,7 +13,7 @@ const Keranjang = () => {
                     </label>
                 </div>
 
-                {/* item */}
+                {/* item 1 */}
                 <div className="flex items-center space-x-2 py-4 border-b px-5">
                     <input type="checkbox" className="form-checkbbox" />
                     <img src="src/assets/gambar/Kaos/kaos1.jpeg" alt="kaos" className="w-32 h-32 object-cover" />
