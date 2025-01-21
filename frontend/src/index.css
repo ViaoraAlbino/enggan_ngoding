@@ -14,10 +14,46 @@
   src: url('./assets/font/Poppins-Regular.ttf') format('truetype');
 }
 
+/* Font Poppins Semibold untuk font yang digunakan web univy */
+@font-face {
+  font-family: 'Poppins-semibold';
+  src: url('./assets/font/Poppins-SemiBold.ttf') format('truetype');
+}
+
+/* Font Poppins Medium untuk font yang digunakan web univy */
+@font-face {
+  font-family: 'Poppins-medium';
+  src: url('./assets/font/Poppins-Medium.ttf') format('truetype');
+}
+
+/* Font Poppins Bold untuk font yang digunakan web univy */
+@font-face {
+  font-family: 'Poppins-bold';
+  src: url('./assets/font/Poppins-Bold.ttf') format('truetype');
+}
+
 /* Font Monsterrat untuk component profile */
 @font-face {
   font-family: 'Monsterrat';
   src: url('./assets/font/Montserrat-VariableFont_wght.ttf');
+}
+
+/* Font Monsterrat Semi-Bold untuk font yang digunakan di web univy */
+@font-face {
+  font-family: 'Monsterrat-semibold';
+  src: url('./assets/font/Montserrat-SemiBold.ttf');
+}
+
+/* Font Monsterrat Medium untuk font yang digunakan di web univy */
+@font-face {
+  font-family: 'Monsterrat-medium';
+  src: url('./assets/font/Montserrat-Medium.ttf');
+}
+
+/* Font Kanit untuk font yang digunakan di web univy */
+@font-face {
+  font-family: 'Kanit-bold';
+  src: url('./assets/font/Kanit-Bold.ttf');
 }
 
 /* Untuk className H1 */
@@ -33,6 +69,17 @@
   font-family: 'Poppins';
 }
 
+.font-poppins-f {
+  font-family: 'Poppins';
+}
+
+@media (max-width: 768px) {
+  .font-poppins-f {
+    font-family: 'Poppins';
+    font-size: 12px
+  }
+}
+
 /* Untuk font-family className menu button sign up */
 .font-poppins-sign {
   font-family: 'Poppins';
@@ -46,6 +93,11 @@
 /* Untuk styling warna button sign up */
 .button-sign {
   background-color: rgba(208, 227, 255, 1);
+}
+
+/* Untuk styling warna button logout */
+.button-logout {
+  background-color: red;
 }
 
 /* Untuk font-family className menu button login */
@@ -74,7 +126,7 @@
 
 /* Untuk Background sebelum footer*/
 .background-abu {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #2e3238;
 }
 
 /* Untuk className H1 sebelumfooter */
@@ -105,8 +157,6 @@
   font-size: 20px;
   font-weight: 400;
 }
-
-
 
 .App {
   display: flex;
@@ -169,12 +219,49 @@
   font-family: 'Poppins';
 }
 
+@media (max-width:768px){
+  .font-headlogin-poppins {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 600;
+    color: black;
+    font-family: 'Poppins';
+  }
+}
+
 /* Untuk Tulisan yang ada di sub Login dan Register */
 .font-sublogin-poppins {
   font-size: 16px;
   font-weight: 600;
   color: black;
   font-family: 'Poppins';
+}
+
+/* Untuk Tulisan yang ada di sub Login dan Register */
+.font-sublogin-poppins-r {
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+  font-family: 'Poppins';
+  text-align: center;
+}
+
+/* Untuk Tulisan yang ada di sub Login dan Register */
+.font-sublogin-poppins-m {
+  font-size: 14px;
+  font-weight: 400;
+  color: red;
+  font-family: 'Poppins';
+  text-align: center;
+}
+
+/* Untuk Tulisan yang ada di sub Login dan Register */
+.font-sublogin-poppins-mg {
+  font-size: 14px;
+  font-weight: 400;
+  color: green;
+  font-family: 'Poppins';
+  text-align: center;
 }
 
 /* Untuk Tulisan yang ada di button Login dan Register */
@@ -198,6 +285,118 @@
   font-size: 20px;
 }
 
+/* Untuk Tulisan Judul Product */
+.font-poppins-judul-products {
+  font-weight: 300;
+  font-family: 'Poppins';
+  font-size: 20px;
+}
+
+/* Untuk Tulisan Sub Judul Product */
+.font-poppins-sub-judul-products {
+  font-family: 'Poppins';
+  font-size: 20px;
+}
+
+/* Untuk Tulisan Judul Product Detail */
+.font-poppins-produkdetail-h {
+  font-family: 'Poppins';
+  font-size: 40px;
+  font-weight: 400;
+}
+
+/* Untuk Tulisan Sub Judul Product Detail */
+.font-poppins-produkdetail-s {
+  font-family: 'Poppins-semibold';
+  font-size: 28px;
+}
+
+/* Untuk Tulisan Product Detail */
+.font-poppins-produkdetail-t {
+  font-family: 'Poppins-medium';
+  font-size: 16px;
+}
+
+/* Untuk Tulisan Product Detail */
+.font-poppins-produkdetail-t20 {
+  font-family: 'Poppins-medium';
+  font-size: 20px;
+}
+
+.font-monster-btn-pd-1 {
+  font-family: 'Monsterrat-semibold';
+  font-size: 20px;
+  color: #334EAC;
+}
+
+.font-monster-btn-pd-2 {
+  font-family: 'Monsterrat-semibold';
+  font-size: 20px;
+  color: white;
+}
+
+.font-poppins-btn-d {
+  font-family: 'Poppins';
+  font-size: 16px;
+}
+
+.font-kanit-bold-k {
+  font-family: 'Kanit-bold';
+  font-size: 45px;
+  color: #1A2756;
+}
+
+.font-kanit-bold-kd {
+  font-family: 'Poppins-bold';
+  font-size: 32px;
+  color: #334EAC;
+}
+
+@media (max-width: 768px){
+  .font-kanit-bold-k {
+    font-family: 'Kanit-bold';
+    font-size: 22px;
+    color: #1A2756;
+  }
+  .font-kanit-bold-kd {
+    font-family: 'Poppins-bold';
+    font-size: 16px;
+    color: #334EAC;
+  }
+  .font-poppins-judul-product {
+    font-weight: 300;
+    font-family: 'Poppins';
+    font-size: 10px;
+  }
+  .font-poppins-sub-judul-product {
+    font-family: 'Poppins';
+    font-size: 10px;
+  }
+  .font-poppins-judul-products {
+    font-weight: 300;
+    font-family: 'Poppins';
+    font-size: 20px;
+  }
+  .font-poppins-sub-judul-products {
+    font-family: 'Poppins';
+    font-size: 20px;
+  }
+}
+
+.font-monster-medium-u {
+  font-family: 'Monsterrat-medium';
+  font-size: 11px;
+  color: black;
+}
+
+@media (max-width:768px){
+  .font-monster-medium-u {
+    font-family: 'Monsterrat-medium';
+    font-size: 7px;
+    color: black;
+  }
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -205,6 +404,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 code {
@@ -238,4 +438,54 @@ code {
   background: linear-gradient(180deg, #4b5563, #2563eb);
 }
 
+@keyframes slide-in {
+  from {
+      transform: translateX(100%);
+  }
+  to {
+      transform: translateX(0);
+  }
+}
 
+@keyframes slide-out {
+  from {
+      transform: translateX(0);
+  }
+  to {
+      transform: translateX(-100%);
+  }
+}
+
+.slide {
+  animation: slide-in 0.5s forwards;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+nav ul li a {
+  position: relative;
+  color: #4b5563; /* Warna teks */
+  font-family: 'Poppins', sans-serif; /* Font */
+  font-weight: 500; /* Berat font */
+  text-decoration: none;
+  display: inline-block;
+}
+
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px; /* Jarak underline dari teks */
+  left: 0;
+  width: 100%; /* Lebar underline penuh */
+  height: 2px;
+  background-color: #3b82f6; /* Warna underline */
+  transform: scaleX(0); /* Awal transformasi, tidak terlihat */
+  transform-origin: left; /* Mulai dari sisi kiri */
+  transition: transform 0.2s ease-in-out;
+}
+
+nav ul li a:hover::after {
+  transform: scaleX(1); /* Tampilkan underline penuh langsung ke kanan */
+}
