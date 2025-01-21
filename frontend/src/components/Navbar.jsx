@@ -4,6 +4,7 @@ import { FaRegUser } from "react-icons/fa6";
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -14,6 +15,7 @@ const Navbar = () => {
   let scrollTimeout;
   const location = useLocation(); // Menangkap lokasi saat ini
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -43,21 +45,54 @@ const Navbar = () => {
     }, 500); // Delay 150 ms
   };
 
-
   // Fungsi untuk logout
   const handleLogout = () => {
     localStorage.removeItem('token'); // Hapus token dari localStorage
+    localStorage.removeItem('hasNotified');
     logout(); // Ubah status login menjadi false
     navigate('/login'); // Arahkan ke halaman login
+    enqueueSnackbar('Logout', { variant: 'error' });
   };
 
+  // Fungsi untuk mengatur visibilitas navbar berdasarkan arah scroll dan menampilkan notifikasi login
   useEffect(() => {
+    // Cek apakah token ada di localStorage
+    const token = localStorage.getItem('token');
+
+    // Cek apakah notifikasi sudah pernah ditampilkan
+    const hasNotified = localStorage.getItem('hasNotified');
+
+    // Fungsi untuk mengatur visibilitas navbar
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY) {
+        setIsNavbarVisible(false);
+      } else {
+        setIsNavbarVisible(true);
+      }
+      setLastScrollY(currentScrollY);
+
+      // Deteksi scroll berhenti
+      setIsScrolling(true);
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsScrolling(false);
+        setIsNavbarVisible(true); // Tampilkan navbar ketika scroll berhenti
+      }, 500); // Delay 500 ms
+    };
+
+    if (token && location.pathname === '/' && !hasNotified) {
+      enqueueSnackbar('Welcome back! You are now logged in.', { variant: 'success' });
+      localStorage.setItem('hasNotified', 'true'); // Set status notifikasi
+    }
+
     window.addEventListener('scroll', handleScroll);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       document.body.classList.remove('no-scroll'); // Bersihkan efek saat komponen di-unmount
     };
-  }, [lastScrollY]);
+  }, [enqueueSnackbar, location.pathname, lastScrollY]);
 
   return (
     <>
@@ -203,7 +238,7 @@ const Navbar = () => {
                   Sign Up
                 </Link>
                 <Link to="/login" className="font-poppins-login button-login hover:bg-blue-500">
-                    Login
+                  Login
                 </Link>
               </>
             )}

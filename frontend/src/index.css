@@ -489,3 +489,10 @@ nav ul li a::after {
 nav ul li a:hover::after {
   transform: scaleX(1); /* Tampilkan underline penuh langsung ke kanan */
 }
+
+.bg-blur {
+  filter: blur(8px); /* Sesuaikan tingkat blur sesuai keinginan */
+  transform: scale(1.1); /* Perbesar gambar sedikit untuk menghindari garis tepi */
+}
+
+

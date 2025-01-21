@@ -1,5 +1,3 @@
-
-import React from 'react';
 import React, { useState } from 'react';
 import Pa from '../assets/gambar/test.jpg';
 import Shopping from '../assets/icons/Cart-blue.png';

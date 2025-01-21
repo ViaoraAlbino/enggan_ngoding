@@ -51,7 +51,7 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen mx-10 bg-white">
-      <div className="bg-blue-100 mx-auto rounded-lg shadow-lg p-10 w-full max-w-md lg:max-w-3xl">
+      <div className="bg-blue-100 mx-auto sm:mt-0 lg:mt-4 rounded-lg shadow-lg p-10 w-full max-w-md lg:max-w-3xl">
         <h2 className="text-3xl lg:text-4xl font-headlogin-poppins text-center mb-5">Login</h2>
         <form className="space-y-6 lg:space-y-8" onSubmit={handleLogin}>
           {/* Input untuk Username */}

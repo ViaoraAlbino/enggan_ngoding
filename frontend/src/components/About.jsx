@@ -1,11 +1,11 @@
 import backgroundImage from '../assets/gambar/about-bg.png';
-import premiumImage from '../assets/gambar/Kaos/kaos14.jpeg'; 
-import creativityImage from '../assets/gambar/Kaos/kaos12.jpeg'; 
+import premiumImage from '../assets/gambar/Kaos/kaos14.jpeg';
+import creativityImage from '../assets/gambar/Kaos/kaos12.jpeg';
 import fastServiceImage from '../assets/gambar/Kaos/kaos13.jpeg';
 
 const About = () => {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full mx-auto">
       {/* Background Image Section */}
       <div
         className="relative flex flex-col items-center justify-center h-screen bg-no-repeat bg-cover bg-center"
@@ -13,10 +13,16 @@ const About = () => {
           backgroundImage: `url(${backgroundImage})`,
         }}
       >
+        {/* Background Image with Blur */}
+        <div className="absolute inset-0 bg-cover bg-center bg-blur" style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}></div>
+        
         {/* Overlay */}
         <div className="absolute inset-0 bg-black opacity-50"></div>
+
         {/* Text Content */}
-        <div className="relative text-center">
+        <div className="relative text-center z-10">
           <h1 className="text-white text-4xl font-bold">About UNIVY</h1>
           <p className="text-white text-lg max-w-3xl mt-4">
             UNIVY hadir sebagai solusi bagi Anda yang ingin menciptakan sesuatu yang unik dan spesial. Kami menawarkan berbagai produk custom, mulai dari kaos, mug, tote bag, stiker, tumbler, hingga polaroid foto, yang semuanya dapat Anda desain sendiri sesuai keinginan. Dengan menggabungkan teknologi cetak modern dan bahan berkualitas tinggi, kami percaya setiap desain memiliki cerita, dan kami ada untuk membantu mewujudkannya.
@@ -42,7 +48,7 @@ const About = () => {
           />
         </div>
         {/* Text */}
-        <div className="md:w-1/2 text-left">
+        <div className="md:w-1/2 text-left px-10">
           <h3 className="text-2xl font-bold text-black mb-4">Kualitas Premium</h3>
           <p className="text-lg text-gray-700">
             Kami berkomitmen untuk selalu memberikan yang terbaik dengan memastikan setiap produk dibuat menggunakan bahan pilihan berkualitas tinggi. Dengan perhatian terhadap detail dan standar yang ketat, kami memastikan hasil akhir yang maksimal dan memuaskan. Kepercayaan Anda adalah motivasi kami untuk terus menghadirkan produk yang tak hanya indah, tetapi juga tahan lama dan fungsional.
