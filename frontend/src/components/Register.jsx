@@ -80,7 +80,7 @@ const Register = () => {
               value={formData.fullName}
               onChange={handleInputChange}
               placeholder="Enter your full name"
-              className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border rounded-lg font-poppins-16-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
@@ -95,7 +95,7 @@ const Register = () => {
               value={formData.username}
               onChange={handleInputChange}
               placeholder="Enter your username"
-              className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border rounded-lg font-poppins-16-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
@@ -110,7 +110,7 @@ const Register = () => {
               value={formData.email}
               onChange={handleInputChange}
               placeholder="Enter your email"
-              className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border rounded-lg font-poppins-16-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
@@ -126,7 +126,7 @@ const Register = () => {
                 value={formData.password}
                 onChange={handleInputChange}
                 placeholder="Enter your password"
-                className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full px-4 py-2 border rounded-lg font-poppins-16-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
               <button
                 type="button"

@@ -68,7 +68,7 @@ const Login = () => {
               value={username} // Hubungkan dengan state username
               onChange={(e) => setUsername(e.target.value)} // Perbarui state username
               placeholder="Enter your username"
-              className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border rounded-lg font-poppins-16-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
@@ -87,7 +87,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
-                className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full px-4 py-2 border rounded-lg font-poppins-16-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
               <button
                 type="button"

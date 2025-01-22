@@ -1,17 +1,13 @@
-// Layout.jsx
 import React from 'react';
-import Navbar from './Navbar'; // import Navbar
-import { Outlet } from 'react-router-dom'; // Ini akan menampilkan komponen rute yang aktif
+import Sebelumfooter from './Sebelumfooter';
 
-const Layout = () => {
-  return (
-    <div>
-      <Navbar /> {/* Navbar tetap ditampilkan di semua halaman */}
-      <main>
-        <Outlet /> {/* Bagian ini akan menampilkan halaman yang sesuai dengan rute */}
-      </main>
-    </div>
-  );
+const Layout = ({ children }) => {
+    return (
+        <>
+            {children}
+            <Sebelumfooter />
+        </>
+    );
 };
 
 export default Layout;

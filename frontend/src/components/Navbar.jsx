@@ -4,6 +4,7 @@ import { FaRegUser } from "react-icons/fa6";
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
+
 import { useSnackbar } from 'notistack';
 
 const Navbar = () => {
@@ -15,6 +16,7 @@ const Navbar = () => {
   let scrollTimeout;
   const location = useLocation(); // Menangkap lokasi saat ini
   const navigate = useNavigate();
+
   const { enqueueSnackbar } = useSnackbar();
 
   const toggleSidebar = () => {
@@ -45,6 +47,20 @@ const Navbar = () => {
     }, 500); // Delay 150 ms
   };
 
+  // Test Notifikasi
+  useEffect(() => {
+    // Cek apakah token ada di localStorage
+    const token = localStorage.getItem('token');
+
+    // Cek apakah notifikasi sudah pernah ditampilkan
+    const hasNotified = localStorage.getItem('hasNotified');
+
+    if (token && location.pathname === '/' && !hasNotified) {
+      enqueueSnackbar('Welcome back! You are now logged in.', { variant: 'success'});
+      localStorage.setItem('hasNotified', 'true'); // Set status notifikasi
+    }
+  }, [enqueueSnackbar, location.pathname]);
+
   // Fungsi untuk logout
   const handleLogout = () => {
     localStorage.removeItem('token'); // Hapus token dari localStorage
@@ -54,45 +70,13 @@ const Navbar = () => {
     enqueueSnackbar('Logout', { variant: 'error' });
   };
 
-  // Fungsi untuk mengatur visibilitas navbar berdasarkan arah scroll dan menampilkan notifikasi login
   useEffect(() => {
-    // Cek apakah token ada di localStorage
-    const token = localStorage.getItem('token');
-
-    // Cek apakah notifikasi sudah pernah ditampilkan
-    const hasNotified = localStorage.getItem('hasNotified');
-
-    // Fungsi untuk mengatur visibilitas navbar
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY) {
-        setIsNavbarVisible(false);
-      } else {
-        setIsNavbarVisible(true);
-      }
-      setLastScrollY(currentScrollY);
-
-      // Deteksi scroll berhenti
-      setIsScrolling(true);
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        setIsScrolling(false);
-        setIsNavbarVisible(true); // Tampilkan navbar ketika scroll berhenti
-      }, 500); // Delay 500 ms
-    };
-
-    if (token && location.pathname === '/' && !hasNotified) {
-      enqueueSnackbar('Welcome back! You are now logged in.', { variant: 'success' });
-      localStorage.setItem('hasNotified', 'true'); // Set status notifikasi
-    }
-
     window.addEventListener('scroll', handleScroll);
-
     return () => {
       window.removeEventListener('scroll', handleScroll);
       document.body.classList.remove('no-scroll'); // Bersihkan efek saat komponen di-unmount
     };
-  }, [enqueueSnackbar, location.pathname, lastScrollY]);
+  }, [lastScrollY]);
 
   return (
     <>

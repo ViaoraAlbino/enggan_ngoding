@@ -389,11 +389,85 @@
   color: black;
 }
 
+.font-poppins-64-600 {
+  font-family: 'Poppins-semibold';
+  font-size: 60px;
+}
+
+.font-poppins-24-500 {
+  font-family: 'Poppins';
+  font-size: 20px;
+}
+
+.font-poppins-36-600 {
+  font-family: 'Poppins-semibold';
+  font-size: 36px;
+}
+
+.font-poppins-36-500 {
+  font-family: 'Poppins-medium';
+  font-size: 36px;
+}
+
+.font-poppins-20-300 {
+  font-family: 'Poppins';
+  font-size: 20px;
+}
+
+.font-poppins-16-500 {
+  font-family: 'Poppins';
+  font-size: 16px;
+}
+
+/* Animasi Fade In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Efek gerakan dari bawah */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animasi Fade Out */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px); /* Efek gerakan ke atas */
+  }
+}
+
+/* Kelas untuk animasi masuk (fade-in) */
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Kelas untuk animasi keluar (fade-out) */
+.fade-out {
+  animation: fadeOut 1s ease-out forwards;
+}
+
+
 @media (max-width:768px){
   .font-monster-medium-u {
     font-family: 'Monsterrat-medium';
     font-size: 7px;
     color: black;
+  }
+  .font-poppins-64-600 {
+    font-family: 'Poppins-semibold';
+    font-size: 35px;
+  }
+  
+  .font-poppins-24-500 {
+    font-family: 'Poppins';
+    font-size: 15px;
   }
 }
 
@@ -495,4 +569,33 @@ nav ul li a:hover::after {
   transform: scale(1.1); /* Perbesar gambar sedikit untuk menghindari garis tepi */
 }
 
+.custom-snackbar {
+  font-size: 1.5rem; /* Atur ukuran font */
+  padding: 20px; /* Tambahkan padding */
+  width: 400px; /* Sesuaikan lebar */
+  background-color: #f0f0f0; /* Warna background */
+  border-radius: 8px; /* Opsional: border radius */
+}
 
+/* Custom scrollbar for sidebar */
+#custom-scrollbar {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #1d4ed8 #e5e7eb; /* Warna track dan thumb */
+}
+
+#custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Lebar scrollbar */
+}
+
+#custom-scrollbar::-webkit-scrollbar-track {
+  background: #e5e7eb; /* Warna track */
+}
+
+#custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #1d4ed8; /* Warna thumb (scroll handle) */
+  border-radius: 10px; /* Membuat ujungnya melengkung */
+}
+
+#custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #1e3a8a; /* Warna thumb saat di-hover */
+}

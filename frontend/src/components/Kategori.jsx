@@ -55,13 +55,13 @@ const Kategori = () => {
             {/* Sidebar */}
             <div className='hidden lg:flex mt-10'>
                 <div
-                    className={`w-52 bg-white p-4 text-left ${isSticky ? 'sticky top-0' : 'relative'
-                        }`}
+                    className={`w-52 bg-white p-4 text-left ${isSticky ? 'sticky top-0' : 'relative'}`}
                     ref={sidebarRef}
                     style={{
                         maxHeight: 'calc(100vh - 20px)', // Membatasi tinggi maksimal saat sticky
                         overflowY: 'auto',
                     }}
+                    id="custom-scrollbar" // Tambahkan ID untuk custom scroll
                 >
                     <h2 className="mb-4 font-poppins-category-header">Category</h2>
                     <ul className="space-y-6">
@@ -103,11 +103,12 @@ const Kategori = () => {
                                 )}
                                 <hr className="my-2 border-gray-300" />
                             </li>
-
                         ))}
                     </ul>
                 </div>
             </div>
+
+
             {/* Untuk tampilan produk disamping sidebar */}
             <div
                 className="w-11/12 sticky mt-10 bg-white p-4 overflow-y-scroll scrollbar-hide"
