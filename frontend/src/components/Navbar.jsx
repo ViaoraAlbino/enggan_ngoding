@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
 
+import { useSnackbar } from 'notistack';
+
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
@@ -14,6 +16,8 @@ const Navbar = () => {
   let scrollTimeout;
   const location = useLocation(); // Menangkap lokasi saat ini
   const navigate = useNavigate();
+
+  const { enqueueSnackbar } = useSnackbar();
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -43,12 +47,27 @@ const Navbar = () => {
     }, 500); // Delay 150 ms
   };
 
+  // Test Notifikasi
+  useEffect(() => {
+    // Cek apakah token ada di localStorage
+    const token = localStorage.getItem('token');
+
+    // Cek apakah notifikasi sudah pernah ditampilkan
+    const hasNotified = localStorage.getItem('hasNotified');
+
+    if (token && location.pathname === '/' && !hasNotified) {
+      enqueueSnackbar('Welcome back! You are now logged in.', { variant: 'success' });
+      localStorage.setItem('hasNotified', 'true'); // Set status notifikasi
+    }
+  }, [enqueueSnackbar, location.pathname]);
 
   // Fungsi untuk logout
   const handleLogout = () => {
     localStorage.removeItem('token'); // Hapus token dari localStorage
+    localStorage.removeItem('hasNotified');
     logout(); // Ubah status login menjadi false
     navigate('/login'); // Arahkan ke halaman login
+    enqueueSnackbar('Logout', { variant: 'error' });
   };
 
   useEffect(() => {
@@ -109,8 +128,9 @@ const Navbar = () => {
           {/* Tombol Sign Up dan Login */}
           <div className="hidden lg:flex items-center space-x-4">
             <FiHeart className="text-gray-500 hover:text-red-500 cursor-pointer" size={24} />
-            <FiShoppingCart className="text-gray-500 hover:text-gray-800 cursor-pointer" size={24} />
-
+            <Link to='/keranjang'>
+              <FiShoppingCart className="text-gray-500 hover:text-gray-800 cursor-pointer" size={24} />
+            </Link>
             {isLoggedIn ? (
               // Tampilkan ikon user jika login
               <button onClick={handleLogout} className="text-gray-500 hover:text-gray-800 focus:outline-none">
@@ -133,9 +153,11 @@ const Navbar = () => {
 
           {/* Tombol Menu Mobile */}
           <div className="lg:hidden flex items-center space-x-4 ml-auto">
-            <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
-              <FiShoppingCart size={25} />
-            </button>
+            <Link to='/keranjang'>
+              <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
+                <FiShoppingCart size={25} />
+              </button>
+            </Link>
             <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
               <FaRegUser size={24} />
             </button>
@@ -203,7 +225,7 @@ const Navbar = () => {
                   Sign Up
                 </Link>
                 <Link to="/login" className="font-poppins-login button-login hover:bg-blue-500">
-                    Login
+                  Login
                 </Link>
               </>
             )}

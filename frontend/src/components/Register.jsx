@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
+import { useSnackbar } from 'notistack';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const { enqueueSnackbar } = useSnackbar();
 
   // Fungsi untuk toggle visibility password
   const togglePasswordVisibility = () => {
@@ -54,7 +56,8 @@ const Register = () => {
       }
 
       const data = await response.json();
-      setSuccessMessage('Akun Berhasil dibuat!');
+      enqueueSnackbar('Akun Berhasil dibuat!', { variant: 'success' });
+      // setSuccessMessage('Akun Berhasil dibuat!');
       setFormData({ fullName: '', username: '', email: '', password: '' }); // Reset form
     } catch (error) {
       setErrorMessage(error.message || 'Server Error');
@@ -63,7 +66,7 @@ const Register = () => {
 
   return (
     <div className="flex items-center justify-center mx-10 min-h-screen bg-white lg:mb-10 px-4">
-      <div className="bg-blue-100 rounded-lg shadow-lg p-10 w-full max-w-2xl lg:mt-12">
+      <div className="bg-blue-100 rounded-lg shadow-lg p-10 w-full max-w-3xl lg:mt-12">
         <h2 className="text-3xl lg:text-4xl font-headlogin-poppins text-center mb-6">Sign Up</h2>
         <form onSubmit={handleSubmit} className="w-full text-left space-y-6">
           {/* Input untuk Nama Lengkap */}
@@ -77,7 +80,7 @@ const Register = () => {
               value={formData.fullName}
               onChange={handleInputChange}
               placeholder="Enter your full name"
-              className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border rounded-lg font-poppins-16-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
@@ -92,7 +95,7 @@ const Register = () => {
               value={formData.username}
               onChange={handleInputChange}
               placeholder="Enter your username"
-              className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border rounded-lg font-poppins-16-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
@@ -107,7 +110,7 @@ const Register = () => {
               value={formData.email}
               onChange={handleInputChange}
               placeholder="Enter your email"
-              className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full px-4 py-2 border rounded-lg font-poppins-16-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
           </div>
 
@@ -123,7 +126,7 @@ const Register = () => {
                 value={formData.password}
                 onChange={handleInputChange}
                 placeholder="Enter your password"
-                className="w-full px-4 py-2 border rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                className="w-full px-4 py-2 border rounded-lg font-poppins-16-500 focus:outline-none focus:ring-2 focus:ring-blue-400"
               />
               <button
                 type="button"
@@ -136,8 +139,8 @@ const Register = () => {
           </div>
 
           {/* Error/Sukses Pesan */}
-          {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
-          {successMessage && <p className="text-green-500 text-sm">{successMessage}</p>}
+          {/* {errorMessage && <p className="text-red-500 text-sm">{errorMessage}</p>}
+          {successMessage && <p className="text-green-500 text-sm">{successMessage}</p>} */}
 
           {/* Tombol Sign Up */}
           <button

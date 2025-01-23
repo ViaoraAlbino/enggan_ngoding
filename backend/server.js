@@ -5,9 +5,11 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const User = require('./models/User');
+const multer = require('multer');
 const cloudinary = require('cloudinary').v2;
-const path = require('path');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const User = require('./models/User');
+const Product = require('./models/Product');
 
 // Konfigurasi Environment
 dotenv.config();
@@ -38,11 +40,24 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+// Konfigurasi penyimpanan menggunakan Cloudinary
+const storage = new CloudinaryStorage({
+    cloudinary: cloudinary,
+    params: {
+        folder: 'products', // Nama folder di Cloudinary
+        format: async (req, file) => 'jpg', // Format gambar yang diunggah
+        public_id: (req, file) => Date.now(), // Nama file unik
+    },
+});
+
+// Inisialisasi multer dengan penyimpanan Cloudinary
+const upload = multer({ storage });
+
 // Endpoint untuk Registrasi User
 app.post('/daftar', async (req, res) => {
     try {
+        const role = 'user';
         const { fullName, username, email, password } = req.body;
-
         // Cek apakah email sudah terdaftar
         const existingUser = await User.findOne({ email });
         if (existingUser) {
@@ -53,7 +68,7 @@ app.post('/daftar', async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Simpan data user baru
-        const newUser = new User({ fullName, username, email, password: hashedPassword });
+        const newUser = new User({ fullName, username, email, password: hashedPassword, role });
         await newUser.save();
 
         res.status(201).json({ message: 'Registrasi berhasil', user: newUser });
@@ -84,10 +99,10 @@ app.post('/masuk', async (req, res) => {
         const token = jwt.sign({ id: existingUser._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
 
         // Kirimkan respons dengan token
-        res.status(200).json({ 
-            message: 'Login Berhasil', 
-            token, 
-            user: { id: existingUser._id, username: existingUser.username } 
+        res.status(200).json({
+            message: 'Login Berhasil',
+            token,
+            user: { id: existingUser._id, username: existingUser.username }
         });
     } catch (error) {
         console.error('Error saat login:', error);
@@ -95,8 +110,67 @@ app.post('/masuk', async (req, res) => {
     }
 });
 
-// Read Data Product
+// CRUD Produk
+// Read Data Products
+app.get('/product', async (req, res) => {
+    try {
+        const products = await Product.find();
+        res.json(products);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+});
 
+// Create Data Products
+app.post('/product', upload.single('image'), async (req, res) => {
+    try {
+        const { title, price } = req.body;
+        const imageUrl = req.file.path; // URL gambar dari Cloudinary
+
+        const newProduct = new Product({ title, price, imageUrl });
+        await newProduct.save();
+        res.status(201).json(newProduct);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+// Update Data Products
+app.put('/product/:id', upload.single('image'), async (req, res) => {
+    try {
+        const { title, price } = req.body;
+        const product = await Product.findById(req.params.id);
+
+        if (!product) {
+            return res.status(404).json({ message: 'Produk tidak ditemukan' });
+        }
+
+        if (req.file) {
+            product.imageUrl = req.file.path; // Perbarui gambar jika diunggah
+        }
+
+        product.title = title;
+        product.price = price;
+        await product.save();
+
+        res.json(product);
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
+
+// Delete Data Products
+app.delete('/product/:id', async (req, res) => {
+    try {
+        const product = await Product.findByIdAndDelete(req.params.id);
+        if (!product) {
+            return res.status(404).json({ message: 'Produk tidak ditemukan' });
+        }
+        res.json({ message: 'Produk berhasil dihapus', product });
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+});
 
 // Middleware untuk memeriksa token JWT
 const auth = (req, res, next) => {

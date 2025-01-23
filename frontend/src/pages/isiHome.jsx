@@ -3,18 +3,40 @@ import Home from './Home';
 import { MdFavorite } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md";
 import Shopping from '../assets/icons/Cart-blue.png';
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const isiHome = () => {
+
+    const [isVisible, setIsVisible] = useState(true);
+
+    const toggleVisibility = () => {
+        setIsVisible(!isVisible);
+    };
+
+    const fadeIn = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+    };
+
     return (
         <div className='mx-auto w-full overflow-hidden'>
             <Home />
             {/* Kategori */}
-            <div className="bg-blue-200 max-w-7xl mt-5 px-3 rounded-lg shadow-lg mx-auto">
-                <h6 className="font-kanit-bold-k text-left px-8 py-2">KATEGORI</h6>
-                <hr className="border-t-2 mx-8 border-gray-500" />
-                <Kategori />
-            </div>
-
+            <motion.section
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.8 }}
+            >
+                <div className="bg-blue-200 max-w-7xl mt-5 px-3 rounded-lg shadow-lg mx-auto">
+                    <h6 className="font-kanit-bold-k text-left px-8 py-2">KATEGORI</h6>
+                    <hr className="border-t-2 mx-8 border-gray-500" />
+                    <Kategori />
+                </div>
+            </motion.section>
             {/* <div className="bg-blue-200 max-w-7xl mt-10 px-3 rounded-lg shadow-lg mx-auto">
                 <h6 className="font-kanit-bold-k text-left px-8 py-2">FLASHSALE</h6>
                 <hr className="border-t-2 mx-8 border-gray-500" />
@@ -22,18 +44,34 @@ const isiHome = () => {
             </div> */}
 
             {/* Produk Unggulan */}
-            <div className="bg-blue-200 max-w-7xl px-3 rounded-lg shadow-lg mx-auto">
-                <h6 className="font-kanit-bold-kd text-center px-8 py-2">PRODUK UNGGULAN KAMI</h6>
-                <hr className="border-t-2 mx-8 border-gray-500" />
-                <Unggulan />
-            </div>
+            <motion.section
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.8 }}
+            >
+                <div className="bg-blue-200 max-w-7xl px-3 rounded-lg shadow-lg mx-auto">
+                    <h6 className="font-kanit-bold-kd text-center px-8 py-2">PRODUK UNGGULAN KAMI</h6>
+                    <hr className="border-t-2 mx-8 border-gray-500" />
+                    <Unggulan />
+                </div>
+            </motion.section>
 
             {/* Rekomendasi */}
-            <div className="bg-blue-200 max-w-7xl mb-5 px-3 rounded-lg shadow-lg mx-auto">
-                <h6 className="font-kanit-bold-kd text-center px-8 py-2">REKOMENDASI</h6>
-                <hr className="border-t-2 mx-8 border-gray-500" />
-                <Rekomendasi />
-            </div>
+            <motion.section
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.8 }}
+            >
+                <div className="bg-blue-200 max-w-7xl mb-5 px-3 rounded-lg shadow-lg mx-auto">
+                    <h6 className="font-kanit-bold-kd text-center px-8 py-2">REKOMENDASI</h6>
+                    <hr className="border-t-2 mx-8 border-gray-500" />
+                    <Rekomendasi />
+                </div>
+            </motion.section>
         </div>
     );
 };
@@ -190,11 +228,13 @@ const RekomendasiCard = ({ image, name, price }) => {
         <div className="bg-white rounded-md mb-4 sm:w-40 sm:h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 hover:bg-gray-100 ease-out delay-150 transition-colors duration-300 shadow-md">
             {/* Container Gambar */}
             <div className="relative overflow-hidden w-full h-2/3 rounded-t-md">
-                <img
-                    src={image}
-                    alt="Project 1"
-                    className="w-full h-full object-cover transform hover:scale-105 transition-transform ease-out duration-300"
-                />
+                <Link to="/productdetail">
+                    <img
+                        src={image}
+                        alt="Project 1"
+                        className="w-full h-full object-cover transform hover:scale-105 transition-transform ease-out duration-300"
+                    />
+                </Link>
                 {/* Icon Favorit */}
                 <div
                     className="absolute top-2 right-2 bg-white rounded-full p-2 shadow cursor-pointer"
@@ -213,9 +253,11 @@ const RekomendasiCard = ({ image, name, price }) => {
             {/* Konten */}
             <div className="w-full h-1/5 flex flex-col justify-between p-2">
                 <div>
-                    <h3 className="font-poppins-judul-product text-black text-sm sm:text-base text-left truncate">
-                        {name}
-                    </h3>
+                    <Link to="/productdetail">
+                        <h3 className="font-poppins-judul-product text-black text-sm sm:text-base text-left truncate">
+                            {name}
+                        </h3>
+                    </Link>
                     <p className="text-black font-poppins-sub-judul-product font-semibold text-sm sm:text-base text-left">
                         {price}
                     </p>
