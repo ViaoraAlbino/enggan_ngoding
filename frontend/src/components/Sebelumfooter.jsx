@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Lokasi from '../assets/gambar/sherlok.png';
 import Telepon from '../assets/gambar/telepon.png';
+import UnifyIcon from '../assets/icons/logo_univy.svg';
 
 const Sebelumfooter = () => {
   const [isReady, setIsReady] = useState(false);

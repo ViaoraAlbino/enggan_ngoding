@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FiHeart, FiShoppingCart, FiUser, FiSearch, FiMenu, FiX } from 'react-icons/fi';
 import { FaRegUser } from "react-icons/fa6";
-
+import UnifyIcon from '../assets/icons/logo_univy.svg';
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
@@ -56,43 +56,10 @@ const Navbar = () => {
       >
         <div className="container mx-auto flex justify-between items-center">
           {/* Nama Markas */}
-          <h1 className="text-2xl font-normal ml-6 font-nabla">UNIVY</h1>
+           <img src={UnifyIcon} alt="Unify Logo" className="w-16" />
 
           {/* Menu Navigasi */}
-          <ul className="hidden lg:flex space-x-6 flex-grow justify-center">
-            <li>
-              <a
-                href="#"
-                className="hover:text-zinc-950 mx-2 text-gray-500 font-poppins hover:underline decoration-2 decoration-blue-500 underline-offset-4"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="hover:text-gray-950 mx-2 text-gray-500 font-poppins hover:underline decoration-2 decoration-blue-500 underline-offset-4"
-              >
-                Shop
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="hover:text-gray-950 mx-2 text-gray-500 font-poppins hover:underline decoration-2 decoration-blue-500 underline-offset-4"
-              >
-                Product
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="hover:text-gray-950 mx-2 text-gray-500 font-poppins hover:underline decoration-2 decoration-blue-500 underline-offset-4"
-              >
-                About
-              </a>
-            </li>
-          </ul>
+          
 
           {/* Kolom Pencarian */}
           <div className="hidden lg:flex items-center w-1/4 bg-gray-100 rounded-full px-2 py-1 space-x-6 mr-6">
