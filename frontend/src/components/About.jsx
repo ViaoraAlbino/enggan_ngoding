@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion'; // Import Framer Motion
 import backgroundImage from '../assets/gambar/about-bg.png';
 import premiumImage from '../assets/gambar/Kaos/kaos3.jpeg';
 import creativityImage from '../assets/gambar/Kaos/kaos12.jpeg';
@@ -9,6 +10,11 @@ const About = () => {
 
   const toggleVisibility = () => {
     setIsVisible(!isVisible);
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
@@ -33,8 +39,12 @@ const About = () => {
         <div className="absolute inset-0 bg-black opacity-60"></div>
 
         {/* Text Content */}
-        <div
-          className={`relative text-center z-5 px-6 space-y-10 ${isVisible ? 'fade-in' : 'fade-out'}`}
+        <motion.div
+          className="relative text-center z-5 px-6 space-y-10"
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          transition={{ duration: 0.8 }}
         >
           <h1 className="font-poppins-64-600">About UNIVY</h1>
           <p className="font-poppins-24-500 max-w-6xl leading-relaxed">
@@ -47,16 +57,30 @@ const About = () => {
             hadiah spesial, UNIVY siap memenuhi kebutuhan Anda. Dengan slogan "Solution Custom n Printing
             only at Univy!", kami memberikan hasil terbaik untuk setiap ide kreatif Anda tanpa batas.
           </p>
-        </div>
+        </motion.div>
       </section>
 
       {/* Section Title */}
-      <section className="bg-white py-8 text-center">
+      <motion.section
+        className="bg-white py-8 text-center"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}
+        transition={{ duration: 0.8 }}
+      >
         <h2 className="font-poppins-36-600 text-black">Kenapa Harus Memilih UNIVY!</h2>
-      </section>
+      </motion.section>
 
       {/* Kualitas Premium Section */}
-      <section className="flex flex-col md:flex-row-reverse items-center bg-blue-100 py-12 px-6">
+      <motion.section
+        className="flex flex-col md:flex-row-reverse items-center bg-blue-100 py-12 px-6"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}
+        transition={{ duration: 0.8 }}
+      >
         <div className="md:w-1/2 flex justify-center mb-8 md:mb-0">
           <img
             src={premiumImage}
@@ -70,10 +94,17 @@ const About = () => {
             Kami berkomitmen untuk selalu memberikan yang terbaik dengan memastikan setiap produk dibuat menggunakan bahan pilihan berkualitas tinggi. Dengan perhatian terhadap detail, kami memastikan hasil akhir yang maksimal dan memuaskan.
           </p>
         </div>
-      </section>
+      </motion.section>
 
       {/* Kebebasan Kreativitas Section */}
-      <section className="flex flex-col md:flex-row items-center bg-white py-12 px-6">
+      <motion.section
+        className="flex flex-col md:flex-row items-center bg-white py-12 px-6"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}
+        transition={{ duration: 0.8 }}
+      >
         <div className="md:w-1/2 flex justify-center mb-8 md:mb-0">
           <img
             src={creativityImage}
@@ -87,10 +118,17 @@ const About = () => {
             Dengan UNIVY, Anda menjadi desainer utama dari setiap produk yang Anda inginkan. Kami hadir untuk membantu mewujudkan ide-ide kreatif Anda menjadi kenyataan.
           </p>
         </div>
-      </section>
+      </motion.section>
 
       {/* Pelayanan Cepat Section */}
-      <section className="flex flex-col md:flex-row-reverse items-center bg-blue-100 py-12 px-6 mb-10">
+      <motion.section
+        className="flex flex-col md:flex-row-reverse items-center bg-blue-100 py-12 px-6 mb-10"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeIn}
+        transition={{ duration: 0.8 }}
+      >
         <div className="md:w-1/2 flex justify-center mb-8 md:mb-0">
           <img
             src={fastServiceImage}
@@ -104,7 +142,7 @@ const About = () => {
             Kami berkomitmen memberikan pelayanan terbaik dengan proses yang efisien. Dengan layanan yang cepat dan tanpa hambatan, kami memastikan kebutuhan Anda terpenuhi secara maksimal.
           </p>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };

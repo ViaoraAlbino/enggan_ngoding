@@ -11,6 +11,7 @@ import Sebelumfooter from './components/Sebelumfooter';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Productdetails from './components/ProductDetails';
+import Keranjang from './components/Keranjang';
 
 const App = () => {
     return (
@@ -48,6 +49,14 @@ const App = () => {
                     element={
                         <Layout>
                             <Productdetails />
+                        </Layout>
+                    }
+                />
+                <Route
+                    path='/keranjang'
+                    element={
+                        <Layout>
+                            <Keranjang />
                         </Layout>
                     }
                 />

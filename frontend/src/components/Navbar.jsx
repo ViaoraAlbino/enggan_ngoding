@@ -56,7 +56,7 @@ const Navbar = () => {
     const hasNotified = localStorage.getItem('hasNotified');
 
     if (token && location.pathname === '/' && !hasNotified) {
-      enqueueSnackbar('Welcome back! You are now logged in.', { variant: 'success'});
+      enqueueSnackbar('Welcome back! You are now logged in.', { variant: 'success' });
       localStorage.setItem('hasNotified', 'true'); // Set status notifikasi
     }
   }, [enqueueSnackbar, location.pathname]);
@@ -128,8 +128,9 @@ const Navbar = () => {
           {/* Tombol Sign Up dan Login */}
           <div className="hidden lg:flex items-center space-x-4">
             <FiHeart className="text-gray-500 hover:text-red-500 cursor-pointer" size={24} />
-            <FiShoppingCart className="text-gray-500 hover:text-gray-800 cursor-pointer" size={24} />
-
+            <Link to='/keranjang'>
+              <FiShoppingCart className="text-gray-500 hover:text-gray-800 cursor-pointer" size={24} />
+            </Link>
             {isLoggedIn ? (
               // Tampilkan ikon user jika login
               <button onClick={handleLogout} className="text-gray-500 hover:text-gray-800 focus:outline-none">
@@ -152,9 +153,11 @@ const Navbar = () => {
 
           {/* Tombol Menu Mobile */}
           <div className="lg:hidden flex items-center space-x-4 ml-auto">
-            <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
-              <FiShoppingCart size={25} />
-            </button>
+            <Link to='/keranjang'>
+              <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
+                <FiShoppingCart size={25} />
+              </button>
+            </Link>
             <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
               <FaRegUser size={24} />
             </button>

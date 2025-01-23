@@ -56,8 +56,8 @@ const upload = multer({ storage });
 // Endpoint untuk Registrasi User
 app.post('/daftar', async (req, res) => {
     try {
+        const role = 'user';
         const { fullName, username, email, password } = req.body;
-
         // Cek apakah email sudah terdaftar
         const existingUser = await User.findOne({ email });
         if (existingUser) {
@@ -68,7 +68,7 @@ app.post('/daftar', async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Simpan data user baru
-        const newUser = new User({ fullName, username, email, password: hashedPassword });
+        const newUser = new User({ fullName, username, email, password: hashedPassword, role });
         await newUser.save();
 
         res.status(201).json({ message: 'Registrasi berhasil', user: newUser });
