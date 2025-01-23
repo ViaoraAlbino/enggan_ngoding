@@ -47,13 +47,13 @@ const ProductDetails = () => {
               <img src={images[currentIndex]} alt="Produk" className='w-full h-full object-cover rounded-lg' />
               <button
                 onClick={prevImage}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 px-3 py-2 bg-gray-800 text-white rounded-full"
+                className="absolute left-2 top-1/2 transform -translate-y-1/2 px-4 py-2 bg-blue-700 text-white rounded-full"
               >
                 ❮
               </button>
               <button
                 onClick={nextImage}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 px-3 py-2 bg-gray-800 text-white rounded-full"
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-2 bg-blue-700 text-white rounded-full"
               >
                 ❯
               </button>

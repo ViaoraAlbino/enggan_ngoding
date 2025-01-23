@@ -95,6 +95,11 @@
   background-color: rgba(208, 227, 255, 1);
 }
 
+/* Untuk styling warna button logout */
+.button-logout {
+  background-color: red;
+}
+
 /* Untuk font-family className menu button login */
 .font-poppins-login {
   font-family: 'Poppins';
@@ -232,6 +237,33 @@
   font-family: 'Poppins';
 }
 
+/* Untuk Tulisan yang ada di sub Login dan Register */
+.font-sublogin-poppins-r {
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+  font-family: 'Poppins';
+  text-align: center;
+}
+
+/* Untuk Tulisan yang ada di sub Login dan Register */
+.font-sublogin-poppins-m {
+  font-size: 14px;
+  font-weight: 400;
+  color: red;
+  font-family: 'Poppins';
+  text-align: center;
+}
+
+/* Untuk Tulisan yang ada di sub Login dan Register */
+.font-sublogin-poppins-mg {
+  font-size: 14px;
+  font-weight: 400;
+  color: green;
+  font-family: 'Poppins';
+  text-align: center;
+}
+
 /* Untuk Tulisan yang ada di button Login dan Register */
 .font-btnlogin-monster {
   font-size: 20px;
@@ -249,6 +281,19 @@
 
 /* Untuk Tulisan Sub Judul Product */
 .font-poppins-sub-judul-product {
+  font-family: 'Poppins';
+  font-size: 20px;
+}
+
+/* Untuk Tulisan Judul Product */
+.font-poppins-judul-products {
+  font-weight: 300;
+  font-family: 'Poppins';
+  font-size: 20px;
+}
+
+/* Untuk Tulisan Sub Judul Product */
+.font-poppins-sub-judul-products {
   font-family: 'Poppins';
   font-size: 20px;
 }
@@ -318,6 +363,24 @@
     font-size: 16px;
     color: #334EAC;
   }
+  .font-poppins-judul-product {
+    font-weight: 300;
+    font-family: 'Poppins';
+    font-size: 10px;
+  }
+  .font-poppins-sub-judul-product {
+    font-family: 'Poppins';
+    font-size: 10px;
+  }
+  .font-poppins-judul-products {
+    font-weight: 300;
+    font-family: 'Poppins';
+    font-size: 20px;
+  }
+  .font-poppins-sub-judul-products {
+    font-family: 'Poppins';
+    font-size: 20px;
+  }
 }
 
 .font-monster-medium-u {
@@ -326,11 +389,85 @@
   color: black;
 }
 
+.font-poppins-64-600 {
+  font-family: 'Poppins-semibold';
+  font-size: 60px;
+}
+
+.font-poppins-24-500 {
+  font-family: 'Poppins';
+  font-size: 20px;
+}
+
+.font-poppins-36-600 {
+  font-family: 'Poppins-semibold';
+  font-size: 36px;
+}
+
+.font-poppins-36-500 {
+  font-family: 'Poppins-medium';
+  font-size: 36px;
+}
+
+.font-poppins-20-300 {
+  font-family: 'Poppins';
+  font-size: 20px;
+}
+
+.font-poppins-16-500 {
+  font-family: 'Poppins';
+  font-size: 16px;
+}
+
+/* Animasi Fade In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Efek gerakan dari bawah */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animasi Fade Out */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px); /* Efek gerakan ke atas */
+  }
+}
+
+/* Kelas untuk animasi masuk (fade-in) */
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Kelas untuk animasi keluar (fade-out) */
+.fade-out {
+  animation: fadeOut 1s ease-out forwards;
+}
+
+
 @media (max-width:768px){
   .font-monster-medium-u {
     font-family: 'Monsterrat-medium';
     font-size: 7px;
     color: black;
+  }
+  .font-poppins-64-600 {
+    font-family: 'Poppins-semibold';
+    font-size: 35px;
+  }
+  
+  .font-poppins-24-500 {
+    font-family: 'Poppins';
+    font-size: 15px;
   }
 }
 
@@ -401,6 +538,64 @@ code {
   overflow: hidden;
 }
 
-/*  */
+nav ul li a {
+  position: relative;
+  color: #4b5563; /* Warna teks */
+  font-family: 'Poppins', sans-serif; /* Font */
+  font-weight: 500; /* Berat font */
+  text-decoration: none;
+  display: inline-block;
+}
 
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px; /* Jarak underline dari teks */
+  left: 0;
+  width: 100%; /* Lebar underline penuh */
+  height: 2px;
+  background-color: #3b82f6; /* Warna underline */
+  transform: scaleX(0); /* Awal transformasi, tidak terlihat */
+  transform-origin: left; /* Mulai dari sisi kiri */
+  transition: transform 0.2s ease-in-out;
+}
 
+nav ul li a:hover::after {
+  transform: scaleX(1); /* Tampilkan underline penuh langsung ke kanan */
+}
+
+.bg-blur {
+  filter: blur(8px); /* Sesuaikan tingkat blur sesuai keinginan */
+  transform: scale(1.1); /* Perbesar gambar sedikit untuk menghindari garis tepi */
+}
+
+.custom-snackbar {
+  font-size: 1.5rem; /* Atur ukuran font */
+  padding: 20px; /* Tambahkan padding */
+  width: 400px; /* Sesuaikan lebar */
+  background-color: #f0f0f0; /* Warna background */
+  border-radius: 8px; /* Opsional: border radius */
+}
+
+/* Custom scrollbar for sidebar */
+#custom-scrollbar {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #1d4ed8 #e5e7eb; /* Warna track dan thumb */
+}
+
+#custom-scrollbar::-webkit-scrollbar {
+  width: 8px; /* Lebar scrollbar */
+}
+
+#custom-scrollbar::-webkit-scrollbar-track {
+  background: #e5e7eb; /* Warna track */
+}
+
+#custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #1d4ed8; /* Warna thumb (scroll handle) */
+  border-radius: 10px; /* Membuat ujungnya melengkung */
+}
+
+#custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #1e3a8a; /* Warna thumb saat di-hover */
+}

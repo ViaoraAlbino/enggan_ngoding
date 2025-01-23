@@ -3,33 +3,35 @@ import Home from './Home';
 import { MdFavorite } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md";
 import Shopping from '../assets/icons/Cart-blue.png';
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const isiHome = () => {
     return (
         <div className='mx-auto w-full overflow-hidden'>
             <Home />
             {/* Kategori */}
-            <div className="bg-blue-200 max-w-7xl mt-10 px-3 rounded-md shadow-md mx-auto">
+            <div className="bg-blue-200 max-w-7xl mt-5 px-3 rounded-lg shadow-lg mx-auto">
                 <h6 className="font-kanit-bold-k text-left px-8 py-2">KATEGORI</h6>
                 <hr className="border-t-2 mx-8 border-gray-500" />
                 <Kategori />
             </div>
 
-            {/* <div className="bg-blue-200 max-w-7xl mt-10 px-3 rounded-md shadow-md mx-auto">
+            {/* <div className="bg-blue-200 max-w-7xl mt-10 px-3 rounded-lg shadow-lg mx-auto">
                 <h6 className="font-kanit-bold-k text-left px-8 py-2">FLASHSALE</h6>
                 <hr className="border-t-2 mx-8 border-gray-500" />
                 <Flashsale />
             </div> */}
 
             {/* Produk Unggulan */}
-            <div className="bg-blue-200 max-w-7xl px-3 rounded-md shadow-md mx-auto">
+            <div className="bg-blue-200 max-w-7xl px-3 rounded-lg shadow-lg mx-auto">
                 <h6 className="font-kanit-bold-kd text-center px-8 py-2">PRODUK UNGGULAN KAMI</h6>
                 <hr className="border-t-2 mx-8 border-gray-500" />
                 <Unggulan />
             </div>
 
             {/* Rekomendasi */}
-            <div className="bg-blue-200 max-w-7xl mb-5 px-3 rounded-md shadow-md mx-auto">
+            <div className="bg-blue-200 max-w-7xl mb-5 px-3 rounded-lg shadow-lg mx-auto">
                 <h6 className="font-kanit-bold-kd text-center px-8 py-2">REKOMENDASI</h6>
                 <hr className="border-t-2 mx-8 border-gray-500" />
                 <Rekomendasi />
@@ -51,7 +53,7 @@ const Kategori = () => {
     ];
 
     return (
-        <div className="flex flex-wrap justify-center gap-6 px-4 mb-12 mt-4">
+        <div className="flex flex-wrap justify-center gap-6 px-4 mb-8 mt-4">
             {kategori.map((item) => (
                 <div key={item.id} className="rounded w-32 h-42 hover:shadow-md transition-shadow duration-300">
                     <div className="relative overflow-hidden">
@@ -112,10 +114,10 @@ const Flashsale = () => {
 
 const Unggulan = () => {
     const unggulan = [
-        { id: 1, image: 'src/assets/gambar/Kaos/kaos1.jpeg', description: 'Kaos Custom' },
+        { id: 1, image: 'src/assets/gambar/Kaos/kaos13.jpeg', description: 'Kaos Custom' },
         { id: 2, image: 'src/assets/gambar/Mugs/mug4.jpeg', description: 'Mug Custom' },
         { id: 3, image: 'src/assets/gambar/Polaroid/foto4.jpeg', description: 'Polaroid' },
-        { id: 4, image: 'src/assets/gambar/Bag/ToteBag/tote1.jpeg', description: 'Totebag' },
+        { id: 4, image: 'src/assets/gambar/Bag/ToteBag/tote3.jpeg', description: 'Totebag' },
         { id: 5, image: 'src/assets/gambar/Bag/GoodieBag/bag5.jfif', description: 'Tas Kecil' },
         { id: 6, image: 'src/assets/gambar/Stiker/stiker4.jpg', description: 'Stiker Custom' },
         { id: 7, image: 'src/assets/gambar/Mugs/mug1.jpg', description: 'Mug Variasi' },
@@ -140,7 +142,7 @@ const Unggulan = () => {
     const displayedItems = unggulan.slice(startIndex, startIndex + itemsPerPage);
 
     return (
-        <div className="relative px-4 mb-16 mt-4">
+        <div className="relative px-4 mb-8 mt-4">
             {/* Carousel Wrapper */}
             <div className="flex justify-center gap-6">
                 {displayedItems.map((item) => (
@@ -164,7 +166,7 @@ const Unggulan = () => {
             {/* Navigasi Kiri dan Kanan */}
             <button
                 onClick={handlePrev}
-                className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-700"
+                className="absolute left-0 top-1/2  transform -translate-y-1/2 bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-700"
             >
                 &#9664;
             </button>
@@ -187,52 +189,65 @@ const RekomendasiCard = ({ image, name, price }) => {
     };
 
     return (
-        <div className="bg-white rounded mb-8 lg:w-64 lg:h-72 hover:bg-gray-100 ease-out delay-150 transition-colors duration-300">
-            <div className="relative overflow-hidden">
-                <img
-                    src={image}
-                    alt="Project 1"
-                    className="w-64 h-48 object-cover mb-4 rounded transform hover:scale-105 transition-transform ease-out duration-300"
-                />
+        <div className="bg-white rounded-md mb-4 sm:w-40 sm:h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 hover:bg-gray-100 ease-out delay-150 transition-colors duration-300 shadow-md">
+            {/* Container Gambar */}
+            <div className="relative overflow-hidden w-full h-2/3 rounded-t-md">
+                <Link to="/productdetail">
+                    <img
+                        src={image}
+                        alt="Project 1"
+                        className="w-full h-full object-cover transform hover:scale-105 transition-transform ease-out duration-300"
+                    />
+                </Link>
                 {/* Icon Favorit */}
                 <div
-                    className="absolute top-4 right-4 bg-white rounded-full p-2 shadow cursor-pointer"
+                    className="absolute top-2 right-2 bg-white rounded-full p-2 shadow cursor-pointer"
                     onClick={toggleFavorite}
                 >
-                    <div className='w-full h-auto transition-transform duration-300 transform hover:scale-110'>
-                        <span>
-                            {isFavorited ? <MdFavorite className='text-red-500' /> : <MdFavoriteBorder />}
-                        </span>
+                    <div className="w-full h-auto transition-transform duration-300 transform hover:scale-110">
+                        {isFavorited ? (
+                            <MdFavorite className="text-red-500" />
+                        ) : (
+                            <MdFavoriteBorder className="text-gray-700" />
+                        )}
                     </div>
                 </div>
             </div>
-            <div className="w-52 flex justify-between items-center">
-                <div>
-                    <h3 className="font-poppins-judul-product mb-2 text-black text-left ml-2">{name}</h3>
-                    <p className="text-black font-poppins-sub-judul-product text-left ml-2 font-semibold mb-2.5">{price}</p>
-                </div>
-                {/* <img
-                    src={Shopping}
-                    alt="shopping"
-                    className="ml-auto mr-4 w-6 h-6 cursor-pointer mb-4"
-                /> */}
-            </div>
 
+            {/* Konten */}
+            <div className="w-full h-1/5 flex flex-col justify-between p-2">
+                <div>
+                    <Link to="/productdetail">
+                        <h3 className="font-poppins-judul-product text-black text-sm sm:text-base text-left truncate">
+                            {name}
+                        </h3>
+                    </Link>
+                    <p className="text-black font-poppins-sub-judul-product font-semibold text-sm sm:text-base text-left">
+                        {price}
+                    </p>
+                </div>
+                {/* Ikon Shopping */}
+                {/* <img
+            src={Shopping}
+            alt="shopping"
+            className="ml-auto w-6 h-6 cursor-pointer"
+        /> */}
+            </div>
         </div>
     );
 };
 
 const Rekomendasi = () => {
     const rekomendasi = [
-        { id: 1, name: 'Kaos Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Kaos/kaos1.jpeg' },
-        { id: 2, name: 'Totebag Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Bag/ToteBag/tote1.jpeg' },
+        { id: 1, name: 'Kaos Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Kaos/kaos13.jpeg' },
+        { id: 2, name: 'Totebag Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Bag/ToteBag/tote3.jpeg' },
         { id: 3, name: 'Tumbler Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Tumbler/tumbler5.jpg' },
         { id: 4, name: 'Polaroid Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Polaroid/foto4.jpeg' },
-        { id: 5, name: 'Kaos Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Kaos/kaos4.jpeg' },
+        { id: 5, name: 'Pin Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Pin/pin3.jpg' },
     ]
 
     return (
-        <div className="flex gap-4 overflow-x-auto px-4 py-4">
+        <div className="flex gap-4 overflow-x-auto px-4 pt-4">
             {rekomendasi.map((rekomendasi) => (
                 <RekomendasiCard key={rekomendasi.id} {...rekomendasi} />
             ))}
