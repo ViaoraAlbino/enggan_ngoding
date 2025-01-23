@@ -32,6 +32,12 @@
   src: url('./assets/font/Poppins-Bold.ttf') format('truetype');
 }
 
+/* Font Poppins Light untuk font yang digunakan web univy */
+@font-face {
+  font-family: 'Poppins-light';
+  src: url('./assets/font/Poppins-Light.ttf') format('truetype');
+}
+
 /* Font Monsterrat untuk component profile */
 @font-face {
   font-family: 'Monsterrat';
@@ -417,6 +423,36 @@
 .font-poppins-16-500 {
   font-family: 'Poppins';
   font-size: 16px;
+}
+
+.font-poppins-32-500 {
+  font-family: 'Poppins';
+  font-size: 28px;
+}
+
+.font-poppins-24-300 {
+  font-family: 'Poppins-light';
+  font-size: 24px;
+}
+
+.font-poppins-20-400 {
+  font-family: 'Poppins';
+  font-size: 14px;
+}
+
+.font-poppins-24-600{
+  font-family: 'Poppins-semibold';
+  font-size: 24px;
+}
+
+.font-moster-24-600 {
+  font-family: 'Monsterrat-semibold';
+  font-size: 24px;
+}
+
+.font-moster-20-600 {
+  font-family: 'Monsterrat-semibold';
+  font-size: 20px;
 }
 
 /* Animasi Fade In */

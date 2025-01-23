@@ -5,18 +5,38 @@ import { MdFavoriteBorder } from "react-icons/md";
 import Shopping from '../assets/icons/Cart-blue.png';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const isiHome = () => {
+
+    const [isVisible, setIsVisible] = useState(true);
+
+    const toggleVisibility = () => {
+        setIsVisible(!isVisible);
+    };
+
+    const fadeIn = {
+        hidden: { opacity: 0, y: 50 },
+        visible: { opacity: 1, y: 0 },
+    };
+
     return (
         <div className='mx-auto w-full overflow-hidden'>
             <Home />
             {/* Kategori */}
-            <div className="bg-blue-200 max-w-7xl mt-5 px-3 rounded-lg shadow-lg mx-auto">
-                <h6 className="font-kanit-bold-k text-left px-8 py-2">KATEGORI</h6>
-                <hr className="border-t-2 mx-8 border-gray-500" />
-                <Kategori />
-            </div>
-
+            <motion.section
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.8 }}
+            >
+                <div className="bg-blue-200 max-w-7xl mt-5 px-3 rounded-lg shadow-lg mx-auto">
+                    <h6 className="font-kanit-bold-k text-left px-8 py-2">KATEGORI</h6>
+                    <hr className="border-t-2 mx-8 border-gray-500" />
+                    <Kategori />
+                </div>
+            </motion.section>
             {/* <div className="bg-blue-200 max-w-7xl mt-10 px-3 rounded-lg shadow-lg mx-auto">
                 <h6 className="font-kanit-bold-k text-left px-8 py-2">FLASHSALE</h6>
                 <hr className="border-t-2 mx-8 border-gray-500" />
@@ -24,18 +44,34 @@ const isiHome = () => {
             </div> */}
 
             {/* Produk Unggulan */}
-            <div className="bg-blue-200 max-w-7xl px-3 rounded-lg shadow-lg mx-auto">
-                <h6 className="font-kanit-bold-kd text-center px-8 py-2">PRODUK UNGGULAN KAMI</h6>
-                <hr className="border-t-2 mx-8 border-gray-500" />
-                <Unggulan />
-            </div>
+            <motion.section
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.8 }}
+            >
+                <div className="bg-blue-200 max-w-7xl px-3 rounded-lg shadow-lg mx-auto">
+                    <h6 className="font-kanit-bold-kd text-center px-8 py-2">PRODUK UNGGULAN KAMI</h6>
+                    <hr className="border-t-2 mx-8 border-gray-500" />
+                    <Unggulan />
+                </div>
+            </motion.section>
 
             {/* Rekomendasi */}
-            <div className="bg-blue-200 max-w-7xl mb-5 px-3 rounded-lg shadow-lg mx-auto">
-                <h6 className="font-kanit-bold-kd text-center px-8 py-2">REKOMENDASI</h6>
-                <hr className="border-t-2 mx-8 border-gray-500" />
-                <Rekomendasi />
-            </div>
+            <motion.section
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.8 }}
+            >
+                <div className="bg-blue-200 max-w-7xl mb-5 px-3 rounded-lg shadow-lg mx-auto">
+                    <h6 className="font-kanit-bold-kd text-center px-8 py-2">REKOMENDASI</h6>
+                    <hr className="border-t-2 mx-8 border-gray-500" />
+                    <Rekomendasi />
+                </div>
+            </motion.section>
         </div>
     );
 };
