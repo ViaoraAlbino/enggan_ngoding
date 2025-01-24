@@ -305,23 +305,47 @@
 }
 
 /* Untuk Tulisan Judul Product Detail */
-.font-poppins-produkdetail-h {
+.font-poppins-18-400-p {
   font-family: 'Poppins';
-  font-size: 40px;
+  font-size: 28px;
   font-weight: 400;
 }
 
 /* Untuk Tulisan Sub Judul Product Detail */
-.font-poppins-produkdetail-s {
+.font-poppins-20-600-p {
   font-family: 'Poppins-semibold';
-  font-size: 28px;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  /* Untuk Tulisan Judul Product Detail */
+.font-poppins-18-400-p {
+  font-family: 'Poppins';
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* Untuk Tulisan Sub Judul Product Detail */
+.font-poppins-20-500-p   {
+  font-family: 'Poppins-medium';
+  font-size: 20px;
+}
 }
 
 /* Untuk Tulisan Product Detail */
 .font-poppins-produkdetail-t {
   font-family: 'Poppins-medium';
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  /* Untuk Tulisan Product Detail */
+.font-poppins-produkdetail-t {
+  font-family: 'Poppins-medium';
   font-size: 16px;
 }
+}
+
 
 /* Untuk Tulisan Product Detail */
 .font-poppins-produkdetail-t20 {
