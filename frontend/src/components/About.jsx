@@ -95,6 +95,7 @@ const About = () => {
         </div>
       </motion.section>
           {/* Tester */}
+          {/* test lewat vscode  */}
       {/* Kebebasan Kreativitas Section */}
       <motion.section
         className="flex flex-col md:flex-row items-center bg-white py-12 px-6"
