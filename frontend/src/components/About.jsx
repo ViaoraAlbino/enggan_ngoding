@@ -64,10 +64,9 @@ const About = () => {
       <motion.section
         className="bg-white py-8 text-center"
         initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeIn}
-        transition={{ duration: 0.8 }}
+          animate="visible"
+          variants={fadeIn}
+          transition={{ duration: 0.8 }}
       >
         <h2 className="font-poppins-36-600 text-black">Kenapa Harus Memilih UNIVY!</h2>
       </motion.section>
@@ -95,7 +94,8 @@ const About = () => {
           </p>
         </div>
       </motion.section>
-
+          {/* Tester */}
+          {/* test lewat vscode  */}
       {/* Kebebasan Kreativitas Section */}
       <motion.section
         className="flex flex-col md:flex-row items-center bg-white py-12 px-6"
