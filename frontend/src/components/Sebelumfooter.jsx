@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import Lokasi from '../assets/gambar/sherlok.png';
 import Telepon from '../assets/gambar/telepon.png';
+<<<<<<< HEAD
+import UnifyIcon from '../assets/icons/logo_univy.svg';
+=======
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
+>>>>>>> 228ccc4c56fbf5a8b9f87d639798d5f0da784e73
 
 const Sebelumfooter = () => {
   const [isReady, setIsReady] = useState(false);

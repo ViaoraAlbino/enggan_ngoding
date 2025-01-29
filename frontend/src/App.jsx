@@ -9,6 +9,15 @@ import Registrasi from './components/Register'; // Halaman Registrasi
 import Home from './pages/isiHome'; // Halaman Home
 import Sebelumfooter from './components/Sebelumfooter';
 import Footer from './components/Footer';
+import Profile from './pages/Profiles';
+import ProductDetails from './components/ProductDetails';
+import Login from './components/Login';
+import Register from './components/Register';
+import Home from './pages/Home';
+import Isihome from './pages/isiHome';
+import ASidebar from './pages/admin/Navigator';
+import ADashboard from './pages/admin/Dashboard';
+import ANavi from './pages/admin/Navigator';
 import ScrollToTop from './components/ScrollToTop';
 import Productdetails from './components/ProductDetails';
 import Keranjang from './components/Keranjang';
@@ -77,5 +86,4 @@ const App = () => {
         </Router>
     );
 };
-
 export default App;
