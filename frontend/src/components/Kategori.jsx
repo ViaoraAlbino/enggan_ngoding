@@ -2,125 +2,159 @@ import React, { useRef, useEffect, useState } from 'react';
 import Product from './Product';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleChevronDown, faCircleChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { motion } from 'framer-motion'; // Import Framer Motion
 
 const Kategori = () => {
 
-    // Menggunakan useRef, dan useState
-    const containerRef = useRef(null);
-    const sidebarRef = useRef(null);
-    const [isSticky, setIsSticky] = useState(false);
-    const [activeCategory, setActiveCategory] = useState(null);
+  const fadeIn = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
 
-    // Untuk isi category sidebar
-    const categories = [
-        { name: 'Kaos', subcategories: ['Kaos', 'Kaos Custom Desain'] },
-        { name: 'Mugs', subcategories: ['Mugs Custom'] },
-        { name: 'Bags', subcategories: ['Bag 1', 'Bag 2'] },
-        { name: 'Tumbler', subcategories: ['Tumbler 1', 'Tumbler 2'] },
-        { name: 'Accessories', subcategories: ['Accessories 1', 'Accessories 2'] },
-        { name: 'Stickers', subcategories: ['Stickers 1', 'Stickers 2'] },
-        { name: 'Polaroid', subcategories: ['Polaroid 1', 'Polaroid 2'] },
-    ];
+  // Refs dan State
+  const containerRef = useRef(null);
+  const sidebarRef = useRef(null);
+  const [isSticky, setIsSticky] = useState(false);
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [isMobile, setIsMobile] = useState(false); // Deteksi mode mobile
 
-    // Untuk set isi sidebar tutup
-    const toggleCategory = (category) => {
-        setActiveCategory(activeCategory === category ? null : category);
+  // Isi kategori
+  const categories = [
+    { name: 'Kaos', subcategories: ['Kaos', 'Kaos Custom Desain'] },
+    { name: 'Mugs', subcategories: ['Mugs Custom'] },
+    { name: 'Bags', subcategories: ['Bag 1', 'Bag 2'] },
+    { name: 'Tumbler', subcategories: ['Tumbler 1', 'Tumbler 2'] },
+    { name: 'Accessories', subcategories: ['Accessories 1', 'Accessories 2'] },
+    { name: 'Stickers', subcategories: ['Stickers 1', 'Stickers 2'] },
+    { name: 'Polaroid', subcategories: ['Polaroid 1', 'Polaroid 2'] },
+  ];
+
+  const toggleCategory = (category) => {
+    setActiveCategory(activeCategory === category ? null : category);
+  };
+
+  useEffect(() => {
+    // Deteksi apakah dalam mode mobile
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024);
     };
 
-    //UseEffect
-    useEffect(() => {
-        const handleScroll = () => {
-            if (containerRef.current && sidebarRef.current) {
-                const containerTop = containerRef.current.getBoundingClientRect().top;
-                const containerBottom = containerRef.current.getBoundingClientRect().bottom;
-                const sidebarHeight = sidebarRef.current.offsetHeight;
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
-                if (containerTop < 0 && containerBottom > sidebarHeight) {
-                    setIsSticky(true);
-                } else {
-                    setIsSticky(false);
-                }
-            }
-        };
-
-        // Ini untuk menghilangkan gambar scroll
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    return (
-        <div className="container mx-auto flex space-x-4 p-7 scroll-smooth" ref={containerRef}>
-            {/* Sidebar */}
-            <div className='hidden lg:flex mt-10'>
-                <div
-                    className={`w-52 bg-white p-4 text-left ${isSticky ? 'sticky top-0' : 'relative'}`}
-                    ref={sidebarRef}
-                    style={{
-                        maxHeight: 'calc(100vh - 20px)', // Membatasi tinggi maksimal saat sticky
-                        overflowY: 'auto',
+  return (
+    <div className="container mx-auto flex space-x-4 p-7 scroll-smooth" ref={containerRef}>
+      {/* Sidebar untuk Desktop */}
+      {!isMobile && (
+        <div className="hidden lg:flex mt-10">
+          <div
+            className={`w-52 bg-white p-4 text-left ${isSticky ? 'sticky top-0' : 'relative'}`}
+            ref={sidebarRef}
+            style={{
+              maxHeight: 'calc(100vh - 20px)',
+              overflowY: 'auto',
+            }}
+            id="custom-scrollbar"
+          >
+            <h2 className="mb-4 font-poppins-category-header">Category</h2>
+            <ul className="space-y-6">
+              {categories.map((category) => (
+                <li key={category.name}>
+                  <a
+                    href={`#${category.name.toLowerCase()}`}
+                    className={`w-full flex justify-between items-center text-left font-poppins-category-body-judul ${activeCategory === category.name
+                      ? 'text-blue-600 font-bold'
+                      : 'text-gray-600'
+                      }`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      toggleCategory(category.name);
                     }}
-                    id="custom-scrollbar" // Tambahkan ID untuk custom scroll
-                >
-                    <h2 className="mb-4 font-poppins-category-header">Category</h2>
-                    <ul className="space-y-6">
-                        {categories.map((category) => (
-                            <li key={category.name}>
-                                <a
-                                    href={`#${category.name.toLowerCase()}`}
-                                    className={`w-full flex justify-between items-center text-left font-poppins-category-body-judul ${activeCategory === category.name
-                                        ? 'text-blue-600 font-bold'
-                                        : 'text-gray-600'
-                                        }`}
-                                    onClick={(e) => {
-                                        e.preventDefault(); // Mencegah navigasi default
-                                        toggleCategory(category.name);
-                                    }}
-                                >
-                                    <span className="flex-1">{category.name}</span>
-                                    <span className="ml-18">
-                                        {activeCategory === category.name ? (
-                                            <FontAwesomeIcon icon={faCircleChevronUp} style={{ color: '#334eac' }} />
-                                        ) : (
-                                            <FontAwesomeIcon icon={faCircleChevronDown} style={{ color: '#bbbcbe' }} />
-                                        )}
-                                    </span>
-                                </a>
-                                {activeCategory === category.name && (
-                                    <ul className="mt-2 space-y-2 text-gray-600 font-poppins-category-body">
-                                        {category.subcategories.map((sub, idx) => (
-                                            <li key={idx}>
-                                                <a
-                                                    href={`#${sub.toLowerCase().replace(/\s+/g, '-')}`}
-                                                    className="hover:text-blue-600"
-                                                >
-                                                    {sub}
-                                                </a>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                )}
-                                <hr className="my-2 border-gray-300" />
-                            </li>
-                        ))}
+                  >
+                    <span className="flex-1">{category.name}</span>
+                    <span className="ml-18">
+                      {activeCategory === category.name ? (
+                        <FontAwesomeIcon icon={faCircleChevronUp} style={{ color: '#334eac' }} />
+                      ) : (
+                        <FontAwesomeIcon icon={faCircleChevronDown} style={{ color: '#bbbcbe' }} />
+                      )}
+                    </span>
+                  </a>
+                  {activeCategory === category.name && (
+                    <ul className="mt-2 space-y-2 text-gray-600 font-poppins-category-body">
+                      {category.subcategories.map((sub, idx) => (
+                        <li key={idx}>
+                          <a
+                            href={`#${sub.toLowerCase().replace(/\s+/g, '-')}`}
+                            className="hover:text-blue-600"
+                          >
+                            {sub}
+                          </a>
+                        </li>
+                      ))}
                     </ul>
-                </div>
-            </div>
-
-
-            {/* Untuk tampilan produk disamping sidebar */}
-            <div
-                className="w-11/12 sticky mt-10 bg-white p-4 overflow-y-scroll scrollbar-hide"
-                style={{
-                    maxHeight: 'calc(100vh - 20px)',
-                }}
-            >
-                <h2 className="mb-4 font-poppins-category-header text-left">| Ini Hasil Pencarian</h2>
-                <Product />
-            </div>
+                  )}
+                  <hr className="my-2 border-gray-300" />
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-    );
+      )}
+
+      {/* Navbar Mengambang untuk Mobile */}
+      {isMobile && (
+        <motion.nav
+          className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg rounded-t-3xl border-t border-gray-300 flex justify-around items-center py-4 z-10 lg:hidden"
+          initial={{ y: 100 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {categories.map((category) => (
+            <a
+              key={category.name}
+              href={`#${category.name.toLowerCase()}`}
+              className={`flex flex-col items-center text-white transition-transform duration-300 ${activeCategory === category.name ? 'scale-110 font-bold text-yellow-300' : 'hover:scale-105'}`}
+              onClick={(e) => {
+                e.preventDefault();
+                toggleCategory(category.name);
+              }}
+            >
+              <div
+                className={`w-12 h-12 flex items-center justify-center rounded-full mb-2 ${activeCategory === category.name ? 'bg-yellow-300 text-blue-600' : 'bg-white text-blue-500'}`}
+              >
+                {/* Tambahkan ikon untuk kategori jika diperlukan */}
+                {category.name[0]} {/* Misalnya inisial kategori */}
+              </div>
+              <span className="text-xs sm:text-sm">{category.name}</span>
+            </a>
+          ))}
+        </motion.nav>
+      )}
+
+      {/* Produk */}
+      <div
+        className="w-11/12 sticky mt-10 items-center justify-around bg-white p-4 overflow-y-scroll scrollbar-hide"
+        style={{
+          maxHeight: 'calc(100vh - 20px)',
+        }}
+      >
+        <h2 className="mb-4 font-poppins-category-header text-left">| Ini Hasil Pencarian</h2>
+        <motion.nav
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          transition={{ duration: 0.8 }}
+        >
+          <Product />
+        </motion.nav>
+      </div>
+    </div>
+  );
 };
 
 export default Kategori;

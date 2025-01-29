@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Productdetails from './components/ProductDetails';
 import Keranjang from './components/Keranjang';
+import Wishlist from './components/Wishlist';
 
 const App = () => {
     return (
@@ -57,6 +58,14 @@ const App = () => {
                     element={
                         <Layout>
                             <Keranjang />
+                        </Layout>
+                    }
+                />
+                <Route
+                    path='/wishlist'
+                    element={
+                        <Layout>
+                            <Wishlist />
                         </Layout>
                     }
                 />

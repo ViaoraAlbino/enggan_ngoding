@@ -95,14 +95,21 @@ app.post('/masuk', async (req, res) => {
             return res.status(400).json({ message: 'Username atau Password salah' });
         }
 
-        // Buat token JWT dengan kunci rahasia dari .env
-        const token = jwt.sign({ id: existingUser._id }, process.env.JWT_SECRET, { expiresIn: '24h' });
+        // Dapatkan role dari user
+        const role = existingUser.role; // Pastikan `role` disimpan di database User
 
-        // Kirimkan respons dengan token
+        // Buat token JWT dengan kunci rahasia dari .env, sertakan `role` dalam payload
+        const token = jwt.sign(
+            { id: existingUser._id, role }, 
+            process.env.JWT_SECRET, 
+            { expiresIn: '48h' }
+        );
+
+        // Kirimkan respons dengan token dan informasi user
         res.status(200).json({
             message: 'Login Berhasil',
             token,
-            user: { id: existingUser._id, username: existingUser.username }
+            user: { id: existingUser._id, username: existingUser.username, role }
         });
     } catch (error) {
         console.error('Error saat login:', error);

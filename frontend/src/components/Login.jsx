@@ -24,7 +24,7 @@ const Login = () => {
     e.preventDefault();
     setError('');
     setSuccess('');
-
+  
     try {
       const response = await fetch('http://localhost:5000/masuk', {
         method: 'POST',
@@ -33,21 +33,29 @@ const Login = () => {
         },
         body: JSON.stringify({ username, password }), // Mengirim username dan password
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
         setSuccess('Login Berhasil');
         localStorage.setItem('token', data.token); // Simpan token ke localStorage
-        login();  
-        navigate('/'); // Arahkan ke halaman Home setelah login berhasil
+        localStorage.setItem('role', data.role); // Simpan role ke localStorage jika perlu
+  
+        login();
+  
+        // Arahkan berdasarkan role
+        if (data.role === 'admin') {
+          navigate('/admin'); // Pindah ke halaman admin
+        } else {
+          navigate('/'); // Pindah ke halaman Home untuk user biasa
+        }
       } else {
         setError(data.message);
       }
     } catch (error) {
       setError('Terjadi Kesalahan Pada Server');
     }
-  };
+  };  
 
   return (
     <div className="flex items-center justify-center min-h-screen mx-10 bg-white">

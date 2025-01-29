@@ -18,11 +18,11 @@ const ProductCard = ({ image, title, price, description }) => {
     <div className="bg-white rounded mb-8 w-full h-auto hover:bg-gray-100 ease-out delay-150 transition-colors duration-300">
       <div className="relative overflow-hidden">
         <Link to="/productdetail">
-        <img
-          src={image}
-          alt="Project 1"
-          className="w-full h-72 object-cover mb-4 rounded transform hover:scale-105 transition-transform ease-out duration-300"
-        />
+          <img
+            src={image}
+            alt="Project 1"
+            className="w-40 h-40 md:w-full md:h-72 object-cover mb-4 rounded transform hover:scale-105 transition-transform ease-out duration-300"
+          />
         </Link>
         {/* Icon Favorit */}
         <div
@@ -38,16 +38,15 @@ const ProductCard = ({ image, title, price, description }) => {
       </div>
       <div className="w-full flex justify-between items-center">
         <div>
-          <Link to="/productdetail" className="font-poppins-judul-products mb-2 text-black text-left ml-2">{title}</Link>
-          <p className="text-black font-poppins-sub-judul-products text-left ml-2 font-semibold mb-2.5">{price}</p>
+          <Link to="/productdetail" className="font-poppins-judul-products mb-2">{title}</Link>
+          <p className="font-poppins-sub-judul-products mb-2.5">{price}</p>
         </div>
-        <img
+        {/* <img
           src={Shopping}
           alt="shopping"
           className="ml-auto mr-4 w-6 h-6 cursor-pointer mb-4"
-        />
+        /> */}
       </div>
-
     </div>
   );
 };
@@ -122,7 +121,7 @@ const Product = () => {
 
   // Ini jumlah kolom produk yang akan ditampilkan kembali
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
       {products.map((product) => (
         <ProductCard key={product.id} {...product} />
       ))}

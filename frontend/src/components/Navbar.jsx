@@ -92,7 +92,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/"
-                className={`mx-2 font-poppins  underline-offset-4 ${location.pathname === '/' ? 'text-blue-500' : 'text-gray-500'}`}
+                className={`mx-2 font-poppins hover:text-blue-500 underline-offset-4 ${location.pathname === '/' ? 'text-blue-500' : 'text-gray-500'}`}
               >
                 Home
               </Link>
@@ -100,7 +100,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/product"
-                className={`mx-2 font-poppins  underline-offset-4 ${location.pathname === '/product' ? 'text-blue-500' : 'text-gray-500'}`}
+                className={`mx-2 font-poppins hover:text-blue-500 underline-offset-4 ${location.pathname === '/product' ? 'text-blue-500' : 'text-gray-500'}`}
               >
                 Product
               </Link>
@@ -108,7 +108,7 @@ const Navbar = () => {
             <li>
               <Link
                 to="/about"
-                className={`mx-2 font-poppins  underline-offset-4 ${location.pathname === '/about' ? 'text-blue-500' : 'text-gray-500'}`}
+                className={`mx-2 font-poppins hover:text-blue-500 underline-offset-4 ${location.pathname === '/about' ? 'text-blue-500' : 'text-gray-500'}`}
               >
                 About
               </Link>
@@ -127,9 +127,11 @@ const Navbar = () => {
 
           {/* Tombol Sign Up dan Login */}
           <div className="hidden lg:flex items-center space-x-4">
-            <FiHeart className="text-gray-500 hover:text-red-500 cursor-pointer" size={24} />
+            <Link to="/wishlist">
+              <FiHeart className={`cursor-pointer hover:text-red-500 ${location.pathname === '/wishlist' ? 'text-red-500' : 'text-gray-500'}`} size={24} />
+            </Link>
             <Link to='/keranjang'>
-              <FiShoppingCart className="text-gray-500 hover:text-gray-800 cursor-pointer" size={24} />
+              <FiShoppingCart className={`cursor-pointer hover:text-gray-800 ${location.pathname === '/keranjang' ? 'text-gray-800' : 'text-gray-500'}`} size={24} />
             </Link>
             {isLoggedIn ? (
               // Tampilkan ikon user jika login
@@ -153,6 +155,14 @@ const Navbar = () => {
 
           {/* Tombol Menu Mobile */}
           <div className="lg:hidden flex items-center space-x-4 ml-auto">
+            {/* <div className="flex items-center w-36 bg-gray-100 rounded-full px-4 py-1">
+              <input
+                type="text"
+                placeholder="Mau cari apa..."
+                className="bg-transparent focus:outline-none text-gray-700 font-poppins flex-grow"
+              />
+              <FiSearch className="text-gray-500 w-6 h-6" />
+            </div> */}
             <Link to='/keranjang'>
               <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
                 <FiShoppingCart size={25} />
@@ -183,13 +193,13 @@ const Navbar = () => {
           </button>
         </div>
         <div className='p-2'>
-          <div className="flex items-center bg-gray-100 rounded-full px-4 py-1 mt-3">
+          <div className="flex items-center w-[240px] bg-gray-100 rounded-full px-3 py-1 mt-3">
             <input
               type="text"
               placeholder="Mau cari apa..."
               className="bg-transparent focus:outline-none text-gray-700 font-poppins flex-grow"
             />
-            <FiSearch className="text-gray-500" size={20} />
+            <FiSearch className="text-gray-500 text-left w-6 h-6" />
           </div>
 
           {/* Menu Sidebar */}
@@ -207,6 +217,11 @@ const Navbar = () => {
             <li>
               <Link to="/about" className="text-gray-700 font-poppins hover:text-gray-900">
                 About
+              </Link>
+            </li>
+            <li>
+              <Link to="/wishlist" className="text-gray-700 font-poppins hover:text-gray-900">
+                Wishlist
               </Link>
             </li>
           </ul>
