@@ -30,9 +30,6 @@ const ACustomer = () => {
                     {/* Filter and Export */}
                     <div className=" mb-4">
                         <div className="flex gap-5 justify-between">
-                            <select className="border w- border-gray-200 text-gray-200 rounded-md px-4 text-sm focus:text-black focus:outline-blue-500">
-                                <option value="">Kategori</option>
-                            </select>
                             <div className=" 
                                       
                                           hidden lg:flex items-center w-full bg-transparent border-2  border-gray-100 focus-within:border-blue-500 rounded-md px-2 py-1 space-x-6 mr-6">
@@ -45,15 +42,15 @@ const ACustomer = () => {
                                         />
                                         
                                       </div>
-                            <button className="flex items-center bg-black text-white px-4 py-2 rounded-lg hover:bg-blue-800">
-                                <AiOutlineDownload className="mr-2 size-5 font-bold" /> Export
+                            <button className="flex items-center bg-black text-white px-5  py-2  rounded-lg hover:bg-blue-800">
+                                <AiOutlineDownload className="mr-2 size-5 font-bold" /> Export    
                             </button>
                         </div>
                     </div>
 
                     {/* Table */}
                     <div className="overflow-x-auto ">
-                        <table className="table-auto w-full text-left bg-white border-collapse">
+                        <table className="table-auto w-full text-center bg-white border-collapse">
                             <thead className="bg-blue-100 text-black">
                                 <tr>
                                     <th className="p-2">ID</th>

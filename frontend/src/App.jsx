@@ -13,7 +13,7 @@
 // import ProductDetails from './components/ProductDetails';
 // import Login from './components/Login';
 // import Register from './components/Register';
-// import Home from './pages/Home';
+
 // import Isihome from './pages/isiHome';
 // import ASidebar from './pages/admin/Navigator';
 // import ADashboard from './pages/admin/Dashboard';
@@ -106,7 +106,6 @@ import Profile from './pages/Profiles';
 import ProductDetails from './components/ProductDetails';
 import Login from './components/Login';
 import Register from './components/Register';
-import Home from './pages/Home';
 import Isihome from './pages/isiHome';
 import ASidebar from './pages/admin/Navigator';
 import ADashboard from './pages/admin/Dashboard';
@@ -128,8 +127,8 @@ const App = () => {
             {/* <Register /> */}
             {/* <Isihome/> */}
             {/* <ProductDetails /> */}
-            {/* <Sebelumfooter /> */}
-            {/* <Footer /> */}
+            <Sebelumfooter />
+            <Footer />
         </div>
     );
 };

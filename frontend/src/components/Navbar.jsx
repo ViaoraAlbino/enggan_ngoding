@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { FiHeart, FiShoppingCart, FiUser, FiSearch, FiMenu, FiX } from 'react-icons/fi';
 import { FaRegUser } from "react-icons/fa6";
-<<<<<<< HEAD
-import UnifyIcon from '../assets/icons/logo_univy.svg';
-=======
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 import { useSnackbar } from 'notistack';
 
->>>>>>> 228ccc4c56fbf5a8b9f87d639798d5f0da784e73
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
@@ -89,13 +85,6 @@ const Navbar = () => {
         className={`fixed w-full bg-white p-4 shadow transition-all duration-300 z-10 scroll-smooth ${isNavbarVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
       >
         <div className="container mx-auto flex justify-between items-center">
-<<<<<<< HEAD
-          {/* Nama Markas */}
-           <img src={UnifyIcon} alt="Unify Logo" className="w-16" />
-
-          {/* Menu Navigasi */}
-          
-=======
           <h1 className="text-2xl font-normal ml-6 font-nabla">UNIVY</h1>
 
           {/* Menu Navigasi */}
@@ -125,7 +114,6 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
->>>>>>> 228ccc4c56fbf5a8b9f87d639798d5f0da784e73
 
           {/* Kolom Pencarian */}
           <div className="hidden lg:flex items-center w-1/4 bg-gray-100 rounded-full px-2 py-1 space-x-6 mr-6">
