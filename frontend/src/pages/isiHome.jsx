@@ -6,6 +6,8 @@ import Shopping from '../assets/icons/Cart-blue.png';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { MdKeyboardArrowRight } from "react-icons/md";
+
 
 const isiHome = () => {
 
@@ -31,17 +33,25 @@ const isiHome = () => {
                 variants={fadeIn}
                 transition={{ duration: 0.8 }}
             >
-                <div className="bg-blue-200 max-w-7xl mt-5 px-3 rounded-lg shadow-lg mx-auto">
+                <div className="bg-blue-100 max-w-7xl mt-5 px-3 rounded-sm shadow-xl mx-auto">
                     <h6 className="font-kanit-bold-k text-left px-8 py-2">KATEGORI</h6>
                     <hr className="border-t-2 mx-8 border-gray-500" />
                     <Kategori />
                 </div>
             </motion.section>
-            {/* <div className="bg-blue-200 max-w-7xl mt-10 px-3 rounded-lg shadow-lg mx-auto">
-                <h6 className="font-kanit-bold-k text-left px-8 py-2">FLASHSALE</h6>
-                <hr className="border-t-2 mx-8 border-gray-500" />
-                <Flashsale />
-            </div> */}
+            <motion.section
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.8 }}
+            >
+                <div className="bg-blue-100 max-w-7xl mt-10 px-3 rounded-sm shadow-xl mx-auto">
+                    <h6 className="font-kanit-bold-k text-left px-8 py-2">FLASHSALE</h6>
+                    <hr className="border-t-2 mx-8 border-gray-500" />
+                    <Flashsale />
+                </div>
+            </motion.section>
 
             {/* Produk Unggulan */}
             <motion.section
@@ -51,7 +61,7 @@ const isiHome = () => {
                 variants={fadeIn}
                 transition={{ duration: 0.8 }}
             >
-                <div className="bg-blue-200 max-w-7xl px-3 rounded-lg shadow-lg mx-auto">
+                <div className="bg-blue-100 max-w-7xl px-3 rounded-sm shadow-xl mx-auto">
                     <h6 className="font-kanit-bold-kd text-center px-8 py-2">PRODUK UNGGULAN KAMI</h6>
                     <hr className="border-t-2 mx-8 border-gray-500" />
                     <Unggulan />
@@ -66,7 +76,7 @@ const isiHome = () => {
                 variants={fadeIn}
                 transition={{ duration: 0.8 }}
             >
-                <div className="bg-blue-200 max-w-7xl mb-5 px-3 rounded-lg shadow-lg mx-auto">
+                <div className="bg-blue-100 max-w-7xl mb-5 px-3 rounded-sm shadow-xl mx-auto">
                     <h6 className="font-kanit-bold-kd text-center px-8 py-2">REKOMENDASI</h6>
                     <hr className="border-t-2 mx-8 border-gray-500" />
                     <Rekomendasi />
@@ -89,7 +99,7 @@ const Kategori = () => {
     ];
 
     return (
-        <div className="flex flex-wrap justify-center gap-6 px-4 mb-8 mt-4">
+        <div className="flex flex-wrap justify-center gap-6 mb-8 mt-4">
             {kategori.map((item) => (
                 <div key={item.id} className="rounded w-32 h-42 hover:shadow-md transition-shadow duration-300">
                     <div className="relative overflow-hidden">
@@ -110,56 +120,158 @@ const Kategori = () => {
     );
 };
 
-const Flashsale = () => {
-    const flashsale = [
-        { id: 1, name: 'Goodide', image: 'src/assets/gambar/bag/GoodieBag/bag5.jfif' },
-        { id: 2, name: 'Tumbler', image: 'src/assets/gambar/Tumbler/tumbler2.jpeg' },
-        { id: 3, name: 'Pin Custom', image: 'src/assets/gambar/Pin/pin2.jpg' },
-        { id: 4, name: 'Kaos', image: 'src/assets/gambar/Kaos/kaos2.jpeg' },
-        { id: 5, name: 'Mugs', image: 'src/assets/gambar/Mugs/mugs3.jpeg' },
-        { id: 6, name: 'Aksesoris', image: 'src/assets/gambar/Mugs/mug2.jpeg' },
-    ];
-
+const FlashsaleCard = ({ image, name }) => {
     return (
-        <div className="bg-blue-200 max-w-7xl px-3 py-6 rounded-md shadow-md mx-auto mt-10">
-            <h6 className="font-kanit-bold-kd text-center px-8 py-2">FLASHSALE</h6>
-            <hr className="border-t-2 mx-8 border-gray-500 mb-6" />
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 px-4">
-                {flashsale.map((item) => (
-                    <div key={item.id} className="relative rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div className="flex flex-col sm:flex-row rounded-lg space-y-2 space-x-0 sm:space-y-0 sm:space-x-4 mb-6 p-4">
+            {/* Gambar Utama */}
+            <div className="flex-none w-full sm:w-2/6 aspect-[2/1]  rounded-lg overflow-hidden shadow-lg relative">
+                <img
+                    src={image[0]} // Gambar utama
+                    alt={name}
+                    className="w-full h-full object-cover rounded-lg"
+                />
+                <div className='absolute top-0 right-0 sm:mr-6 sm:mt-3 mr-3 mt-3 text-right'>
+                    <h6 className='font-inter-16-600 leading-none '>Produk Baru</h6>
+                    <h6 className='font-inter-20-600 leading-7'>Goodie Bag</h6>
+                    <h6 className='font-inter-13-400 leading-none'>Diskon 15%</h6>
+                    <button className='bg-white bg-opacity-35 px-2 font-monster-13-500 rounded-full'>Shop Now</button>
+                </div>
+            </div>
+
+            {/* Kolom Gambar Tambahan */}
+            <div className="flex flex-col flex-grow sm:space-y-4 space-y-2">
+                {/* Baris Pertama */}
+                <div className="flex space-x-2 sm:space-x-4">
+                    <div className="flex-1 aspect-[3/4] rounded-lg shadow-lg overflow-hidden relative">
                         <img
-                            src={item.image}
-                            alt={item.name}
-                            className="w-full h-56 object-cover"
+                            src={image[1]} // Gambar tambahan 1
+                            alt={`${name} 1`}
+                            className="w-full h-full object-cover"
                         />
-                        <div className="absolute top-2 left-2 bg-yellow-400 text-white text-xs font-semibold px-2 py-1 rounded">
-                            10% OFF
-                        </div>
-                        <div className="p-4 text-center">
-                            <h3 className="font-semibold text-lg text-black mb-2">{item.name}</h3>
-                            <button className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm hover:bg-blue-700 transition duration-300">
-                                Shop Now
-                            </button>
+                        <div className='absolute top-0 left-0 ml-3 mt-3 text-left'>
+                            <h6 className='font-poppins-13-700 leading-none sm:leading-none bg-blue-700 sm:w-[70px] w-[50px] text-white sm:px-2 px-0 py-2 text-center'>10% OFF</h6>
+                            <h6 className='font-inter-20-700 leading-5 sm:leading-6'>Tumbler</h6>
+                            <div className='leading-3'>
+                                <button>
+                                    <div className='flex items-center font-poppins-10-500'>
+                                        <h6>Shop Now</h6>
+                                        <MdKeyboardArrowRight size={14} className="ml-1" />
+                                    </div>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                ))}
+                    <div className="flex-1 aspect-[3/4] rounded-lg shadow-lg overflow-hidden relative">
+                        <img
+                            src={image[2]} // Gambar tambahan 2
+                            alt={`${name} 2`}
+                            className="w-full h-full object-cover"
+                        />
+                       <div className='absolute top-0 left-0 ml-3 mt-3 text-left'>
+                            <h6 className='font-poppins-13-700 leading-none sm:leading-none bg-blue-700 sm:w-[70px] w-[50px] text-white sm:px-2 px-0 py-2 text-center'>10% OFF</h6>
+                            <h6 className='font-inter-20-700 leading-5 sm:leading-6'>Pin Custom</h6>
+                            <div className='leading-3'>
+                                <button>
+                                    <div className='flex items-center font-poppins-10-500'>
+                                        <h6>Shop Now</h6>
+                                        <MdKeyboardArrowRight size={14} className="ml-1" />
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex-1 aspect-[3/4] rounded-lg shadow-lg overflow-hidden relative">
+                        <img
+                            src={image[3]} // Gambar tambahan 3
+                            alt={`${name} 3`}
+                            className="w-full h-full object-cover"
+                        />
+                        <div className='absolute top-0 left-0 ml-3 mt-3 text-left'>
+                            <h6 className='font-poppins-13-700 leading-none sm:leading-none bg-blue-700 sm:w-[70px] w-[50px] text-white sm:px-2 px-0 py-2 text-center'>10% OFF</h6>
+                            <h6 className='font-inter-20-700 leading-5 sm:leading-6'>Kaos</h6>
+                            <div className='leading-3'>
+                                <button>
+                                    <div className='flex items-center font-poppins-10-500'>
+                                        <h6>Shop Now</h6>
+                                        <MdKeyboardArrowRight size={14} className="ml-1" />
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Baris Kedua */}
+                <div className="flex space-x-2 sm:space-x-4">
+                    <div className="flex-1 aspect-[16/11] rounded-lg shadow-lg overflow-hidden relative">
+                        <img
+                            src={image[4]} // Gambar tambahan 4
+                            alt={`${name} 4`}
+                            className="w-full h-full object-cover"
+                        />
+                        <div className='absolute top-0 left-0 ml-3 mt-3 text-left'>
+                            <h6 className='font-poppins-13-700 leading-none sm:leading-none bg-blue-700 sm:w-[70px] w-[50px] text-white sm:px-2 px-0 py-2 text-center'>10% OFF</h6>
+                            <h6 className='font-inter-20-700-t leading-5 sm:leading-9'>Mugs</h6>
+                            <div className='leading-3'>
+                                <button>
+                                    <div className='flex items-center font-poppins-10-500'>
+                                        <h6>Shop Now</h6>
+                                        <MdKeyboardArrowRight size={14} className="ml-1" />
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex-1 aspect-[16/11] rounded-lg shadow-lg overflow-hidden relative">
+                        <img
+                            src={image[5]} // Gambar tambahan 5
+                            alt={`${name} 5`}
+                            className="w-full h-full object-cover"
+                        />
+                        <div className='absolute top-0 left-0 ml-3 mt-3 text-left'>
+                            <h6 className='font-poppins-13-700 leading-none sm:leading-none bg-blue-700 sm:w-[70px] w-[50px] text-white sm:px-2 px-0 py-2 text-center'>10% OFF</h6>
+                            <h6 className='font-inter-20-700-t leading-5 sm:leading-9'>Aksesoris</h6>
+                            <div className='leading-3'>
+                                <button>
+                                    <div className='flex items-center font-poppins-10-500'>
+                                        <h6>Shop Now</h6>
+                                        <MdKeyboardArrowRight size={14} className="ml-1" />
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
-}
+};
 
-const Unggulan = () => {
-    const unggulan = [
-        { id: 1, image: 'src/assets/gambar/Kaos/kaos13.jpeg', description: 'Kaos Custom' },
-        { id: 2, image: 'src/assets/gambar/Mugs/mug4.jpeg', description: 'Mug Custom' },
-        { id: 3, image: 'src/assets/gambar/Polaroid/foto4.jpeg', description: 'Polaroid' },
-        { id: 4, image: 'src/assets/gambar/Bag/ToteBag/tote3.jpeg', description: 'Totebag' },
-        { id: 5, image: 'src/assets/gambar/Bag/GoodieBag/bag5.jfif', description: 'Tas Kecil' },
-        { id: 6, image: 'src/assets/gambar/Stiker/stiker4.jpg', description: 'Stiker Custom' },
-        { id: 7, image: 'src/assets/gambar/Mugs/mug1.jpg', description: 'Mug Variasi' },
-        { id: 8, image: 'src/assets/gambar/Tumbler/tumbler5.jpg', description: 'Tumbler Variasi' },
-    ];
+// Contoh Data untuk Satu Komponen
+const flashsaleData = {
+    name: 'Goodie Bag',
+    image: [
+        'src/assets/gambar/bag/GoodieBag/bag1.jfif', // Gambar utama
+        'src/assets/gambar/bag/GoodieBag/bag2.jfif', // Gambar tambahan 1
+        'src/assets/gambar/bag/GoodieBag/bag3.jfif', // Gambar tambahan 2
+        'src/assets/gambar/bag/GoodieBag/bag4.jfif', // Gambar tambahan 3
+        'src/assets/gambar/bag/GoodieBag/bag5.jfif', // Gambar tambahan 4
+        'src/assets/gambar/bag/GoodieBag/bag6.jfif', // Gambar tambahan 5
+    ],
+};
 
+// Komponen Utama
+const Flashsale = () => {
+    return (
+        <div className="container mx-auto px-4">
+            <FlashsaleCard {...flashsaleData} />
+        </div>
+    );
+};
+
+
+
+const UnggulanCard = ({ image, description }) => {
     const [startIndex, setStartIndex] = useState(0);
     const itemsPerPage = 4;
 
@@ -175,46 +287,58 @@ const Unggulan = () => {
         );
     };
 
-    const displayedItems = unggulan.slice(startIndex, startIndex + itemsPerPage);
-
+    // const displayedItems = unggulan.slice(startIndex, startIndex + itemsPerPage);
     return (
-        <div className="relative px-4 mb-8 mt-4">
+        <div className="relative mb-5 mt-4">
             {/* Carousel Wrapper */}
-            <div className="flex justify-center gap-6">
-                {displayedItems.map((item) => (
-                    <div
-                        key={item.id}
-                        className="rounded-2xl shadow-lg lg:w-72 lg:h-96 sm:w-10 sm:h-10 mb-10 overflow-hidden relative hover:shadow-md transition-shadow duration-300"
-                    >
-                        <img
-                            src={item.image}
-                            alt={item.description}
-                            className="w-full h-full object-cover rounded-2xl"
-                        />
-                        <div className="absolute bottom-0 w-full bg-opacity-60 text-white text-sm font-semibold text-center py-2">
-                            <h3 className="font-bold lg:text-base sm:text-sm">{item.description}</h3>
-                            <button className='bg-white lg:w-20 lg:h-8 sm:w-10 sm:h-2 bg-opacity-50 mt-2 font-monster-medium-u text-sm text-center  px-2 rounded-full'>Buy Now</button>
-                        </div>
+            <div className="flex flex-wrap justify-center gap-6">
+                {/* {displayedItems.map((item) => ( */}
+                <div
+                    // key={item.id}
+                    className="rounded-2xl shadow-lg w-[110px] h-[200px] sm:w-[200px] sm:h-[300px] md:w-[200px] md:h-[300px] overflow-hidden relative hover:shadow-md transition-shadow duration-300"
+                >
+                    <img
+                        src={image}
+                        alt={description}
+                        className="w-full h-full object-cover rounded-2xl"
+                    />
+                    <div className="absolute bottom-0 w-full text-white font-monster-20-700 text-center py-2 bg-black bg-opacity-10">
+                        <h3 className="font-bold text-xs sm:text-sm md:text-base">
+                            {description}
+                        </h3>
+                        <button className="bg-white w-20 h-6 sm:w-24 sm:h-8 text-black bg-opacity-50 mt-2 font-monster-11-500 text-center px-2 rounded-full hover:bg-opacity-80 text-[10px] sm:text-sm">
+                            Buy Now
+                        </button>
                     </div>
-                ))}
+                </div>
+                {/* ))} */}
             </div>
 
             {/* Navigasi Kiri dan Kanan */}
-            <button
-                onClick={handlePrev}
-                className="absolute left-0 top-1/2  transform -translate-y-1/2 bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-700"
-            >
-                &#9664;
-            </button>
-            <button
-                onClick={handleNext}
-                className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-blue-500 text-white p-2 rounded-full shadow-lg hover:bg-blue-700"
-            >
-                &#9654;
-            </button>
+
+        </div>
+    )
+}
+
+const Unggulan = () => {
+    const unggulan = [
+        { id: 1, image: 'src/assets/gambar/Kaos/kaos13.jpeg', description: 'Kaos Custom' },
+        { id: 2, image: 'src/assets/gambar/Mugs/mug4.jpeg', description: 'Mug Custom' },
+        { id: 3, image: 'src/assets/gambar/Polaroid/foto4.jpeg', description: 'Polaroid' },
+        { id: 4, image: 'src/assets/gambar/Bag/ToteBag/tote3.jpeg', description: 'Totebag' },
+        { id: 5, image: 'src/assets/gambar/Bag/GoodieBag/bag5.jfif', description: 'Tas Kecil' },
+        { id: 6, image: 'src/assets/gambar/Stiker/stiker4.jpg', description: 'Stiker Custom' },
+        { id: 7, image: 'src/assets/gambar/Mugs/mug1.jpg', description: 'Mug Variasi' },
+        { id: 8, image: 'src/assets/gambar/Tumbler/tumbler5.jpg', description: 'Tumbler Variasi' },
+    ];
+    return (
+        <div className="flex gap-4 overflow-x-auto px-4 mb-8 scrollbar-hide">
+            {unggulan.map((unggulan) => (
+                <UnggulanCard key={unggulan.id} {...unggulan} />
+            ))}
         </div>
     );
-};
+}
 
 const RekomendasiCard = ({ image, name, price }) => {
     const [isFavorited, setIsFavorited] = useState(false);
@@ -225,9 +349,9 @@ const RekomendasiCard = ({ image, name, price }) => {
     };
 
     return (
-        <div className="bg-white rounded-md mb-4 sm:w-40 sm:h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 hover:bg-gray-100 ease-out delay-150 transition-colors duration-300 shadow-md">
+        <div className="bg-white rounded-md mb-4 shadow-md hover:bg-gray-100 transition-colors duration-300 ease-out">
             {/* Container Gambar */}
-            <div className="relative overflow-hidden w-full h-2/3 rounded-t-md">
+            <div className="relative overflow-hidden aspect-[4/3] rounded-t-md">
                 <Link to="/productdetail">
                     <img
                         src={image}
@@ -251,23 +375,15 @@ const RekomendasiCard = ({ image, name, price }) => {
             </div>
 
             {/* Konten */}
-            <div className="w-full h-1/5 flex flex-col justify-between p-2">
-                <div>
-                    <Link to="/productdetail">
-                        <h3 className="font-poppins-judul-product text-black text-sm sm:text-base text-left truncate">
-                            {name}
-                        </h3>
-                    </Link>
-                    <p className="text-black font-poppins-sub-judul-product font-semibold text-sm sm:text-base text-left">
-                        {price}
-                    </p>
-                </div>
-                {/* Ikon Shopping */}
-                {/* <img
-            src={Shopping}
-            alt="shopping"
-            className="ml-auto w-6 h-6 cursor-pointer"
-        /> */}
+            <div className="p-2">
+                <Link to="/productdetail">
+                    <h3 className="font-poppins-16-product-e text-black text-left truncate">
+                        {name}
+                    </h3>
+                </Link>
+                <p className="text-black font-poppins-16-sub-product-e text-left">
+                    {price}
+                </p>
             </div>
         </div>
     );
@@ -275,11 +391,12 @@ const RekomendasiCard = ({ image, name, price }) => {
 
 const Rekomendasi = () => {
     const rekomendasi = [
-        { id: 1, name: 'Kaos Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Kaos/kaos13.jpeg' },
         { id: 2, name: 'Totebag Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Bag/ToteBag/tote3.jpeg' },
         { id: 3, name: 'Tumbler Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Tumbler/tumbler5.jpg' },
         { id: 4, name: 'Polaroid Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Polaroid/foto4.jpeg' },
-        { id: 5, name: 'Pin Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Pin/pin3.jpg' },
+        { id: 5, name: 'Tumbler Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Tumbler/tumbler5.jpg' },
+        { id: 6, name: 'Tumbler Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Tumbler/tumbler5.jpg' },
+        { id: 7, name: 'Polaroid Custom', price: 'Rp 50.000', image: 'src/assets/gambar/Polaroid/foto4.jpeg' },
     ]
 
     return (

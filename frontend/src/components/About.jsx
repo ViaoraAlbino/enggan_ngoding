@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion'; // Import Framer Motion
 import backgroundImage from '../assets/gambar/about-bg.png';
 import premiumImage from '../assets/gambar/Kaos/kaos3.jpeg';
@@ -6,12 +5,6 @@ import creativityImage from '../assets/gambar/Kaos/kaos12.jpeg';
 import fastServiceImage from '../assets/gambar/Kaos/kaos13.jpeg';
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(true);
-
-  const toggleVisibility = () => {
-    setIsVisible(!isVisible);
-  };
-
   const fadeIn = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
@@ -40,14 +33,14 @@ const About = () => {
 
         {/* Text Content */}
         <motion.div
-          className="relative text-center z-5 px-6 space-y-10"
+          className="relative text-center z-5 px-6 space-y-6 md:space-y-10 mt-16"
           initial="hidden"
           animate="visible"
           variants={fadeIn}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="font-poppins-64-600">About UNIVY</h1>
-          <p className="font-poppins-24-500 max-w-6xl leading-relaxed">
+          <h1 className="font-poppins-36-500">About UNIVY</h1>
+          <p className="font-poppins-18-500 max-w-2xl md:max-w-4xl leading-relaxed">
             UNIVY hadir sebagai solusi bagi Anda yang ingin menciptakan sesuatu yang unik dan spesial.
             Kami menawarkan berbagai produk custom, mulai dari kaos, mug, tote bag, stiker, tumbler,
             hingga polaroid foto, yang semuanya dapat Anda desain sendiri sesuai keinginan.
@@ -64,11 +57,11 @@ const About = () => {
       <motion.section
         className="bg-white py-8 text-center"
         initial="hidden"
-          animate="visible"
-          variants={fadeIn}
-          transition={{ duration: 0.8 }}
+        animate="visible"
+        variants={fadeIn}
+        transition={{ duration: 0.8 }}
       >
-        <h2 className="font-poppins-36-600 text-black">Kenapa Harus Memilih UNIVY!</h2>
+        <h2 className="font-poppins text-2xl md:text-4xl font-semibold text-black">Kenapa Harus Memilih UNIVY!</h2>
       </motion.section>
 
       {/* Kualitas Premium Section */}
@@ -94,8 +87,8 @@ const About = () => {
           </p>
         </div>
       </motion.section>
-          {/* Tester */}
-          {/* test lewat vscode  */}
+      {/* Tester */}
+      {/* test lewat vscode  */}
       {/* Kebebasan Kreativitas Section */}
       <motion.section
         className="flex flex-col md:flex-row items-center bg-white py-12 px-6"

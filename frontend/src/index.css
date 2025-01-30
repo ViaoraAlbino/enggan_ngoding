@@ -62,6 +62,24 @@
   src: url('./assets/font/Kanit-Bold.ttf');
 }
 
+/* Font Inter untuk font yang digunakan di web univy */
+@font-face {
+  font-family: 'Inter-regular';
+  src: url('./assets/font/Inter_18pt-Regular.ttf');
+}
+
+/* Font Inter untuk font yang digunakan di web univy */
+@font-face {
+  font-family: 'Inter-semibold';
+  src: url('./assets/font/Inter_18pt-SemiBold.ttf');
+}
+
+/* Font Inter untuk font yang digunakan di web univy */
+@font-face {
+  font-family: 'Inter-bold';
+  src: url('./assets/font/Inter_18pt-Bold.ttf');
+}
+
 /* Untuk className H1 */
 .font-nabla {
   font-family: 'Nabla', cursive;
@@ -285,10 +303,16 @@
   font-size: 20px;
 }
 
-/* Untuk Tulisan Sub Judul Product */
-.font-poppins-sub-judul-product {
+.font-poppins-16-product-e {
+  font-weight: 300;
   font-family: 'Poppins';
-  font-size: 20px;
+  font-size: 16px;
+}
+
+/* Untuk Tulisan Sub Judul Product */
+.font-poppins-16-sub-product-e {
+  font-family: 'Poppins-semibold';
+  font-size: 15px;
 }
 
 /* Untuk Tulisan Judul Product */
@@ -300,7 +324,7 @@
 
 /* Untuk Tulisan Sub Judul Product */
 .font-poppins-sub-judul-products {
-  font-family: 'Poppins';
+  font-family: 'Poppins-semibold';
   font-size: 20px;
 }
 
@@ -325,6 +349,18 @@
   font-weight: 400;
 }
 
+.font-poppins-16-product-e {
+  font-weight: 300;
+  font-family: 'Poppins';
+  font-size: 13px;
+}
+
+/* Untuk Tulisan Sub Judul Product */
+.font-poppins-16-sub-product-e {
+  font-family: 'Poppins-semibold';
+  font-size: 13px;
+}
+
 /* Untuk Tulisan Sub Judul Product Detail */
 .font-poppins-20-500-p   {
   font-family: 'Poppins-medium';
@@ -338,10 +374,24 @@
   font-size: 18px;
 }
 
+.font-monster-11-500 {
+  font-family: 'Monsterrat-semibold';
+  font-size: 11px;
+}
+
+.font-poppins-20-700 {
+  font-family: 'Poppins-semibold';
+  font-size: 20px;
+}
+
 @media (max-width: 768px) {
   /* Untuk Tulisan Product Detail */
 .font-poppins-produkdetail-t {
   font-family: 'Poppins-medium';
+  font-size: 16px;
+}
+.font-poppins-20-700 {
+  font-family: 'Poppins-semibold';
   font-size: 16px;
 }
 }
@@ -363,6 +413,17 @@
   font-family: 'Monsterrat-semibold';
   font-size: 20px;
   color: white;
+}
+
+.font-poppins-20-400-b{
+  font-family: 'Poppins-medium';
+  font-size: 20px;
+}
+
+.font-monster-btn-pd-3 {
+  font-family: 'Monsterrat-semibold';
+  font-size: 16px;
+  color: #334EAC;
 }
 
 .font-poppins-btn-d {
@@ -405,11 +466,11 @@
   .font-poppins-judul-products {
     font-weight: 300;
     font-family: 'Poppins';
-    font-size: 20px;
+    font-size: 16px;
   }
   .font-poppins-sub-judul-products {
-    font-family: 'Poppins';
-    font-size: 20px;
+    font-family: 'Poppins-semibold';
+    font-size: 16px;
   }
 }
 
@@ -426,7 +487,7 @@
 
 .font-poppins-24-500 {
   font-family: 'Poppins';
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .font-poppins-36-600 {
@@ -450,13 +511,15 @@
 }
 
 .font-poppins-32-500 {
-  font-family: 'Poppins';
+  font-family: 'Poppins-semibold';
   font-size: 28px;
+  margin-top: 40px;
+  margin-bottom: 30px;
 }
 
-.font-poppins-24-300 {
+.font-poppins-24-400 {
   font-family: 'Poppins-light';
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .font-poppins-20-400 {
@@ -469,14 +532,138 @@
   font-size: 24px;
 }
 
+.font-poppins-16-400{
+  font-family: 'Poppins';
+  font-size: 16px;
+}
+
 .font-moster-24-600 {
   font-family: 'Monsterrat-semibold';
-  font-size: 24px;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .font-moster-20-600 {
+    font-family: 'Monsterrat-semibold';
+    font-size: 16px;
+  }
+  .font-poppins-24-500 {
+    font-family: 'Poppins';
+    font-size: 16px;
+  }
+  .font-poppins-16-500 {
+    font-family: 'Poppins';
+    font-size: 14px;
+  }
+  .font-poppins-20-400 {
+    font-family: 'Poppins';
+    font-size: 14px;
+  }
+  .font-poppins-24-400 {
+    font-family: 'Poppins-light';
+    font-size: 16px;
+  }
+  .font-poppins-32-500 {
+    font-family: 'Poppins-semibold';
+    font-size: 17px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  .font-poppins-24-600{
+    font-family: 'Poppins-semibold';
+    font-size: 16px;
+  }
+  .font-moster-24-600 {
+    font-family: 'Monsterrat-semibold';
+    font-size: 16px;
+  }
+  .font-poppins-18-500{
+    font-family: 'Poppins';
+    font-size: 12px;
+  }
+  .font-poppins-36-500{
+    font-family: 'Poppins-semibold';
+    font-size: 60px;
+  }
+  .font-inter-16-600 {
+    font-family: 'Inter-semibold';
+    font-size: 14px;
+    color: #334EAC;
+  }
+  
+  .font-inter-20-600{
+    font-family: 'Inter-semibold';
+    font-size: 16px;
+    color: white;
+  }
+  
+  .font-inter-13-400 {
+    font-family: 'Inter-regular';
+    font-size: 11px;
+  }
+  
+  .font-monster-13-500 {
+    font-family: 'Monsterrat-medium';
+    font-size: 11px;
+  }
 }
 
 .font-moster-20-600 {
   font-family: 'Monsterrat-semibold';
   font-size: 20px;
+}
+
+.font-poppins-18-500{
+  font-family: 'Poppins';
+  font-size: 18px;
+}
+
+.font-poppins-36-500{
+  font-family: 'Poppins-semibold';
+  font-size: 36px;
+}
+
+.font-inter-16-600 {
+  font-family: 'Inter-semibold';
+  font-size: 16px;
+  color: #334EAC;
+}
+
+.font-inter-20-600{
+  font-family: 'Inter-semibold';
+  font-size: 20px;
+  color: white;
+}
+
+.font-inter-13-400 {
+  font-family: 'Inter-regular';
+  font-size: 11px;
+}
+
+.font-monster-13-500 {
+  font-family: 'Monsterrat-medium';
+  font-size: 11px;
+}
+
+.font-poppins-13-700 {
+  font-family: 'Poppins-bold';
+  font-size: 13px;
+}
+
+.font-inter-20-700 {
+  font-family: 'Inter-bold';
+  font-size: 18px;
+}
+
+.font-inter-20-700-t {
+  font-family: 'Inter-bold';
+  font-size: 32px;
+}
+
+.font-poppins-10-500 {
+  font-family: 'Poppins-medium';
+  font-size: 10px;
+  color: white;
 }
 
 /* Animasi Fade In */
@@ -529,6 +716,31 @@
     font-family: 'Poppins';
     font-size: 15px;
   }
+  .font-poppins-13-700 {
+    font-family: 'Poppins-bold';
+    font-size: 10px;
+  }
+
+  .font-poppins-13-700-t {
+    font-family: 'Poppins-bold';
+    font-size: 10px;
+  }
+  
+  .font-inter-20-700 {
+    font-family: 'Inter-bold';
+    font-size: 14px;
+  }
+
+  .font-inter-20-700-t {
+    font-family: 'Inter-bold';
+    font-size: 14px;
+  }
+  
+  .font-poppins-10-500 {
+    font-family: 'Poppins-medium';
+    font-size: 10px;
+    color: white;
+  }
 }
 
 body {
@@ -555,7 +767,7 @@ code {
 
 /* Untuk custom scroll */
 .custom-scroll::-webkit-scrollbar {
-  width: 8px;
+  width: 2px;
 }
 
 .custom-scroll::-webkit-scrollbar-track {
