@@ -10,6 +10,7 @@ const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
 const User = require('./models/User');
 const Product = require('./models/Product');
+const getNextSequence = require('./getNextSequence');
 
 // Konfigurasi Environment
 dotenv.config();
@@ -86,13 +87,13 @@ app.post('/masuk', async (req, res) => {
         // Cari user berdasarkan username
         const existingUser = await User.findOne({ username });
         if (!existingUser) {
-            return res.status(400).json({ message: 'Username atau Password salah' });
+            return res.status(400).json({ message: 'Username salah' });
         }
 
         // Periksa password
         const isMatch = await bcrypt.compare(password, existingUser.password);
         if (!isMatch) {
-            return res.status(400).json({ message: 'Username atau Password salah' });
+            return res.status(400).json({ message: 'Password salah' });
         }
 
         // Dapatkan role dari user
@@ -109,7 +110,7 @@ app.post('/masuk', async (req, res) => {
         res.status(200).json({
             message: 'Login Berhasil',
             token,
-            user: { id: existingUser._id, username: existingUser.username, role }
+            user: { id: existingUser._id, username: existingUser.username, role: existingUser.role }
         });
     } catch (error) {
         console.error('Error saat login:', error);
@@ -131,16 +132,27 @@ app.get('/product', async (req, res) => {
 // Create Data Products
 app.post('/product', upload.single('image'), async (req, res) => {
     try {
-        const { title, price } = req.body;
-        const imageUrl = req.file.path; // URL gambar dari Cloudinary
-
-        const newProduct = new Product({ title, price, imageUrl });
-        await newProduct.save();
-        res.status(201).json(newProduct);
+      const { title, price } = req.body;
+      const imageUrl = req.file.path; // URL gambar dari Cloudinary
+  
+      // Dapatkan ID otomatis
+      const newId = await getNextSequence('products');
+  
+      // Buat produk baru dengan ID otomatis
+      const newProduct = new Product({
+        _id: newId, // ID otomatis
+        title,
+        price,
+        imageUrl,
+      });
+  
+      await newProduct.save();
+      res.status(201).json(newProduct);
     } catch (err) {
-        res.status(400).json({ message: err.message });
+      console.error('Error saat membuat produk:', err);
+      res.status(400).json({ message: err.message });
     }
-});
+  });
 
 // Update Data Products
 app.put('/product/:id', upload.single('image'), async (req, res) => {

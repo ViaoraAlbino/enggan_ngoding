@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { FiHeart, FiShoppingCart, FiUser, FiSearch, FiMenu, FiX } from 'react-icons/fi';
 import { FaRegUser } from "react-icons/fa6";
-<<<<<<< HEAD
-import UnifyIcon from '../assets/icons/logo_univy.svg';
-=======
+import UnifyIcon from '../assets/gambar/logo_blue.png';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
 
 import { useSnackbar } from 'notistack';
 
->>>>>>> 228ccc4c56fbf5a8b9f87d639798d5f0da784e73
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
@@ -89,14 +86,12 @@ const Navbar = () => {
         className={`fixed w-full bg-white p-4 shadow transition-all duration-300 z-10 scroll-smooth ${isNavbarVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`}
       >
         <div className="container mx-auto flex justify-between items-center">
-<<<<<<< HEAD
-          {/* Nama Markas */}
-           <img src={UnifyIcon} alt="Unify Logo" className="w-16" />
 
-          {/* Menu Navigasi */}
-          
-=======
-          <h1 className="text-2xl font-normal ml-6 font-nabla">UNIVY</h1>
+          {/* Nama Markas */}
+          <Link to="/">
+            <img src={UnifyIcon} alt="Unify Logo" className="w-[60px] ml-6" />
+            {/* <h1 className="text-2xl font-normal ml-6 font-nabla">UNIVY</h1> */}
+          </Link>
 
           {/* Menu Navigasi */}
           <ul className="hidden lg:flex space-x-6 flex-grow justify-center">
@@ -125,7 +120,6 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
->>>>>>> 228ccc4c56fbf5a8b9f87d639798d5f0da784e73
 
           {/* Kolom Pencarian */}
           <div className="hidden lg:flex items-center w-1/4 bg-gray-100 rounded-full px-2 py-1 space-x-6 mr-6">
@@ -196,7 +190,8 @@ const Navbar = () => {
       {/* Sidebar */}
       <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow transform transition-transform z-20 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex items-center justify-between p-4 border-b">
-          <h2 className="text-2xl font-nabla">UNIVY</h2>
+          {/* <h2 className="text-2xl font-nabla">UNIVY</h2> */}
+          <img src={UnifyIcon} alt="Unify Logo" className="w-[60px] ml-3" />
           <button
             className="text-gray-500 hover:text-gray-800 focus:outline-none"
             onClick={toggleSidebar}

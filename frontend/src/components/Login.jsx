@@ -3,6 +3,7 @@ import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate untuk mengarahkan ke halaman lain
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { useAuth } from './AuthContext';
+import { useSnackbar } from 'notistack';
 
 const Login = () => {
   const [username, setUsername] = useState(''); // Ganti email menjadi username
@@ -24,7 +25,7 @@ const Login = () => {
     e.preventDefault();
     setError('');
     setSuccess('');
-  
+
     try {
       const response = await fetch('http://localhost:5000/masuk', {
         method: 'POST',
@@ -33,21 +34,28 @@ const Login = () => {
         },
         body: JSON.stringify({ username, password }), // Mengirim username dan password
       });
-  
+
       const data = await response.json();
-  
+
       if (response.ok) {
         setSuccess('Login Berhasil');
-        localStorage.setItem('token', data.token); // Simpan token ke localStorage
-        localStorage.setItem('role', data.role); // Simpan role ke localStorage jika perlu
-  
+
+        // Simpan token dan role ke localStorage
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('role', data.user.role); // Pastikan backend mengirimkan role dalam data.user
+
         login();
-  
+
+        // Debugging untuk melihat role
+        // console.log('Role dari server:', data.user.role);
+
         // Arahkan berdasarkan role
-        if (data.role === 'admin') {
-          navigate('/admin'); // Pindah ke halaman admin
+        if (data.user.role === 'user') {
+          navigate('/'); // Pindah ke halaman Home
+        } else if (data.user.role === 'admin') {
+          navigate('/admin'); // Pindah ke halaman Admin
         } else {
-          navigate('/'); // Pindah ke halaman Home untuk user biasa
+          setError('Role tidak valid');
         }
       } else {
         setError(data.message);
@@ -55,7 +63,8 @@ const Login = () => {
     } catch (error) {
       setError('Terjadi Kesalahan Pada Server');
     }
-  };  
+
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen mx-10 bg-white">
@@ -134,11 +143,10 @@ const Login = () => {
               Don't Have an account? <Link to='/register' className="font-sublogin-poppins-m">Create Now</Link>
             </label>
           </div>
+          {/* Pesan error/success */}
+          {error && <p className="text-red-500 text-center mt-4">{error}</p>}
+          {success && <p className="text-green-500 text-center mt-4">{success}</p>}
         </form>
-
-        {/* Pesan error/success */}
-        {error && <p className="text-red-500 text-center mt-4">{error}</p>}
-        {success && <p className="text-green-500 text-center mt-4">{success}</p>}
       </div>
     </div>
   );
