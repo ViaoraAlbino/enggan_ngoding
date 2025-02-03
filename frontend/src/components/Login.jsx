@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate untuk mengarahkan ke halaman lain
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { useAuth } from './AuthContext';
-import { useSnackbar } from 'notistack';
+import { enqueueSnackbar, useSnackbar } from 'notistack';
+import { useGoogleLogin } from '@react-oauth/google';
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const [username, setUsername] = useState(''); // Ganti email menjadi username
@@ -14,6 +16,11 @@ const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate(); // Menginisialisasi useNavigate
   const { login } = useAuth();
+  const [googleClientId, setGoogleClientId] = useState('');
+  const loginAttempts = 0;
+  const maxAttempts = 5;
+  const blockTime = 15 * 60 * 1000;
+  let isBlocked = false;
 
   // Fungsi untuk toggle visibility password
   const togglePasswordVisibility = () => {
@@ -26,8 +33,13 @@ const Login = () => {
     setError('');
     setSuccess('');
 
+    if (isBlocked) {
+      enqueueSnackbar('Anda diblokir karena terlalu banyak percobaan login. Silahkan coba lagi nanti!', { variant: 'error' });
+      return;
+    }
+
     try {
-      const response = await fetch('http://localhost:5000/masuk', {
+      const response = await fetch('http://localhost:5000/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,19 +52,17 @@ const Login = () => {
       if (response.ok) {
         setSuccess('Login Berhasil');
 
-        // Simpan token dan role ke localStorage
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('role', data.user.role); // Pastikan backend mengirimkan role dalam data.user
-
-        login();
-
-        // Debugging untuk melihat role
-        // console.log('Role dari server:', data.user.role);
-
-        // Arahkan berdasarkan role
+        // Periksa role user
         if (data.user.role === 'user') {
+          // Simpan token untuk user
+          localStorage.setItem('token', data.token);
+          localStorage.setItem('role', data.user.role);
+          login();
           navigate('/'); // Pindah ke halaman Home
         } else if (data.user.role === 'admin') {
+          // Tidak menyimpan token untuk admin
+          localStorage.setItem('role', data.user.role);
+          login();
           navigate('/admin'); // Pindah ke halaman Admin
         } else {
           setError('Role tidak valid');
@@ -61,10 +71,38 @@ const Login = () => {
         setError(data.message);
       }
     } catch (error) {
-      setError('Terjadi Kesalahan Pada Server');
+      setError('Masukkan Username & Password');
     }
-
   };
+
+  // Handle Google Login
+  const googleLogin = useGoogleLogin({
+    onSuccess: async (tokenResponse) => {
+      try {
+        const response = await fetch('http://localhost:5000/google/signin', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token: tokenResponse.access_token }),
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+          setSuccess('Google Login Successful');
+          localStorage.setItem('token', data.token);
+          login();
+          navigate('/');
+        } else {
+          setError(data.message || 'Google login failed');
+        }
+      } catch (err) {
+        enqueueSnackbar('Server error. Please try again later.', { variant: 'error' });
+        // setError('Server error. Please try again later.');
+      }
+    },
+    onError: () => {
+      enqueueSnackbar('Google Login failed. Please try again.', { variant: 'error' });
+    },
+  });
 
   return (
     <div className="flex items-center justify-center min-h-screen mx-10 bg-white">
@@ -135,18 +173,34 @@ const Login = () => {
           >
             Login
           </button>
-          <div className="flex justify-center items-center h-full">
-            <label
-              htmlFor="register"
-              className="font-sublogin-poppins-r justify-center items-center text-center"
-            >
-              Don't Have an account? <Link to='/register' className="font-sublogin-poppins-m">Create Now</Link>
-            </label>
-          </div>
+
           {/* Pesan error/success */}
           {error && <p className="text-red-500 text-center mt-4">{error}</p>}
           {success && <p className="text-green-500 text-center mt-4">{success}</p>}
+
+          <div className='flex flex-col justify-center items-center'>
+            <div className="flex justify-center items-center h-full">
+              <label
+                htmlFor="register"
+                className="font-sublogin-poppins-r justify-center items-center text-center"
+              >
+                Don't Have an account? <Link to='/register' className="font-sublogin-poppins-m">Create Now</Link>
+              </label>
+            </div>
+            <label className='font-sublogin-poppins-r text-center'>
+              Or login with
+            </label>
+          </div>
         </form>
+        <button
+          type="button"
+          className="relative flex items-center justify-center mt-5 w-full h-10 bg-white font-btngoogle-monster py-2 px-4 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
+          onClick={googleLogin}
+        >
+          <span className="absolute left-1/2 transform -translate-x-1/2">Google</span>
+          <FcGoogle className="absolute right-4" />
+        </button>
+
       </div>
     </div>
   );

@@ -14,21 +14,24 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { AuthProvider } from './components/AuthContext'; // Import AuthProvider
 import { SnackbarProvider } from 'notistack'; // Import SnackbarProvider
+import { GoogleOAuthProvider } from '@react-oauth/google'; // Import GoogleOAuthProvider
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <SnackbarProvider
-      maxSnack={1} // Maksimal 3 notifikasi ditampilkan bersamaan
-      anchorOrigin={{
-        vertical: 'top', // Posisi vertikal (top)
-        horizontal: 'center', // Posisi horizontal (right)
-      }}
-      autoHideDuration={3000}
-    >
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </SnackbarProvider>
+    <GoogleOAuthProvider clientId="1021573370715-r6gebmvpb0cn47eoi3it2dqfor5qjl9v.apps.googleusercontent.com"> {/* Tambahkan GoogleOAuthProvider di sini */}
+      <SnackbarProvider
+        maxSnack={1} // Maksimal 1 notifikasi ditampilkan bersamaan
+        anchorOrigin={{
+          vertical: 'top', // Posisi vertikal (top)
+          horizontal: 'center', // Posisi horizontal (center)
+        }}
+        autoHideDuration={3000}
+      >
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </SnackbarProvider>
+    </GoogleOAuthProvider>
   </React.StrictMode>
 );

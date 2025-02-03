@@ -98,9 +98,9 @@ const App = () => {
                         </LayoutA>
                     }
                 />
-                    <Route path="/admin" element={<ANavi />}/>
-                    <Route path="/admin/customers" element={<Customer/>} />
-                    <Route path="/admin/customers/customer_edit" element={<CustomerE/>} />
+                <Route path="/admin" element={<ANavi />} />
+                <Route path="/admin/customers" element={<Customer />} />
+                <Route path="/admin/customers/customer_edit" element={<CustomerE />} />
             </Routes>
         </Router>
     );

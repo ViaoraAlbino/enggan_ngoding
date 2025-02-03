@@ -48,6 +48,8 @@ const Navbar = () => {
     }, 500); // Delay 150 ms
   };
 
+  const role = localStorage.getItem('role');
+
   // Test Notifikasi
   useEffect(() => {
     // Cek apakah token ada di localStorage
@@ -56,7 +58,7 @@ const Navbar = () => {
     // Cek apakah notifikasi sudah pernah ditampilkan
     const hasNotified = localStorage.getItem('hasNotified');
 
-    if (token && location.pathname === '/' && !hasNotified) {
+    if (token && location.pathname === '/' && !hasNotified && role !== 'admin') {
       enqueueSnackbar('Welcome back! You are now logged in.', { variant: 'success' });
       localStorage.setItem('hasNotified', 'true'); // Set status notifikasi
     }
@@ -140,15 +142,36 @@ const Navbar = () => {
               <FiShoppingCart className={`cursor-pointer hover:text-gray-800 ${location.pathname === '/keranjang' ? 'text-gray-800' : 'text-gray-500'}`} size={24} />
             </Link>
             {isLoggedIn ? (
-              // Tampilkan ikon user jika login
-              <button onClick={handleLogout} className="text-gray-500 hover:text-gray-800 focus:outline-none">
-                <FaRegUser size={24} />
-              </button>
+              role === 'user' ? (
+                // Tampilkan ikon user jika role adalah user
+                <button
+                  onClick={handleLogout}
+                  className="text-gray-500 hover:text-gray-800 focus:outline-none"
+                >
+                  <FaRegUser size={24} />
+                </button>
+              ) : role === 'admin' ? (
+                // Tampilkan tombol Sign Up dan Login jika role adalah admin
+                <>
+                  <Link to="/register">
+                    <button className="font-poppins-sign button-sign hover:bg-cyan-200">
+                      Sign Up
+                    </button>
+                  </Link>
+                  <Link to="/login">
+                    <button className="font-poppins-login button-login hover:bg-blue-500">
+                      Login
+                    </button>
+                  </Link>
+                </>
+              ) : null // Jika role tidak valid, tampilkan null
             ) : (
-              // Tampilkan tombol Sign Up dan Login jika belum user login
+              // Tampilkan tombol Sign Up dan Login jika belum login
               <>
                 <Link to="/register">
-                  <button className="font-poppins-sign button-sign hover:bg-cyan-200">Sign Up</button>
+                  <button className="font-poppins-sign button-sign hover:bg-cyan-200">
+                    Sign Up
+                  </button>
                 </Link>
                 <Link to="/login">
                   <button className="font-poppins-login button-login hover:bg-blue-500">
@@ -162,13 +185,13 @@ const Navbar = () => {
           {/* Tombol Menu Mobile */}
           <div className="lg:hidden flex items-center space-x-4 ml-auto">
             {/* <div className="flex items-center w-36 bg-gray-100 rounded-full px-4 py-1">
-              <input
-                type="text"
-                placeholder="Mau cari apa..."
-                className="bg-transparent focus:outline-none text-gray-700 font-poppins flex-grow"
-              />
-              <FiSearch className="text-gray-500 w-6 h-6" />
-            </div> */}
+                <input
+                  type="text"
+                  placeholder="Mau cari apa..."
+                  className="bg-transparent focus:outline-none text-gray-700 font-poppins flex-grow"
+                />
+                <FiSearch className="text-gray-500 w-6 h-6" />
+              </div> */}
             <Link to='/keranjang'>
               <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
                 <FiShoppingCart size={25} />

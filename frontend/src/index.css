@@ -296,6 +296,13 @@
   font-family: 'Monsterrat';
 }
 
+.font-btngoogle-monster {
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
+  font-family: 'Monsterrat';
+}
+
 /* Untuk Tulisan Judul Product */
 .font-poppins-judul-product {
   font-weight: 300;
