@@ -24,7 +24,7 @@ const ACategory = () => {
     ];
 
     return (
-        <Router>
+
             <div className="font-poppins p-6">
                 <div className="flex items-center justify-between mb-6">
                     <h1 className="text-blue-800 font-bold text-2xl">Daftar Kategori</h1>
@@ -66,7 +66,7 @@ const ACategory = () => {
                     ))}
                 </div>
             </div>
-        </Router>
+
     );
 };
 

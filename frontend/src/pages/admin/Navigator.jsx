@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ADashboard from './Dashboard';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from "react-router-dom";
 import {
   AiOutlineUser,
   AiOutlineShoppingCart,
@@ -25,6 +25,8 @@ import ACustomer from './Customer';
 import AEditCustomer from './CustomerEdit';
 import AProduct from './Product';
 import ACategory from './Category';
+import AProductadd from './Productadd';
+import ProductEdit from './ProductEdit';
 
 const ANavi = () => {
   const [activeItem, setActiveItem] = useState('Dashboard'); // State untuk item aktif
@@ -33,7 +35,7 @@ const ANavi = () => {
     { name: 'Dashboard', path: '/admin/dashboard', icon: dashboardGrey, activeIcon: dashboardBlue },
     { name: 'Customers', path: '/admin/customers', icon: <AiOutlineUser />, activeIcon: <AiOutlineUser className="text-blue-800" /> },
     { name: 'Products', path: '/admin/products', icon: <AiOutlineShoppingCart />, activeIcon: <AiOutlineShoppingCart className="text-blue-800" /> },
-    { name: 'Kategori', path: '/admin/categori', icon: <AiOutlineTags />, activeIcon: <AiOutlineTags className="text-blue-800" /> },
+    { name: 'Kategori', path: '/admin/category', icon: <AiOutlineTags />, activeIcon: <AiOutlineTags className="text-blue-800" /> },
     { name: 'Orders', path: '/admin/orders', icon: <AiOutlineOrderedList />, activeIcon: <AiOutlineOrderedList className="text-blue-800" /> },
     { name: 'Reviews', path: '/admin/reviews', icon: <AiOutlineComment />, activeIcon: <AiOutlineComment className="text-blue-800" /> },
     { name: 'Messages', path: '/admin/messages', icon: <AiOutlineMessage />, activeIcon: <AiOutlineMessage className="text-blue-800" /> },
@@ -58,7 +60,7 @@ const ANavi = () => {
                   <Link to={item.path}>
                   <li to
                     key={item.name}
-                    className={`px-6 py-2  flex items-center space-x-3 cursor-pointer ${activeItem === item.name ? 'bg-blue-100 rounded-lg text-blue-800' : 'hover:bg-gray-200 rounded-lg'
+                    className={`px-6 py-2 my-2  flex items-center space-x-3 cursor-pointer ${activeItem === item.name ? 'bg-blue-100 rounded-lg text-blue-800' : 'hover:bg-gray-200 rounded-lg'
                       }`}
                     onClick={() => setActiveItem(item.name)}
                   >
@@ -74,7 +76,7 @@ const ANavi = () => {
                     <span>{item.name}</span>
                   </li>
                   </Link>
-                ))};
+                ))}
             </ul>
           </nav>
         </div>
@@ -117,7 +119,7 @@ const ANavi = () => {
         {/* Content */}
         <div className="flex max-h-screen">
           <div className="flex-grow bg-gray-100 p-6 overflow-auto scrollbar-hide">
-            <ADashboard />
+          <Outlet />
           </div>
 
         </div>

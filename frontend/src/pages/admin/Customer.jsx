@@ -72,7 +72,7 @@ const ACustomer = () => {
                                         <td className="p-2">{customer.address}</td>
                                         <td className="p-2 ">
                                             <div className='gap-2'>
-                                                <Link to="/admin/customers/customer_edit">
+                                                <Link to="/admin/customeredit">
                                                     <button className="text-black mr-2 bg-neutral-100 rounded-md p-2 hover:text-blue-900">
                                                         <FaPencilAlt />
                                                     </button>

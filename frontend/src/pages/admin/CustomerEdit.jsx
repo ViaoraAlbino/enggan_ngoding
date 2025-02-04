@@ -29,7 +29,7 @@ const AEditCustomer = () => {
             <div className="flex p-4 text-xl font-bold text-blue-700">
                 <span>Edit Customer</span>
             </div>
-            <div className="m-3 rounded-lg shadow-lg bg-white p-5">
+            <div className="m-3 rounded-lg shadow-lg bg-white p-8">
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         <label htmlFor="nama" className="block text-start font-bold mb-2">

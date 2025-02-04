@@ -3,6 +3,7 @@ import { AiOutlineDownload } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { FaPencilAlt, FaPlus } from "react-icons/fa";
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 
 
 const AProduct = () =>{
@@ -17,8 +18,7 @@ const AProduct = () =>{
         { id: '008', name: 'Pin', category: 'Accessories', stock: 100, price: 'Rp 5.000', sold: 2 },
         { id: '009', name: 'Tote Bag', category: 'Bag', stock: 100, price: 'Rp 20.000', sold: 2 },
         { id: '010', name: 'Mug', category: 'Mug', stock: 100, price: 'Rp 50.000', sold: 2 },
-    ]);
-    
+    ]);    
     return (
         <div>
             <div className="bg-neutral-100 font-poppins min-h-screen">
@@ -43,12 +43,13 @@ const AProduct = () =>{
                                                     />
                                                     
                                                   </div>
-                                        <button className="flex items-center bg-black text-white px-4 w-1/3 py-2  rounded-lg hover:bg-blue-800">
-                                            <FaPlus className="mr-2 size-5 font-bold" /> Tambah Produk
-                                        </button>
+                                                  <Link to="/admin/productadd">
+                                                  <button className="flex items-center bg-black text-white px-4 w-auto py-2  rounded-lg hover:bg-blue-800">
+                                                        <FaPlus className="mr-2 size-5 font-bold" /> Tambah Produk
+                                                    </button>
+                                                  </Link>
                                     </div>
-                                </div>
-            
+                                </div>           
                                 {/* Table */}
                                 <div className="overflow-x-auto ">
                                     <table className="table-auto w-full text-center bg-white border-collapse">
@@ -74,9 +75,11 @@ const AProduct = () =>{
                                                     <td className="p-2">{products.sold}</td>
                                                     <td className="p-2 ">
                                                         <div className='gap-2'>
+                                                        <Link to="productedit"> 
                                                         <button className="text-black mr-2 bg-neutral-100 rounded-md p-2 hover:text-blue-900">
-                                                            <FaPencilAlt  />
+                                                            <FaPencilAlt />
                                                         </button>
+                                                        </Link>
                                                         <button className="text-blue-700 bg-blue-100 rounded-md p-2 hover:text-blue-900">
                                                             <RiDeleteBin5Fill />
                                                         </button>
