@@ -15,6 +15,7 @@ import App from './App';
 import { AuthProvider } from './components/AuthContext'; // Import AuthProvider
 import { SnackbarProvider } from 'notistack'; // Import SnackbarProvider
 import { GoogleOAuthProvider } from '@react-oauth/google'; // Import GoogleOAuthProvider
+// import FacebookLogin from 'react-facebook-login'; // Import FacebookLogin
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

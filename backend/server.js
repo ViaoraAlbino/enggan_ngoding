@@ -24,12 +24,10 @@ mongoose.connect(process.env.MONGO_URI, {
 // Import routes
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
-const googleAuth = require('./routes/googleAuth');
 
 // Routes utama
 app.use('/auth', authRoutes);
 app.use('/product', productRoutes);
-app.use('/google', googleAuth);
 
 // Tes endpoint utama
 app.get('/', (req, res) => {

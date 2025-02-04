@@ -108,7 +108,8 @@ const Navbar = () => {
             <li>
               <Link
                 to="/product"
-                className={`mx-2 font-poppins hover:text-blue-500 underline-offset-4 ${location.pathname === '/product' ? 'text-blue-500' : 'text-gray-500'}`}
+                className={`mx-2 font-poppins hover:text-blue-500 underline-offset-4 ${location.pathname.startsWith('/product') ? 'text-blue-500' : 'text-gray-500'
+                  }`}
               >
                 Product
               </Link>
@@ -184,22 +185,22 @@ const Navbar = () => {
 
           {/* Tombol Menu Mobile */}
           <div className="lg:hidden flex items-center space-x-4 ml-auto">
-            {/* <div className="flex items-center w-36 bg-gray-100 rounded-full px-4 py-1">
-                <input
-                  type="text"
-                  placeholder="Mau cari apa..."
-                  className="bg-transparent focus:outline-none text-gray-700 font-poppins flex-grow"
-                />
-                <FiSearch className="text-gray-500 w-6 h-6" />
-              </div> */}
+            <div className="flex items-center w-[220px] bg-gray-100 rounded-full px-4 py-1">
+              <input
+                type="text"
+                placeholder="Mau cari apa..."
+                className="bg-transparent focus:outline-none text-gray-700 font-poppins flex-grow"
+              />
+              <FiSearch className="text-gray-500 w-6 h-6" />
+            </div>
             <Link to='/keranjang'>
               <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
                 <FiShoppingCart size={25} />
               </button>
             </Link>
-            <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
+            {/* <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
               <FaRegUser size={24} />
-            </button>
+            </button> */}
             <button
               className="text-gray-500 hover:text-gray-800 focus:outline-none"
               onClick={toggleSidebar}

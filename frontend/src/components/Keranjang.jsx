@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
+import { motion } from 'framer-motion';
 
 const Keranjang = () => {
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (amount) => {
     setQuantity((prevQuantity) => Math.max(1, prevQuantity + amount));
+  };
+
+  const fadeIn = {
+    hidden: { opacity: 0, y: 15 },
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
@@ -27,50 +33,58 @@ const Keranjang = () => {
           </div>
 
           {/* Item 1 */}
-          <div className="flex items-center space-x-4 py-4 border-b px-2 sm:px-5">
-            {/* Checkbox */}
-            <input type="checkbox" className="form-checkbox w-4 h-4" />
+          <motion.section
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeIn}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="flex items-center space-x-4 py-4 border-b px-2 sm:px-5">
+              {/* Checkbox */}
+              <input type="checkbox" className="form-checkbox w-4 h-4" />
 
-            {/* Gambar */}
-            <img
-              src="src/assets/gambar/Kaos/kaos1.jpeg"
-              alt="Kaos Hitam"
-              className="w-20 h-20 sm:w-36 sm:h-36 object-cover rounded-md"
-            />
+              {/* Gambar */}
+              <img
+                src="src/assets/gambar/Kaos/kaos1.jpeg"
+                alt="Kaos Hitam"
+                className="w-20 h-20 sm:w-36 sm:h-36 object-cover rounded-md"
+              />
 
-            {/* Detail Produk */}
-            <div className="flex-grow">
-              <h3 className="font-poppins-24-500">Kaos Custom</h3>
-              <p className="font-poppins-20-400">Ukuran L</p>
-              <p className="font-poppins-20-400">Warna Hitam</p>
-              <button className="text-blue-600 font-poppins-20-400">Ubah</button>
-            </div>
+              {/* Detail Produk */}
+              <div className="flex-grow">
+                <h3 className="font-poppins-24-500">Kaos Custom</h3>
+                <p className="font-poppins-20-400">Ukuran L</p>
+                <p className="font-poppins-20-400">Warna Hitam</p>
+                <button className="text-blue-600 font-poppins-20-400">Ubah</button>
+              </div>
 
-            {/* Harga dan Jumlah */}
-            <div className="flex flex-col items-center space-y-3">
-              <p className="font-poppins-24-600">Rp 50.000</p>
-              <div className="flex items-center space-x-2 sm:space-x-6">
-                <div className="border flex items-center">
-                  <button
-                    onClick={() => handleQuantityChange(-1)}
-                    className="px-2 py-1 sm:px-4 sm:py-2 border bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    -
-                  </button>
-                  <span className="px-2 sm:px-4">{quantity}</span>
-                  <button
-                    onClick={() => handleQuantityChange(1)}
-                    className="px-2 py-1 sm:px-4 sm:py-2 border bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    +
+              {/* Harga dan Jumlah */}
+              <div className="flex flex-col items-center space-y-3">
+                <p className="font-poppins-24-600">Rp 50.000</p>
+                <div className="flex items-center space-x-2 sm:space-x-6">
+                  <div className="border flex items-center">
+                    <button
+                      onClick={() => handleQuantityChange(-1)}
+                      className="px-2 py-1 sm:px-4 sm:py-2 border bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                      -
+                    </button>
+                    <span className="px-2 sm:px-4">{quantity}</span>
+                    <button
+                      onClick={() => handleQuantityChange(1)}
+                      className="px-2 py-1 sm:px-4 sm:py-2 border bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <button className="text-red-600">
+                    <FaTrashAlt size={16} className="sm:text-[18px]" />
                   </button>
                 </div>
-                <button className="text-red-600">
-                  <FaTrashAlt size={16} className="sm:text-[18px]" />
-                </button>
               </div>
             </div>
-          </div>
+          </motion.section>
 
           {/* Summary */}
           <div className="bg-gray-200 rounded-lg shadow-md p-4 mt-4 mx-auto w-full sm:w-3/5">

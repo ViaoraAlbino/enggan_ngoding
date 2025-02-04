@@ -138,13 +138,36 @@ const Kategori = () => {
 
       {/* Produk */}
       <div
-        className="w-11/12 sticky mt-10 items-center justify-around bg-white p-4 overflow-y-scroll scrollbar-hide"
+        className="w-11/12 mt-10 items-center justify-around bg-white p-4 overflow-y-scroll scrollbar-hide"
         style={{
           maxHeight: 'calc(100vh - 20px)',
         }}
       >
-        <h2 className="mb-4 font-poppins-category-header text-left">| Ini Hasil Pencarian</h2>
+        {/* Bagian Header dan Span */}
+        <div className="sticky top-0 bg-white z-8">
+          <h2 className="font-poppins-category-header text-left lg:mb-4">
+            | Ini Hasil Pencarian
+          </h2>
+          {isMobile && (
+            <div className="mb-2 flex flex-row space-x-4 text-center font-poppins-12-400 overflow-x-auto py-2 scrollbar-hide">
+              <span className="flex-shrink-0">Kaos</span>
+              <span className="flex-shrink-0">Tumbler</span>
+              <span className="flex-shrink-0">Mugs</span>
+              <span className="flex-shrink-0">Bag</span>
+              <span className="flex-shrink-0">Accesories</span>
+              <span className="flex-shrink-0">Polaroid</span>
+              <span className="flex-shrink-0">Sticker</span>
+            </div>
+          )}
+        </div>
+
+        {/* Konten Produk */}
         <motion.nav
+          className="relative z-0 mt-3 scrollbar-hide" // Tambahkan margin atas agar ada jarak dengan header
+          style={{
+            maxHeight: 'calc(100vh - 130px)', // Kurangi tinggi total (header + margin)
+            overflowY: 'auto', // Tambahkan scroll untuk konten produk jika tinggi terbatas
+          }}
           initial="hidden"
           animate="visible"
           variants={fadeIn}
@@ -153,6 +176,7 @@ const Kategori = () => {
           <Product />
         </motion.nav>
       </div>
+
     </div>
   );
 };

@@ -29,7 +29,7 @@ router.post('/registrasi', async (req, res) => {
 });
 
 // Endpoint untuk Login dengan Rate Limiter
-router.post('/login', loginLimiter, async (req, res) => {
+router.post('/login', async (req, res) => {
     try {
         const { username, password } = req.body;
 

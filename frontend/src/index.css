@@ -270,6 +270,11 @@
   text-align: center;
 }
 
+.font-poppins-12-400 {
+  font-family: 'Poppins';
+  font-size: 13px;
+}
+
 /* Untuk Tulisan yang ada di sub Login dan Register */
 .font-sublogin-poppins-m {
   font-size: 14px;
@@ -403,6 +408,15 @@
 }
 }
 
+.font-poppins-18e-400 {
+  font-family: 'Poppins';
+  font-size: 18px;
+}
+
+.font-poppins-16-300 {
+  font-family: 'Poppins-light';
+  font-size: 14px;
+}
 
 /* Untuk Tulisan Product Detail */
 .font-poppins-produkdetail-t20 {
@@ -706,6 +720,7 @@
 .fade-out {
   animation: fadeOut 1s ease-out forwards;
 }
+
 
 
 @media (max-width:768px){

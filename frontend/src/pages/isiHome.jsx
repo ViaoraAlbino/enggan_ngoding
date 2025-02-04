@@ -8,7 +8,6 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { MdKeyboardArrowRight } from "react-icons/md";
 
-
 const isiHome = () => {
 
     const [isVisible, setIsVisible] = useState(true);
@@ -103,16 +102,20 @@ const Kategori = () => {
             {kategori.map((item) => (
                 <div key={item.id} className="rounded w-32 h-42 hover:shadow-md transition-shadow duration-300">
                     <div className="relative overflow-hidden">
-                        <img
-                            src={item.image}
-                            alt={item.description}
-                            className="w-32 h-32 object-cover mb-4 rounded-t transform hover:scale-105 duration-300"
-                        />
+                        <Link to='/product'>
+                            <img
+                                src={item.image}
+                                alt={item.description}
+                                className="w-32 h-32 object-cover mb-4 rounded-t transform hover:scale-105 duration-300"
+                            />
+                        </Link>
                     </div>
                     <div>
-                        <h3 className="font-semibold text-base mb-2 text-black text-center">
-                            {item.description}
-                        </h3>
+                        <Link to='/product'>
+                            <h3 className="font-semibold text-base mb-2 text-black text-center">
+                                {item.description}
+                            </h3>
+                        </Link>
                     </div>
                 </div>
             ))}
@@ -134,7 +137,7 @@ const FlashsaleCard = ({ image, name }) => {
                     <h6 className='font-inter-16-600 leading-none '>Produk Baru</h6>
                     <h6 className='font-inter-20-600 leading-7'>Goodie Bag</h6>
                     <h6 className='font-inter-13-400 leading-none'>Diskon 15%</h6>
-                    <button className='bg-white bg-opacity-35 px-2 font-monster-13-500 rounded-full'>Shop Now</button>
+                    <Link to='/productdetail'><button className='bg-white bg-opacity-35 px-2 font-monster-13-500 rounded-full'>Buy Now</button></Link>
                 </div>
             </div>
 
@@ -152,12 +155,14 @@ const FlashsaleCard = ({ image, name }) => {
                             <h6 className='font-poppins-13-700 leading-none sm:leading-none bg-blue-700 sm:w-[70px] w-[50px] text-white sm:px-2 px-0 py-2 text-center'>10% OFF</h6>
                             <h6 className='font-inter-20-700 leading-5 sm:leading-6'>Tumbler</h6>
                             <div className='leading-3'>
-                                <button>
-                                    <div className='flex items-center font-poppins-10-500'>
-                                        <h6>Shop Now</h6>
-                                        <MdKeyboardArrowRight size={14} className="ml-1" />
-                                    </div>
-                                </button>
+                                <Link to='/productdetail'>
+                                    <button>
+                                        <div className='flex items-center font-poppins-10-500'>
+                                            <h6>Buy Now</h6>
+                                            <MdKeyboardArrowRight size={14} className="ml-1" />
+                                        </div>
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -167,16 +172,18 @@ const FlashsaleCard = ({ image, name }) => {
                             alt={`${name} 2`}
                             className="w-full h-full object-cover"
                         />
-                       <div className='absolute top-0 left-0 ml-3 mt-3 text-left'>
+                        <div className='absolute top-0 left-0 ml-3 mt-3 text-left'>
                             <h6 className='font-poppins-13-700 leading-none sm:leading-none bg-blue-700 sm:w-[70px] w-[50px] text-white sm:px-2 px-0 py-2 text-center'>10% OFF</h6>
                             <h6 className='font-inter-20-700 leading-5 sm:leading-6'>Pin Custom</h6>
                             <div className='leading-3'>
-                                <button>
-                                    <div className='flex items-center font-poppins-10-500'>
-                                        <h6>Shop Now</h6>
-                                        <MdKeyboardArrowRight size={14} className="ml-1" />
-                                    </div>
-                                </button>
+                                <Link to='/productdetail'>
+                                    <button>
+                                        <div className='flex items-center font-poppins-10-500'>
+                                            <h6>Buy Now</h6>
+                                            <MdKeyboardArrowRight size={14} className="ml-1" />
+                                        </div>
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -190,12 +197,14 @@ const FlashsaleCard = ({ image, name }) => {
                             <h6 className='font-poppins-13-700 leading-none sm:leading-none bg-blue-700 sm:w-[70px] w-[50px] text-white sm:px-2 px-0 py-2 text-center'>10% OFF</h6>
                             <h6 className='font-inter-20-700 leading-5 sm:leading-6'>Kaos</h6>
                             <div className='leading-3'>
-                                <button>
-                                    <div className='flex items-center font-poppins-10-500'>
-                                        <h6>Shop Now</h6>
-                                        <MdKeyboardArrowRight size={14} className="ml-1" />
-                                    </div>
-                                </button>
+                                <Link to='/productdetail'>
+                                    <button>
+                                        <div className='flex items-center font-poppins-10-500'>
+                                            <h6>Buy Now</h6>
+                                            <MdKeyboardArrowRight size={14} className="ml-1" />
+                                        </div>
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -213,12 +222,14 @@ const FlashsaleCard = ({ image, name }) => {
                             <h6 className='font-poppins-13-700 leading-none sm:leading-none bg-blue-700 sm:w-[70px] w-[50px] text-white sm:px-2 px-0 py-2 text-center'>10% OFF</h6>
                             <h6 className='font-inter-20-700-t leading-5 sm:leading-9'>Mugs</h6>
                             <div className='leading-3'>
-                                <button>
-                                    <div className='flex items-center font-poppins-10-500'>
-                                        <h6>Shop Now</h6>
-                                        <MdKeyboardArrowRight size={14} className="ml-1" />
-                                    </div>
-                                </button>
+                                <Link to='/productdetail'>
+                                    <button>
+                                        <div className='flex items-center font-poppins-10-500'>
+                                            <h6>Buy Now</h6>
+                                            <MdKeyboardArrowRight size={14} className="ml-1" />
+                                        </div>
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -232,12 +243,14 @@ const FlashsaleCard = ({ image, name }) => {
                             <h6 className='font-poppins-13-700 leading-none sm:leading-none bg-blue-700 sm:w-[70px] w-[50px] text-white sm:px-2 px-0 py-2 text-center'>10% OFF</h6>
                             <h6 className='font-inter-20-700-t leading-5 sm:leading-9'>Aksesoris</h6>
                             <div className='leading-3'>
-                                <button>
-                                    <div className='flex items-center font-poppins-10-500'>
-                                        <h6>Shop Now</h6>
-                                        <MdKeyboardArrowRight size={14} className="ml-1" />
-                                    </div>
-                                </button>
+                                <Link to='/productdetail'>
+                                    <button>
+                                        <div className='flex items-center font-poppins-10-500'>
+                                            <h6>Buy Now</h6>
+                                            <MdKeyboardArrowRight size={14} className="ml-1" />
+                                        </div>
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -306,9 +319,11 @@ const UnggulanCard = ({ image, description }) => {
                         <h3 className="font-bold text-xs sm:text-sm md:text-base">
                             {description}
                         </h3>
-                        <button className="bg-white w-20 h-6 sm:w-24 sm:h-8 text-black bg-opacity-50 mt-2 font-monster-11-500 text-center px-2 rounded-full hover:bg-opacity-80 text-[10px] sm:text-sm">
-                            Buy Now
-                        </button>
+                        <Link to='/productdetail'>
+                            <button className="bg-white w-20 h-6 sm:w-24 sm:h-8 text-black bg-opacity-50 mt-2 font-monster-11-500 text-center px-2 rounded-full hover:bg-opacity-80 text-[10px] sm:text-sm">
+                                Buy Now
+                            </button>
+                        </Link>
                     </div>
                 </div>
                 {/* ))} */}
