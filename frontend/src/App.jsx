@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Layout from './components/Layout'; // Layout umum
+import LayoutA from './components/LayoutA'; // Layout tanpa footer
 import Product from './components/Kategori'; // Halaman Produk
 import About from './components/About'; // Halaman About
 import Log from './components/Login'; // Halaman Login
@@ -21,12 +22,14 @@ import ScrollToTop from './components/ScrollToTop';
 import Productdetails from './components/ProductDetails';
 import Keranjang from './components/Keranjang';
 import Wishlist from './components/Wishlist';
+import Customer from './pages/admin/Customer';
+import CustomerE from './pages/admin/CustomerEdit';
 
 const App = () => {
     return (
         <Router>
             <ScrollToTop />
-            <Navbar />
+            {/* <Navbar /> */}
             <Routes>
                 {/* Halaman dengan menampilkan Sebelumfooter */}
                 <Route
@@ -78,10 +81,26 @@ const App = () => {
                     }
                 />
                 {/* Halaman tanpa Sebelumfooter ngikut ui/ux */}
-                <Route path='/login' element={<Log />} />
-                <Route path='/register' element={<Registrasi />} />
+                <Route
+                    path='/login'
+                    element={
+                        <LayoutA>
+                            <Login />
+                        </LayoutA>
+                    }
+                />
+                <Route
+                    path='/register'
+                    element={
+                        <LayoutA>
+                            <Registrasi />
+                        </LayoutA>
+                    }
+                />
+                    <Route path="/admin" element={<ANavi />}/>
+                    <Route path="/admin/customers" element={<Customer/>} />
+                    <Route path="/admin/customers/customer_edit" element={<CustomerE/>} />
             </Routes>
-            <Footer />
         </Router>
     );
 };

@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 //Definisi Schema Produtcs
 const productSchema = new mongoose.Schema({
+    _id: {
+        type: Number,
+        required: true,
+    },
     title: {
         type: String,
         required : true,

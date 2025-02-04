@@ -3,6 +3,7 @@ import { AiOutlineDownload } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import { FaPencilAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 const ACustomer = () => {
     const [customers] = useState([
@@ -33,15 +34,15 @@ const ACustomer = () => {
                             <div className=" 
                                       
                                           hidden lg:flex items-center w-full bg-transparent border-2  border-gray-100 focus-within:border-blue-500 rounded-md px-2 py-1 space-x-6 mr-6">
-                                        <FiSearch className="text-gray-500 w-6 h-6" />
-                                        <input
-                                        
-                                          type="text"
-                                          placeholder="Search Customer"
-                                          className="bg-transparent focus:outline-none flex-grow text-gray-700 font-poppins ml-2"
-                                        />
-                                        
-                                      </div>
+                                <FiSearch className="text-gray-500 w-6 h-6" />
+                                <input
+
+                                    type="text"
+                                    placeholder="Search Customer"
+                                    className="bg-transparent focus:outline-none flex-grow text-gray-700 font-poppins ml-2"
+                                />
+
+                            </div>
                             <button className="flex items-center bg-black text-white px-5  py-2  rounded-lg hover:bg-blue-800">
                                 <AiOutlineDownload className="mr-2 size-5 font-bold" /> Export    
                             </button>
@@ -71,14 +72,16 @@ const ACustomer = () => {
                                         <td className="p-2">{customer.address}</td>
                                         <td className="p-2 ">
                                             <div className='gap-2'>
-                                            <button className="text-black mr-2 bg-neutral-100 rounded-md p-2 hover:text-blue-900">
-                                                <FaPencilAlt  />
-                                            </button>
-                                            <button className="text-blue-700 bg-blue-100 rounded-md p-2 hover:text-blue-900">
-                                                <RiDeleteBin5Fill />
-                                            </button>
+                                                <Link to="/admin/customers/customer_edit">
+                                                    <button className="text-black mr-2 bg-neutral-100 rounded-md p-2 hover:text-blue-900">
+                                                        <FaPencilAlt />
+                                                    </button>
+                                                </Link>
+                                                <button className="text-blue-700 bg-blue-100 rounded-md p-2 hover:text-blue-900">
+                                                    <RiDeleteBin5Fill />
+                                                </button>
                                             </div>
-                                           
+
                                         </td>
                                     </tr>
                                 ))}
