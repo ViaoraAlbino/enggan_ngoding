@@ -29,7 +29,12 @@ import AProductadd from './Productadd';
 import ProductEdit from './ProductEdit';
 
 const ANavi = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const [activeItem, setActiveItem] = useState('Dashboard'); // State untuk item aktif
+  const handleLogout = () => {
+    enqueueSnackbar('Logout', { variant: 'error' });
+    localStorage.removeItem('token');
+  }
 
   const menuItems = [
     { name: 'Dashboard', path: '/admin/dashboard', icon: dashboardGrey, activeIcon: dashboardBlue },
@@ -84,7 +89,9 @@ const ANavi = () => {
         {/* Logout Button */}
         <div className="p-4">
           <Link to="/login">
-            <button className="w-full p-3 font-poppins text-red-500 rounded-md flex items-center justify-center space-x-2">
+            <button 
+            onClick={handleLogout}
+            className="w-full p-3 font-poppins text-red-500 rounded-md flex items-center justify-center space-x-2">
               <TbLogout />
               <span className="font-poppins font-semibold">Logout</span>
             </button>

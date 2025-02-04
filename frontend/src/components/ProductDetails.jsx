@@ -83,7 +83,7 @@ const ProductDetails = () => {
 
           {/* Bagian Informasi Produk */}
           <div className="flex-1">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mt-2">
               <h6 className="font-poppins-18-400-p">KAOS CUSTOM</h6>
               <FiHeart className="text-gray-500 hover:text-red-500 cursor-pointer" size={28} />
             </div>

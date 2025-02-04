@@ -43,7 +43,7 @@ const Register = () => {
 
     try {
       // Contoh endpoint API
-      const response = await fetch('http://localhost:5000/daftar', {
+      const response = await fetch('http://localhost:5000/auth/registrasi', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
