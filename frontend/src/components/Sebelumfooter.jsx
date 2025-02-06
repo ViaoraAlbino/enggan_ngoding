@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Lokasi from '../assets/gambar/sherlok.png';
-import Telepon from '../assets/gambar/telepon.png';
-<<<<<<< HEAD
+
+
 import UnifyIcon from '../assets/icons/logo_univy.svg';
-=======
+
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
->>>>>>> 228ccc4c56fbf5a8b9f87d639798d5f0da784e73
+
 
 const Sebelumfooter = () => {
   const [isReady, setIsReady] = useState(false);
@@ -29,7 +28,7 @@ const Sebelumfooter = () => {
                 {/* Informasi Lokasi dan Kontak */}
                 <li className="sebelumfooter-item mb-4">
                   <div className="flex space-x-4 mb-6">
-                    <img src={Lokasi} alt="Sherlok" className="w-6 h-6" />
+                    
                     <div className="lg:w-96 sm:w-72 text-white flex flex-col">
                       <Link to="https://g.co/kgs/nVFJQwi" className="text-base font-poppins font-medium">SMK N 3 KENDAL</Link>
                       <Link to="https://g.co/kgs/nVFJQwi" className="text-base font-poppins font-medium">
@@ -38,7 +37,7 @@ const Sebelumfooter = () => {
                     </div>
                   </div>
                   <div className="flex space-x-4">
-                    <img src={Telepon} alt="Telepon" className="w-6 h-6" />
+                    
                     <p className="text-base font-poppins font-medium mt-1 text-white">
                       Telepon: (0294) 572623
                     </p>
