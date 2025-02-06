@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 // Definisi Schema User
 const userSchema = new mongoose.Schema({
@@ -29,6 +30,9 @@ const userSchema = new mongoose.Schema({
         lowercase: true,
     },
 }, { timestamps: true });
+
+// Tambahkan plugin auto-increment untuk membuat ID yang terus bertambah
+userSchema.plugin(AutoIncrement, { inc_field: 'userId' }); 
 
 // Ekspor Model
 module.exports = mongoose.model('User', userSchema);

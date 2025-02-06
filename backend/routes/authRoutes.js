@@ -2,6 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const Customer = require('../models/Customer');
 const { loginLimiter } = require('../middleware/rateLimiter');
 
 const router = express.Router();
@@ -17,9 +18,16 @@ router.post('/registrasi', async (req, res) => {
             return res.status(400).json({ message: 'Email sudah terdaftar' });
         }
 
+        // Untuk User
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({ fullName, username, email, password: hashedPassword, role });
         await newUser.save();
+
+        // Untuk Customer
+        const noTelepon = 'Tambahkan Nomor Telepon Anda';
+        const alamat = 'Tambahkan Alamat Anda';
+        const newCustomer = new Customer({ fullName, username, email, password: hashedPassword, noTelepon, alamat });
+        await newCustomer.save();
 
         res.status(201).json({ message: 'Registrasi berhasil', user: newUser });
     } catch (error) {
@@ -44,7 +52,9 @@ router.post('/login', async (req, res) => {
         }
 
         const role = existingUser.role;
-        const token = jwt.sign({ id: existingUser._id, role }, process.env.JWT_SECRET, { expiresIn: '48h' });
+        const id = existingUser.id;
+        const token = jwt.sign({ id: existingUser._id, role, id }, process.env.JWT_SECRET, { expiresIn: '48h' });
+        //  console.log(userId);
 
         res.status(200).json({
             message: 'Login Berhasil',

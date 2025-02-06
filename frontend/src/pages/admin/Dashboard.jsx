@@ -53,7 +53,7 @@ const ADashboard = () => {
       <div className="overflow-x-auto rounded-lg drop-shadow-lg">
         <table className="table-fixed w-full bg-white  border-none drop-shadow-xl">
           <thead>
-            <tr className="bg-blue-200 text-black">
+            <tr className="bg-blue-100 text-black">
               <th className="px-2 py-2">Id Pesanan</th>
               <th className="px-2 py-2">Nama Customer</th>
               <th className="px-2 py-2">Produk</th>

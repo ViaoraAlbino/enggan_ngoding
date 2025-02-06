@@ -58,6 +58,7 @@ const Login = () => {
           // Simpan token untuk user
           localStorage.setItem('token', data.token);
           localStorage.setItem('role', data.user.role);
+          localStorage.setItem('id', data.user.id);
           login();
           navigate('/'); // Pindah ke halaman Home
         } else if (data.user.role === 'admin') {
@@ -215,14 +216,6 @@ const Login = () => {
             </button>
           )}
         /> */}
-        {/* <FacebookLogin
-          appId="1088597931155576"
-          autoLoad={true}
-          fields="name,email,picture"
-          callback={responseFacebook}
-          cssClass="my-facebook-button-class"
-          icon="fa-facebook"
-        />, */}
       </div>
     </div>
   );

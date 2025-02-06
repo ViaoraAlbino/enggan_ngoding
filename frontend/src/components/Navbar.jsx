@@ -5,7 +5,6 @@ import UnifyIcon from '../assets/gambar/logo_blue.png';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
-
 import { useSnackbar } from 'notistack';
 
 const Navbar = () => {
@@ -49,18 +48,19 @@ const Navbar = () => {
   };
 
   const role = localStorage.getItem('role');
-
+  const id = localStorage.getItem('id');
   // Test Notifikasi
   useEffect(() => {
     // Cek apakah token ada di localStorage
     const token = localStorage.getItem('token');
-
+    
     // Cek apakah notifikasi sudah pernah ditampilkan
     const hasNotified = localStorage.getItem('hasNotified');
 
-    if (token && location.pathname === '/' && !hasNotified && role !== 'admin') {
+    if (token && location.pathname === '/' && !hasNotified && role !== 'admin' && id) {
       enqueueSnackbar('Welcome back! You are now logged in.', { variant: 'success' });
       localStorage.setItem('hasNotified', 'true'); // Set status notifikasi
+      // console.log(id);
     }
   }, [enqueueSnackbar, location.pathname]);
 
