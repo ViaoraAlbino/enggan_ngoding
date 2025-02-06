@@ -2,11 +2,19 @@ import { FiHeart } from 'react-icons/fi';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion'; // Import Framer Motion
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
-
+import pictureReview from "../assets/gambar/me.jpg";
+import { FaStar } from "react-icons/fa";
+import { FaRegStar } from "react-icons/fa";
+import testReview from "../assets/gambar/Kaos/kaos1.jpeg";
 const ProductDetails = () => {
 
   const fadeIn = {
     hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const fadeInE = {
+    hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0 },
   };
 
@@ -45,143 +53,151 @@ const ProductDetails = () => {
     <div className="p-6 bg-blue-100 min-h-screen">
       {/* Kontainer utama */}
       <div className="max-w-7xl mx-auto bg-white p-6 md:p-10 rounded-lg shadow-md mt-14">
-        <div className="flex flex-col lg:flex-row lg:space-x-10">
-          {/* Bagian Gambar */}
-          <div className="flex flex-col items-center lg:items-start">
-            <div className="relative w-full sm:w-64 sm:h-64 lg:w-96 lg:h-96">
-              <img
-                src={images[currentIndex]}
-                alt="Produk"
-                className="w-96 h-96 md:w-full md:h-full sm:w-64 sm:h-64 object-cover rounded-lg"
-              />
-              <button
-                onClick={prevImage}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 px-4 py-2 bg-blue-700 text-white rounded-full"
-              >
-                ❮
-              </button>
-              <button
-                onClick={nextImage}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-2 bg-blue-700 text-white rounded-full"
-              >
-                ❯
-              </button>
-            </div>
-            <div className="grid grid-cols-3 gap-2 mt-4">
-              {images.map((image, index) => (
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInE}
+          transition={{ duration: 0.5 }}
+        >
+          <div className="flex flex-col lg:flex-row lg:space-x-10">
+            {/* Bagian Gambar */}
+            <div className="flex flex-col items-center lg:items-start">
+              <div className="relative w-full sm:w-64 sm:h-64 lg:w-96 lg:h-96">
                 <img
-                  key={index}
-                  src={image}
-                  alt={`Thumbnail ${index}`}
-                  className={`w-16 h-16 cursor-pointer ${currentIndex === index ? 'border-2 border-blue-500' : ''
-                    }`}
-                  onClick={() => setCurrentIndex(index)}
+                  src={images[currentIndex]}
+                  alt="Produk"
+                  className="w-96 h-96 md:w-full md:h-full sm:w-64 sm:h-64 object-cover rounded-lg"
                 />
-              ))}
-            </div>
-          </div>
-
-          {/* Bagian Informasi Produk */}
-          <div className="flex-1">
-            <div className="flex justify-between items-center">
-              <h6 className="font-poppins-18-400-p">KAOS CUSTOM</h6>
-              <FiHeart className="text-gray-500 hover:text-red-500 cursor-pointer" size={28} />
-            </div>
-            <h6 className="font-poppins-20-600-p">Rp.50.000</h6>
-            <table className="w-full mt-4">
-              <tbody>
-                {/* Warna */}
-                <tr>
-                  <td className="py-2 font-poppins-produkdetail-t">Warna</td>
-                  <td className="py-2">
-                    <div className="flex flex-wrap space-x-4">
-                      <button className="text-sm border rounded-md hover:border-blue-500 focus:ring focus:ring-blue-300 flex items-center space-x-2">
-                        <img
-                          src="src/assets/gambar/Kaos/kaos5.jpeg"
-                          className="w-10 h-10"
-                          alt="Putih"
-                        />
-                        <p className="mx-1 p-1">Putih</p>
-                      </button>
-                      <button className="text-sm border rounded-md hover:border-blue-500 focus:ring focus:ring-blue-300 flex items-center space-x-2">
-                        <img
-                          src="src/assets/gambar/Kaos/kaos1.jpeg"
-                          className="w-10 h-10"
-                          alt="Hitam"
-                        />
-                        <p className="mx-1 p-1">Hitam</p>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                {/* Ukuran */}
-                <tr>
-                  <td className="py-2 font-poppins-produkdetail-t">Ukuran</td>
-                  <td className="py-2">
-                    <div className="grid grid-cols-4 gap-2">
-                      {['S', 'M', 'L', 'XL'].map((size) => (
-                        <button
-                          key={size}
-                          className="px-4 py-2 border rounded-md hover:border-blue-500 focus:ring focus:ring-blue-300"
-                        >
-                          {size}
-                        </button>
-                      ))}
-                    </div>
-                  </td>
-                </tr>
-
-                {/* Jumlah */}
-                <tr>
-                  <td className="py-2 font-poppins-produkdetail-t">Jumlah</td>
-                  <td className="py-2">
-                    <div className="flex items-center space-x-4 border rounded-md w-36">
-                      <button
-                        onClick={() => handleQuantityChange(-1)}
-                        className="px-4 py-2 border rounded-l-md hover:border-blue-500"
-                      >
-                        -
-                      </button>
-                      <span className='w-11 text-center'>{quantity}</span>
-                      <button
-                        onClick={() => handleQuantityChange(1)}
-                        className="px-4 py-2 border rounded-r-md hover:border-blue-500"
-                      >
-                        +
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                {/* File Desain */}
-                <tr>
-                  <td className="py-2 font-poppins-produkdetail-t">File Desain</td>
-                  <td className="py-2">
-                    <input
-                      type="file"
-                      onChange={handleFileChange}
-                      className="block w-full text-gray-700 border rounded-md p-2"
-                    />
-                    {file && <p className="mt-2 text-sm">{file.name}</p>}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
-            {/* Tombol Aksi */}
-            <div className="mt-6 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <Link to="/keranjang">
-                <button className="w-full px-6 py-3 transition ease-in-out delay-150 bg-blue-200 hover:-translate-y-1 hover:scale-105 hover:bg-blue-200 duration-300 font-monster-btn-pd-1 rounded-lg">
-                  Masukkan Keranjang
+                <button
+                  onClick={prevImage}
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 px-4 py-2 bg-blue-700 text-white rounded-full"
+                >
+                  ❮
                 </button>
-              </Link>
-              <button className=" px-6 py-3 transition ease-in-out delay-150 bg-sky-700 hover:-translate-y-1 hover:scale-105 hover:bg-sky-700 duration-300 text-white font-monster-btn-pd-2 rounded-lg">
-                Pesan Sekarang
-              </button>
+                <button
+                  onClick={nextImage}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 px-4 py-2 bg-blue-700 text-white rounded-full"
+                >
+                  ❯
+                </button>
+              </div>
+              <div className="grid grid-cols-3 gap-2 mt-4">
+                {images.map((image, index) => (
+                  <img
+                    key={index}
+                    src={image}
+                    alt={`Thumbnail ${index}`}
+                    className={`w-16 h-16 cursor-pointer ${currentIndex === index ? 'border-2 border-blue-500' : ''
+                      }`}
+                    onClick={() => setCurrentIndex(index)}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Bagian Informasi Produk */}
+            <div className="flex-1">
+              <div className="flex justify-between items-center mt-2">
+                <h6 className="font-poppins-18-400-p">KAOS CUSTOM</h6>
+                <FiHeart className="text-gray-500 hover:text-red-500 cursor-pointer" size={28} />
+              </div>
+              <h6 className="font-poppins-20-600-p">Rp.50.000</h6>
+              <table className="w-full mt-4">
+                <tbody>
+                  {/* Warna */}
+                  <tr>
+                    <td className="py-2 font-poppins-produkdetail-t">Warna</td>
+                    <td className="py-2">
+                      <div className="flex flex-wrap space-x-4">
+                        <button className="text-sm border rounded-md hover:border-blue-500 focus:ring focus:ring-blue-300 flex items-center space-x-2">
+                          <img
+                            src="src/assets/gambar/Kaos/kaos5.jpeg"
+                            className="w-10 h-10"
+                            alt="Putih"
+                          />
+                          <p className="mx-1 p-1">Putih</p>
+                        </button>
+                        <button className="text-sm border rounded-md hover:border-blue-500 focus:ring focus:ring-blue-300 flex items-center space-x-2">
+                          <img
+                            src="src/assets/gambar/Kaos/kaos1.jpeg"
+                            className="w-10 h-10"
+                            alt="Hitam"
+                          />
+                          <p className="mx-1 p-1">Hitam</p>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  {/* Ukuran */}
+                  <tr>
+                    <td className="py-2 font-poppins-produkdetail-t">Ukuran</td>
+                    <td className="py-2">
+                      <div className="grid grid-cols-4 gap-2">
+                        {['S', 'M', 'L', 'XL'].map((size) => (
+                          <button
+                            key={size}
+                            className="px-4 py-2 border rounded-md hover:border-blue-500 focus:ring focus:ring-blue-300"
+                          >
+                            {size}
+                          </button>
+                        ))}
+                      </div>
+                    </td>
+                  </tr>
+
+                  {/* Jumlah */}
+                  <tr>
+                    <td className="py-2 font-poppins-produkdetail-t">Jumlah</td>
+                    <td className="py-2">
+                      <div className="flex items-center space-x-4 border rounded-md w-36">
+                        <button
+                          onClick={() => handleQuantityChange(-1)}
+                          className="px-4 py-2 border rounded-l-md hover:border-blue-500"
+                        >
+                          -
+                        </button>
+                        <span className='w-11 text-center'>{quantity}</span>
+                        <button
+                          onClick={() => handleQuantityChange(1)}
+                          className="px-4 py-2 border rounded-r-md hover:border-blue-500"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  {/* File Desain */}
+                  <tr>
+                    <td className="py-2 font-poppins-produkdetail-t">File Desain</td>
+                    <td className="py-2">
+                      <input
+                        type="file"
+                        onChange={handleFileChange}
+                        className="block w-full text-gray-700 border rounded-md p-2"
+                      />
+                      {file && <p className="mt-2 text-sm">{file.name}</p>}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              {/* Tombol Aksi */}
+              <div className="mt-6 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <Link to="/keranjang">
+                  <button className="w-full px-6 py-3 transition ease-in-out delay-150 bg-blue-200 hover:-translate-y-1 hover:scale-105 hover:bg-blue-200 duration-300 font-monster-btn-pd-1 rounded-lg">
+                    Masukkan Keranjang
+                  </button>
+                </Link>
+                <button className=" px-6 py-3 transition ease-in-out delay-150 bg-sky-700 hover:-translate-y-1 hover:scale-105 hover:bg-sky-700 duration-300 text-white font-monster-btn-pd-2 rounded-lg">
+                  Pesan Sekarang
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        </motion.section>
       </div>
 
 
@@ -277,9 +293,81 @@ const ProductDetails = () => {
             )}
 
             {activeTab === 'Review' && (
-              <div>
-                <h3 className="font-semibold text-lg mb-4">Ulasan Produk</h3>
-                <p>Belum ada ulasan untuk produk ini.</p>
+              <div className='space-y-4'>
+                  <div className='p-1 sm:p-1 ml-4 mr-5 bg-white rounded-md shadow-xl'>
+                    {/* <h3 className="font-semibold text-lg mb-4">Ulasan Produk</h3>
+                <p>Belum ada ulasan untuk produk ini.</p> */}
+                    <div className='flex flex-row p-2 space-x-6'>
+                      <img
+                        src={pictureReview}
+                        alt="picture review"
+                        className='w-[50px] h-[50px] rounded-full'
+                      />
+                      <div
+                        className='flex flex-col text-left justify-start items-start'
+                      >
+                        <span className='font-poppins-18e-400'>Lilis</span>
+                        <div className='flex flex-row space-x-1 text-yellow-500'>
+                          <FaStar />
+                          <FaStar />
+                          <FaStar />
+                          <FaStar />
+                          <FaRegStar />
+                        </div>
+                        <span className='font-poppins-16-300 text-gray-500'>2024-12-18 12:42 |  Variasi: Putih, L</span>
+                        <span className='font-poppins-12-400'>Makasih banget buat seller nya udah mau ngirimin tepat waktu padahal pengiriman lagi over loud, 🤗🫶🏻 suka end cocok banget sama baju nya makasih seller</span>
+                        <div className='flex flex-row space-x-2 py-2'>
+                          <img
+                            src={testReview}
+                            alt="Test Review"
+                            className='w-[100px] h-[100px]'
+                          />
+                          <img
+                            src={testReview}
+                            alt="Test Review"
+                            className='w-[100px] h-[100px]'
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className='p-1 sm:p-1 ml-4 mr-5 bg-white rounded-md shadow-xl'>
+                    {/* <h3 className="font-semibold text-lg mb-4">Ulasan Produk</h3>
+              <p>Belum ada ulasan untuk produk ini.</p> */}
+                    <div className='flex flex-row p-2 space-x-6'>
+                      <img
+                        src={pictureReview}
+                        alt="picture review"
+                        className='w-[50px] h-[50px] rounded-full'
+                      />
+                      <div
+                        className='flex flex-col text-left justify-start items-start'
+                      >
+                        <span className='font-poppins-18e-400'>Lilis</span>
+                        <div className='flex flex-row space-x-1 text-yellow-500'>
+                          <FaStar />
+                          <FaStar />
+                          <FaStar />
+                          <FaStar />
+                          <FaRegStar />
+                        </div>
+                        <span className='font-poppins-16-300 text-gray-500'>2024-12-18 12:42 |  Variasi: Putih, L</span>
+                        <span className='font-poppins-12-400'>Makasih banget buat seller nya udah mau ngirimin tepat waktu padahal pengiriman lagi over loud, 🤗🫶🏻 suka end cocok banget sama baju nya makasih seller</span>
+                        <div className='flex flex-row space-x-2 py-2'>
+                          <img
+                            src={testReview}
+                            alt="Test Review"
+                            className='w-[100px] h-[100px]'
+                          />
+                          <img
+                            src={testReview}
+                            alt="Test Review"
+                            className='w-[100px] h-[100px]'
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
               </div>
             )}
           </div>

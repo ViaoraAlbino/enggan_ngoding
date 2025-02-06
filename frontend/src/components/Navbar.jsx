@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { FiHeart, FiShoppingCart, FiUser, FiSearch, FiMenu, FiX } from 'react-icons/fi';
 import { FaRegUser } from "react-icons/fa6";
-
-import UnifyIcon from '../assets/icons/logo_univy.svg';
-
+import UnifyIcon from '../assets/gambar/logo_blue.png';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import { useAuth } from './AuthContext';
 import { useNavigate } from 'react-router-dom';
-
 import { useSnackbar } from 'notistack';
-
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -51,17 +47,20 @@ const Navbar = () => {
     }, 500); // Delay 150 ms
   };
 
+  const role = localStorage.getItem('role');
+  const id = localStorage.getItem('id');
   // Test Notifikasi
   useEffect(() => {
     // Cek apakah token ada di localStorage
     const token = localStorage.getItem('token');
-
+    
     // Cek apakah notifikasi sudah pernah ditampilkan
     const hasNotified = localStorage.getItem('hasNotified');
 
-    if (token && location.pathname === '/' && !hasNotified) {
+    if (token && location.pathname === '/' && !hasNotified && role !== 'admin' && id) {
       enqueueSnackbar('Welcome back! You are now logged in.', { variant: 'success' });
       localStorage.setItem('hasNotified', 'true'); // Set status notifikasi
+      // console.log(id);
     }
   }, [enqueueSnackbar, location.pathname]);
 
@@ -91,12 +90,10 @@ const Navbar = () => {
         <div className="container mx-auto flex justify-between items-center">
 
           {/* Nama Markas */}
-           <img src={UnifyIcon} alt="Unify Logo" className="w-16" />
-
-          {/* Menu Navigasi */}
-          
-
-          <h1 className="text-2xl font-normal ml-6 font-nabla">UNIVY</h1>
+          <Link to="/">
+            <img src={UnifyIcon} alt="Unify Logo" className="w-[60px] ml-6" />
+            {/* <h1 className="text-2xl font-normal ml-6 font-nabla">UNIVY</h1> */}
+          </Link>
 
           {/* Menu Navigasi */}
           <ul className="hidden lg:flex space-x-6 flex-grow justify-center">
@@ -111,7 +108,8 @@ const Navbar = () => {
             <li>
               <Link
                 to="/product"
-                className={`mx-2 font-poppins hover:text-blue-500 underline-offset-4 ${location.pathname === '/product' ? 'text-blue-500' : 'text-gray-500'}`}
+                className={`mx-2 font-poppins hover:text-blue-500 underline-offset-4 ${location.pathname.startsWith('/product') ? 'text-blue-500' : 'text-gray-500'
+                  }`}
               >
                 Product
               </Link>
@@ -125,7 +123,6 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-
 
           {/* Kolom Pencarian */}
           <div className="hidden lg:flex items-center w-1/4 bg-gray-100 rounded-full px-2 py-1 space-x-6 mr-6">
@@ -146,15 +143,36 @@ const Navbar = () => {
               <FiShoppingCart className={`cursor-pointer hover:text-gray-800 ${location.pathname === '/keranjang' ? 'text-gray-800' : 'text-gray-500'}`} size={24} />
             </Link>
             {isLoggedIn ? (
-              // Tampilkan ikon user jika login
-              <button onClick={handleLogout} className="text-gray-500 hover:text-gray-800 focus:outline-none">
-                <FaRegUser size={24} />
-              </button>
+              role === 'user' ? (
+                // Tampilkan ikon user jika role adalah user
+                <button
+                  onClick={handleLogout}
+                  className="text-gray-500 hover:text-gray-800 focus:outline-none"
+                >
+                  <FaRegUser size={24} />
+                </button>
+              ) : role === 'admin' ? (
+                // Tampilkan tombol Sign Up dan Login jika role adalah admin
+                <>
+                  <Link to="/register">
+                    <button className="font-poppins-sign button-sign hover:bg-cyan-200">
+                      Sign Up
+                    </button>
+                  </Link>
+                  <Link to="/login">
+                    <button className="font-poppins-login button-login hover:bg-blue-500">
+                      Login
+                    </button>
+                  </Link>
+                </>
+              ) : null // Jika role tidak valid, tampilkan null
             ) : (
-              // Tampilkan tombol Sign Up dan Login jika belum user login
+              // Tampilkan tombol Sign Up dan Login jika belum login
               <>
                 <Link to="/register">
-                  <button className="font-poppins-sign button-sign hover:bg-cyan-200">Sign Up</button>
+                  <button className="font-poppins-sign button-sign hover:bg-cyan-200">
+                    Sign Up
+                  </button>
                 </Link>
                 <Link to="/login">
                   <button className="font-poppins-login button-login hover:bg-blue-500">
@@ -167,22 +185,22 @@ const Navbar = () => {
 
           {/* Tombol Menu Mobile */}
           <div className="lg:hidden flex items-center space-x-4 ml-auto">
-            {/* <div className="flex items-center w-36 bg-gray-100 rounded-full px-4 py-1">
+            <div className="flex items-center w-[220px] bg-gray-100 rounded-full px-4 py-1">
               <input
                 type="text"
                 placeholder="Mau cari apa..."
                 className="bg-transparent focus:outline-none text-gray-700 font-poppins flex-grow"
               />
               <FiSearch className="text-gray-500 w-6 h-6" />
-            </div> */}
+            </div>
             <Link to='/keranjang'>
               <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
                 <FiShoppingCart size={25} />
               </button>
             </Link>
-            <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
+            {/* <button className="text-gray-500 hover:text-gray-800 focus:outline-none">
               <FaRegUser size={24} />
-            </button>
+            </button> */}
             <button
               className="text-gray-500 hover:text-gray-800 focus:outline-none"
               onClick={toggleSidebar}
@@ -196,7 +214,8 @@ const Navbar = () => {
       {/* Sidebar */}
       <div className={`fixed top-0 left-0 h-full w-64 bg-white shadow transform transition-transform z-20 ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
         <div className="flex items-center justify-between p-4 border-b">
-          <h2 className="text-2xl font-nabla">UNIVY</h2>
+          {/* <h2 className="text-2xl font-nabla">UNIVY</h2> */}
+          <img src={UnifyIcon} alt="Unify Logo" className="w-[60px] ml-3" />
           <button
             className="text-gray-500 hover:text-gray-800 focus:outline-none"
             onClick={toggleSidebar}

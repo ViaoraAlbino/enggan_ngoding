@@ -270,6 +270,11 @@
   text-align: center;
 }
 
+.font-poppins-12-400 {
+  font-family: 'Poppins';
+  font-size: 13px;
+}
+
 /* Untuk Tulisan yang ada di sub Login dan Register */
 .font-sublogin-poppins-m {
   font-size: 14px;
@@ -293,6 +298,13 @@
   font-size: 20px;
   font-weight: 600;
   color: white;
+  font-family: 'Monsterrat';
+}
+
+.font-btngoogle-monster {
+  font-size: 20px;
+  font-weight: 600;
+  color: black;
   font-family: 'Monsterrat';
 }
 
@@ -396,6 +408,15 @@
 }
 }
 
+.font-poppins-18e-400 {
+  font-family: 'Poppins';
+  font-size: 18px;
+}
+
+.font-poppins-16-300 {
+  font-family: 'Poppins-light';
+  font-size: 14px;
+}
 
 /* Untuk Tulisan Product Detail */
 .font-poppins-produkdetail-t20 {
@@ -701,6 +722,7 @@
 }
 
 
+
 @media (max-width:768px){
   .font-monster-medium-u {
     font-family: 'Monsterrat-medium';
@@ -870,4 +892,12 @@ nav ul li a:hover::after {
 
 #custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background-color: #1e3a8a; /* Warna thumb saat di-hover */
+}
+
+.form-admin {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
 }

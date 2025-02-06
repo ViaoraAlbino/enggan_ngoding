@@ -1,19 +1,24 @@
 const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
 // Definisi Schema User
 const userSchema = new mongoose.Schema({
+    fullName: {
+        type: String,
+        trim: true,
+    },
     username: {
         type: String,
         required: true,
-        unique: true,
-        trim: true, // Menghapus spasi di awal/akhir
+        unique: true, // Hanya username yang unik
+        trim: true,
     },
     email: {
         type: String,
         required: true,
-        unique: true,
-        trim: true, // Menghapus spasi di awal/akhir
-        lowercase: true, // Menyimpan email dalam huruf kecil
+        unique: true, // Hanya email yang unik
+        trim: true,
+        lowercase: true,
     },
     password: {
         type: String,
@@ -21,12 +26,13 @@ const userSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        lowercase: true,
         required: true,
-    }
-}, {
-    timestamps: true, // Menambahkan createdAt dan updatedAt secara otomatis
-});
+        lowercase: true,
+    },
+}, { timestamps: true });
+
+// Tambahkan plugin auto-increment untuk membuat ID yang terus bertambah
+userSchema.plugin(AutoIncrement, { inc_field: 'userId' }); 
 
 // Ekspor Model
 module.exports = mongoose.model('User', userSchema);

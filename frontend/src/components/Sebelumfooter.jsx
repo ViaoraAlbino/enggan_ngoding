@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-
-
-import UnifyIcon from '../assets/icons/logo_univy.svg';
-
+import Lokasi from '../assets/gambar/sherlok.png';
+import Telepon from '../assets/gambar/telepon.png';
+import UnifyIcon from '../assets/gambar/logo_white.png';
 import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
-
 
 const Sebelumfooter = () => {
   const [isReady, setIsReady] = useState(false);
@@ -23,7 +21,7 @@ const Sebelumfooter = () => {
         <div className='background-abu'>
           <div className=" container mx-auto flex justify-between items-start text-left w-full sebelumfooter-container scroll-smooth">
             <div className="ml-10 sebelumfooter-content py-10 mb-10">
-              <h1 className="font-nabla-white-sebelumfooter font-normal mb-10">UNIVY</h1>
+              <img src={UnifyIcon} alt="Unify Logo" className="sm:w-[150px] w-[100px] mb-5" />
               <ul className="lg:flex lg:space-x-16 sm:space-x-10 flex-grow">
                 {/* Informasi Lokasi dan Kontak */}
                 <li className="sebelumfooter-item mb-4">

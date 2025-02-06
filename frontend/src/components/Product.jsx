@@ -130,3 +130,84 @@ const Product = () => {
 };
 
 export default Product;
+
+// import React, { useState, useEffect } from 'react';
+// import { Link } from 'react-router-dom';
+// import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+
+// const ProductCard = ({ image, title, price, description }) => {
+//   const [isFavorited, setIsFavorited] = useState(false);
+
+//   const toggleFavorite = () => {
+//     setIsFavorited(!isFavorited);
+//   };
+
+//   return (
+//     <div className="bg-white rounded mb-8 w-full h-auto hover:bg-gray-100 ease-out delay-150 transition-colors duration-300">
+//       <div className="relative overflow-hidden">
+//         <Link to="/productdetail">
+//           <img
+//             src={image}
+//             alt={title}
+//             className="w-40 h-40 md:w-full md:h-72 object-cover mb-4 rounded transform hover:scale-105 transition-transform ease-out duration-300"
+//           />
+//         </Link>
+//         <div
+//           className="absolute top-4 right-4 bg-white rounded-full p-2 shadow cursor-pointer"
+//           onClick={toggleFavorite}
+//         >
+//           <div className='w-full h-full transition-transform duration-300 transform hover:scale-110'>
+//             {isFavorited ? <MdFavorite className='text-red-500' /> : <MdFavoriteBorder />}
+//           </div>
+//         </div>
+//       </div>
+//       <div className="w-full flex justify-between items-center">
+//         <div>
+//           <Link to="/productdetail" className="font-poppins-judul-products mb-2">{title}</Link>
+//           <p className="font-poppins-sub-judul-products mb-2.5">{price}</p>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// const Product = () => {
+//   const [products, setProducts] = useState([]);
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     const fetchProducts = async () => {
+//       try {
+//         const response = await fetch('http://localhost:5000/products'); // Ganti URL dengan API Anda
+//         const data = await response.json();
+//         setProducts(data);
+//         setLoading(false);
+//       } catch (error) {
+//         console.error('Error fetching products:', error);
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchProducts();
+//   }, []);
+
+//   if (loading) {
+//     return <p>Loading...</p>;
+//   }
+
+//   return (
+//     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+//       {products.map((product) => (
+//         <ProductCard
+//           key={product._id}
+//           image={product.imageUrl}
+//           title={product.title}
+//           price={product.price}
+//           description={product.description}
+//         />
+//       ))}
+//     </div>
+//   );
+// };
+
+// export default Product;
